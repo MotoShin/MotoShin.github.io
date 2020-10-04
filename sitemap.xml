@@ -3,11 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://motoshin.github.io/categories/</loc>
+    <loc>https://motoshin.github.io/post/2020-10-04-create-blog-1/</loc>
+    <lastmod>2020-10-04T14:44:00+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://motoshin.github.io/</loc>
+    <lastmod>2020-10-04T14:44:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://motoshin.github.io/post/</loc>
+    <lastmod>2020-10-04T14:44:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://motoshin.github.io/categories/</loc>
   </url>
   
   <url>
