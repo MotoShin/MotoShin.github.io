@@ -1,0 +1,3 @@
+[submodule "math-tools"]
+	path = math-tools
+	url = https://github.com/MotoShin/math-tools.git
