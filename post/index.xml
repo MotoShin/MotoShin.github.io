@@ -5,18 +5,33 @@
     <link>https://motoshin.github.io/post/</link>
     <description>Recent content in Posts on MotoShin Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 04 Oct 2020 14:44:00 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 04 Oct 2020 18:11:00 +0900</lastBuildDate>
     
 	<atom:link href="https://motoshin.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>2020 10 04 Create Blog 1</title>
+      <title>ブログをGitHub Pagesに移行しました。</title>
       <link>https://motoshin.github.io/post/2020-10-04-create-blog-1/</link>
-      <pubDate>Sun, 04 Oct 2020 14:44:00 +0900</pubDate>
+      <pubDate>Sun, 04 Oct 2020 18:11:00 +0900</pubDate>
       
       <guid>https://motoshin.github.io/post/2020-10-04-create-blog-1/</guid>
-      <description>初めての投稿 テストテストテスト abcdefg</description>
+      <description>GitHub Pagesでブログ！？ 第一印象はこんな感じでした。
+僕のGithub Pagesのイメージはほんとにhtmlのペライチしか表示できないと思っていたので結構驚きました。
+移行した理由 移行した理由としては以下の理由があります。
+ AWSの無料トライアル？期間みたいのが終わってた githubでの管理なのでやりやすそう なんかイケてそう  まぁ、こんか感じです。
+ AWSの無料トライアル？期間みたいのが終わってた
+ これはほんと驚きました。
+今まで1500円とかだった料金が9月いきなり7000円越えとかになっていて急いで全部のインスタンスを消しました。
+確認してほんとによかった・・・。
+ githubでの管理なのでやりやすそう
+ これは管理もそうですが、ブログの記事自体もmarkdownで記述できるという点もあります。
+ なんかイケてそう
+ なんかイケてそうだなって思いました（フィーリング）。
+Hugoっていうやつがブログ生成しててgo言語使っててなんかイケてそう（）。
+今後の方向性 とりあえずカスタムドメインとか使えそうなので前のブログのドメインを復活させようかな、とか思ってます。
+あとは前のブログの記事復活できたらやります。（たぶんやらないかも）
+今日はこんなところです。</description>
     </item>
     
   </channel>

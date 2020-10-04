@@ -1,48 +1,37 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>hugo on Your title</title>
-    <link>https://example.com/tags/hugo/</link>
-    <description>Recent content in hugo on Your title</description>
+    <title>Hugo on MotoShin Blog</title>
+    <link>https://motoshin.github.io/tags/hugo/</link>
+    <description>Recent content in Hugo on MotoShin Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 28 Sep 2014 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 04 Oct 2020 18:11:00 +0900</lastBuildDate>
     
-	<atom:link href="https://example.com/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://motoshin.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Creating a New Theme</title>
-      <link>https://example.com/posts/creating-a-new-theme/</link>
-      <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://example.com/posts/creating-a-new-theme/</guid>
-      <description>Introduction This tutorial will show you how to create a simple theme in Hugo. I assume that you are familiar with HTML, the bash command line, and that you are comfortable using Markdown to format content. I&amp;rsquo;ll explain how Hugo uses templates and how you can organize your templates to create a theme. I won&amp;rsquo;t cover using CSS to style your theme.
-We&amp;rsquo;ll start with creating a new site with a very basic template.</description>
-    </item>
     
     <item>
-      <title>Getting Started with Hugo</title>
-      <link>https://example.com/posts/hugoisforlovers/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
+      <title>ブログをGitHub Pagesに移行しました。</title>
+      <link>https://motoshin.github.io/post/2020-10-04-create-blog-1/</link>
+      <pubDate>Sun, 04 Oct 2020 18:11:00 +0900</pubDate>
       
-      <guid>https://example.com/posts/hugoisforlovers/</guid>
-      <description>Step 1. Install Hugo Go to Hugo releases and download the appropriate version for your OS and architecture.
-Save it somewhere specific as we will be using it in the next step.
-More complete instructions are available at Install Hugo
-Step 2. Build the Docs Hugo has its own example site which happens to also be the documentation site you are reading right now.
-Follow the following steps:
- Clone the Hugo repository Go into the repo Run hugo in server mode and build the docs Open your browser to http://localhost:1313  Corresponding pseudo commands:</description>
-    </item>
-    
-    <item>
-      <title>Migrate to Hugo from Jekyll</title>
-      <link>https://example.com/posts/migrate-from-jekyll/</link>
-      <pubDate>Mon, 10 Mar 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://example.com/posts/migrate-from-jekyll/</guid>
-      <description>Move static content to static Jekyll has a rule that any directory not starting with _ will be copied as-is to the _site output. Hugo keeps all static content under static. You should therefore move it all there. With Jekyll, something that looked like
-▾ &amp;lt;root&amp;gt;/ ▾ images/ logo.png  should become
-▾ &amp;lt;root&amp;gt;/ ▾ static/ ▾ images/ logo.png  Additionally, you&amp;rsquo;ll want any files that should reside at the root (such as CNAME) to be moved to static.</description>
+      <guid>https://motoshin.github.io/post/2020-10-04-create-blog-1/</guid>
+      <description>GitHub Pagesでブログ！？ 第一印象はこんな感じでした。
+僕のGithub Pagesのイメージはほんとにhtmlのペライチしか表示できないと思っていたので結構驚きました。
+移行した理由 移行した理由としては以下の理由があります。
+ AWSの無料トライアル？期間みたいのが終わってた githubでの管理なのでやりやすそう なんかイケてそう  まぁ、こんか感じです。
+ AWSの無料トライアル？期間みたいのが終わってた
+ これはほんと驚きました。
+今まで1500円とかだった料金が9月いきなり7000円越えとかになっていて急いで全部のインスタンスを消しました。
+確認してほんとによかった・・・。
+ githubでの管理なのでやりやすそう
+ これは管理もそうですが、ブログの記事自体もmarkdownで記述できるという点もあります。
+ なんかイケてそう
+ なんかイケてそうだなって思いました（フィーリング）。
+Hugoっていうやつがブログ生成しててgo言語使っててなんかイケてそう（）。
+今後の方向性 とりあえずカスタムドメインとか使えそうなので前のブログのドメインを復活させようかな、とか思ってます。
+あとは前のブログの記事復活できたらやります。（たぶんやらないかも）
+今日はこんなところです。</description>
     </item>
     
   </channel>

@@ -3,16 +3,42 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://motoshin.github.io/</loc>
-    <priority>0</priority>
+    <loc>https://motoshin.github.io/tags/github/</loc>
+    <lastmod>2020-10-04T18:11:00+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://motoshin.github.io/categories/</loc>
+    <loc>https://motoshin.github.io/tags/githubpages/</loc>
+    <lastmod>2020-10-04T18:11:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://motoshin.github.io/tags/hugo/</loc>
+    <lastmod>2020-10-04T18:11:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://motoshin.github.io/</loc>
+    <lastmod>2020-10-04T18:11:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://motoshin.github.io/post/</loc>
+    <lastmod>2020-10-04T18:11:00+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://motoshin.github.io/tags/</loc>
+    <lastmod>2020-10-04T18:11:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://motoshin.github.io/post/2020-10-04-create-blog-1/</loc>
+    <lastmod>2020-10-04T18:11:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://motoshin.github.io/categories/</loc>
   </url>
   
 </urlset>
