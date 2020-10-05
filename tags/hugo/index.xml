@@ -5,10 +5,47 @@
     <link>https://motoshin.github.io/tags/hugo/</link>
     <description>Recent content in Hugo on MotoShin Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 04 Oct 2020 18:11:00 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 05 Oct 2020 18:35:59 +0900</lastBuildDate>
     
 	<atom:link href="https://motoshin.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>ブログのテーマ選び難しい問題</title>
+      <link>https://motoshin.github.io/post/2020-10-05-blog/</link>
+      <pubDate>Mon, 05 Oct 2020 18:35:59 +0900</pubDate>
+      
+      <guid>https://motoshin.github.io/post/2020-10-05-blog/</guid>
+      <description>ブログのテーマって皆さんどのように決めているんでしょうか？
+難しくないですか、テーマ。
+今の僕はHugoってやつ使ってブログ書いてるんですがそれのテーマ一覧がこれですよ。
+https://themes.gohugo.io/
+いや、ムズいわ
+これ選ぶだけで一日潰れちゃうよ
+てことで今日はブログのテーマについてだらだら書いていこうと思います。
+ブログのテーマ選びの難しさ ブログのテーマって何がムズいって「これだ！」ってやつがあってウキウキで設定してみるとなんか違うな、
+ってなるところだと思うんです。
+なんなんでしょうね、あれ。
+今設定してるテーマも「m10c」ってやつなんですけど、すごいシンプルでええやん！ってなったんですが
+いざ設定してみるとうーんって感じになりました。
+（テーマがイケてないという意味ではないです。全部いいテーマです。製作者さんマジリスペクト）
+自分で作ればええやんって思うけど自分にそんなセンスはないんだよな～
+ブログのテーマに欲しいもの なので僕がブログテーマに対して何を求めているのかを頭の整理もかねて書き出したいと思います。
+欲しい機能は以下のような感じです。
+ tag機能 コメント機能 数式をLatex風に書ける機能 いい感じにおしゃれなUI  こんな感じです。
+僕が重視したいのが
+ 数式をLatex風に書ける機能
+ です。
+なんてったって技術ブログですからね()。
+これが備わっていたのでこの「m10c」も選んでみました。
+なんかいい感じに以下のページみたいに書けるらしいです。
+https://themes.gohugo.io//theme/hugo-theme-m10c/post/math-typesetting/
+（まだどうやるかはわかっていません。）
+これらがいい感じに内蔵されてるテーマあったら教えてください、お願いします。
+結論 今日のブログをまとめるとこんな感じです。
+ ブログのテーマ作ってる人はすごい 不満があるなら自分で作れ  そんなところです。
+次回 次回は、このテーマに慣れるために画像とか数式とか書いていこうと思います。</description>
+    </item>
     
     <item>
       <title>ブログをGitHub Pagesに移行しました。</title>
