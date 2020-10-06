@@ -12,10 +12,10 @@
     
     <item>
       <title>ブログのテーマ選び難しい問題</title>
-      <link>https://motoshin.github.io/post/2020-10-05-blog/</link>
+      <link>https://motoshin.github.io/posts/2020-10-05-blog/</link>
       <pubDate>Mon, 05 Oct 2020 18:35:59 +0900</pubDate>
       
-      <guid>https://motoshin.github.io/post/2020-10-05-blog/</guid>
+      <guid>https://motoshin.github.io/posts/2020-10-05-blog/</guid>
       <description>ブログのテーマって皆さんどのように決めているんでしょうか？
 難しくないですか、テーマ。
 今の僕はHugoってやつ使ってブログ書いてるんですがそれのテーマ一覧がこれですよ。
@@ -49,10 +49,10 @@ https://themes.gohugo.io//theme/hugo-theme-m10c/post/math-typesetting/
     
     <item>
       <title>ブログをGitHub Pagesに移行しました。</title>
-      <link>https://motoshin.github.io/post/2020-10-04-create-blog-1/</link>
+      <link>https://motoshin.github.io/posts/2020-10-04-create-blog-1/</link>
       <pubDate>Sun, 04 Oct 2020 18:11:00 +0900</pubDate>
       
-      <guid>https://motoshin.github.io/post/2020-10-04-create-blog-1/</guid>
+      <guid>https://motoshin.github.io/posts/2020-10-04-create-blog-1/</guid>
       <description>GitHub Pagesでブログ！？ 第一印象はこんな感じでした。
 僕のGithub Pagesのイメージはほんとにhtmlのペライチしか表示できないと思っていたので結構驚きました。
 移行した理由 移行した理由としては以下の理由があります。
