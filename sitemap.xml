@@ -3,6 +3,21 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://motoshin.github.io/tags/diary/</loc>
+    <lastmod>2020-10-06T20:15:09+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://motoshin.github.io/tags/hugo/</loc>
+    <lastmod>2020-10-06T20:15:09+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://motoshin.github.io/tags/katex/</loc>
+    <lastmod>2020-10-06T20:15:09+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://motoshin.github.io/</loc>
     <lastmod>2020-10-06T20:15:09+09:00</lastmod>
   </url>
@@ -13,23 +28,13 @@
   </url>
   
   <url>
-    <loc>https://motoshin.github.io/posts/2020-10-06-blog/</loc>
+    <loc>https://motoshin.github.io/tags/</loc>
     <lastmod>2020-10-06T20:15:09+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://motoshin.github.io/tags/diary/</loc>
-    <lastmod>2020-10-05T18:35:59+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://motoshin.github.io/tags/hugo/</loc>
-    <lastmod>2020-10-05T18:35:59+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://motoshin.github.io/tags/</loc>
-    <lastmod>2020-10-05T18:35:59+09:00</lastmod>
+    <loc>https://motoshin.github.io/posts/2020-10-06-blog/</loc>
+    <lastmod>2020-10-06T20:15:09+09:00</lastmod>
   </url>
   
   <url>
