@@ -5,10 +5,28 @@
     <link>https://motoshin.github.io/</link>
     <description>Recent content on MotoShin Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 05 Oct 2020 18:35:59 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 06 Oct 2020 20:15:09 +0900</lastBuildDate>
     
 	<atom:link href="https://motoshin.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>数式の挿入とかの練習</title>
+      <link>https://motoshin.github.io/posts/2020-10-06-blog/</link>
+      <pubDate>Tue, 06 Oct 2020 20:15:09 +0900</pubDate>
+      
+      <guid>https://motoshin.github.io/posts/2020-10-06-blog/</guid>
+      <description>今日は昨日の記事にも書いた通り数式の挿入の練習をしようと思います。
+こんな感じでこのブログに慣れるためにも、しばらくの間はしょうもない話題で毎日投稿していこうと思います。
+数式の書き方 では、いきなり本題です。
+数式書いてみます。
+$$ f(x)= \sum_{k=0}^{\infty} \frac{ f^{(k)}(x_0)}{n!} \left( x-x_0 \right)^k $$
+文中の数式 $y = f(x)$ のテスト。
+お～、なかなかええやん。数式綺麗やん。
+満足してしまったのと、結構時間かかってしまったので今日はここまでにしておこうと思います。
+今日の一言 プロフ画像変えてみました。
+川越で撮った謎のカメレオンです。</description>
+    </item>
     
     <item>
       <title>ブログのテーマ選び難しい問題</title>
