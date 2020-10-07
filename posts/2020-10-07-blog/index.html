@@ -17,11 +17,12 @@
 . ├── archetypes ├── config.toml ├── content │ └── posts ├── data ├── deploy.sh ├── layouts ├── public ├── resources ├── static │ └── avatar.jpg └── themes └── m10c まぁブログのディレクトリ構造はこんな感じになってるんですね。
 まずブログ記事の作り方ですが下記コマンドを実行すると./content/posts/に新たにtest.mdが作成されます。
 hugo new posts/test.md これに記事を書いて下記コマンドをdeploy.shを実行すると./public/直下に色々展開されます。 これが皆さんの見ているブログの画面を構築する元になっている感じですね。
-画像添付していくぅ！ これが正しいやり方かわかりませんが適当に./images/test.jpgみたいに作って
-![This is a image](test.jpg) でいけるんじゃね？ ってことでやってみる。
-ローカルで確認するとよくわからん。 調べてみると他の方法もあったので試してみる。
-Hugo内にはShrotcodeってやつがあるらしくそれを使うことでいけるらしい。
-  This is a image     This is a image   こっちもローカルで確認してもよくわからん。"/>
+画像添付していくぅ！ どうやらPege Bundleっていうのを使うみたい。
+これを下のように書いて使うとこんな感じ。
+![This is a image](test.jpg) 調べてみると他の方法もあったので試してみる。
+Hugo内にはShrotcodeってやつがあるらしくそれを使うことでいけるらしい。 うまくエスケープできなかったから詳しくはここを見てくれ！ Shortcodes
+  This is a image   画像サイズの調整は簡単にはできないらしい・・・。
+今日のまとめ  画像の添付はできた 画像サイズ変更とかはもう少し調べないとダメそう  そんなところです。"/>
 
     <meta property="og:title" content="画像を添付してみる" />
 <meta property="og:description" content="今回は一昨日のブログで書いていた画像の添付をしてみます。 昨日のブログで数式の挿入して満足したけどやり方とか書いた方が読者の人たち的にはいいのかな、 とか思ったので今日は画像添付のやり方書くとともに画像添付をしようと思います。 あと今日はいちいち改行せずブログ書いてみます。
@@ -29,11 +30,12 @@ Hugo内にはShrotcodeってやつがあるらしくそれを使うことでい�
 . ├── archetypes ├── config.toml ├── content │ └── posts ├── data ├── deploy.sh ├── layouts ├── public ├── resources ├── static │ └── avatar.jpg └── themes └── m10c まぁブログのディレクトリ構造はこんな感じになってるんですね。
 まずブログ記事の作り方ですが下記コマンドを実行すると./content/posts/に新たにtest.mdが作成されます。
 hugo new posts/test.md これに記事を書いて下記コマンドをdeploy.shを実行すると./public/直下に色々展開されます。 これが皆さんの見ているブログの画面を構築する元になっている感じですね。
-画像添付していくぅ！ これが正しいやり方かわかりませんが適当に./images/test.jpgみたいに作って
-![This is a image](test.jpg) でいけるんじゃね？ ってことでやってみる。
-ローカルで確認するとよくわからん。 調べてみると他の方法もあったので試してみる。
-Hugo内にはShrotcodeってやつがあるらしくそれを使うことでいけるらしい。
-  This is a image     This is a image   こっちもローカルで確認してもよくわからん。" />
+画像添付していくぅ！ どうやらPege Bundleっていうのを使うみたい。
+これを下のように書いて使うとこんな感じ。
+![This is a image](test.jpg) 調べてみると他の方法もあったので試してみる。
+Hugo内にはShrotcodeってやつがあるらしくそれを使うことでいけるらしい。 うまくエスケープできなかったから詳しくはここを見てくれ！ Shortcodes
+  This is a image   画像サイズの調整は簡単にはできないらしい・・・。
+今日のまとめ  画像の添付はできた 画像サイズ変更とかはもう少し調べないとダメそう  そんなところです。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://motoshin.github.io/posts/2020-10-07-blog/" />
 <meta property="article:published_time" content="2020-10-07T18:24:19+09:00" />
@@ -110,30 +112,27 @@ Hugo内にはShrotcodeってやつがあるらしくそれを使うことでい�
 </code></pre><p>これに記事を書いて下記コマンドを<code>deploy.sh</code>を実行すると<code>./public/</code>直下に色々展開されます。
 これが皆さんの見ているブログの画面を構築する元になっている感じですね。</p>
 <h4 id="画像添付していくぅ">画像添付していくぅ！</h4>
-<p>これが正しいやり方かわかりませんが適当に<code>./images/test.jpg</code>みたいに作って</p>
+<p>どうやら<a href="https://gohugo.io/content-management/page-bundles">Pege Bundle</a>っていうのを使うみたい。</p>
+<p>これを下のように書いて使うとこんな感じ。</p>
 <pre><code>![This is a image](test.jpg)
-</code></pre><p>でいけるんじゃね？
-ってことでやってみる。</p>
-<p><img src="test.jpg" alt="This is a image"></p>
-<p>ローカルで確認するとよくわからん。
-調べてみると他の方法もあったので試してみる。</p>
-<p>Hugo内にはShrotcodeってやつがあるらしくそれを使うことでいけるらしい。</p>
-<pre><code><figure>
+</code></pre><p><img src="test.jpg" alt="This is a image"></p>
+<p>調べてみると他の方法もあったので試してみる。</p>
+<p>Hugo内にはShrotcodeってやつがあるらしくそれを使うことでいけるらしい。
+うまくエスケープできなかったから詳しくはここを見てくれ！
+<a href="https://gohugo.io/content-management/shortcodes/">Shortcodes</a></p>
+<figure>
     <img src="test.jpg"/> <figcaption>
             <h4>This is a image</h4>
         </figcaption>
 </figure>
 
-</code></pre><figure>
-    <img src="test.jpg"/> <figcaption>
-            <h4>This is a image</h4>
-        </figcaption>
-</figure>
-
-<p>こっちもローカルで確認してもよくわからん。</p>
-<h3 id="publishして確かめる">publishして確かめる</h3>
-<p>ローカルだとわからんのでpublishして確かめてみます～。
-なのでもしかしたら画像ちゃんと表示できてないのに記事が見れるかも、ラッキーだね！</p>
+<p>画像サイズの調整は簡単にはできないらしい・・・。</p>
+<h3 id="今日のまとめ">今日のまとめ</h3>
+<ul>
+<li><em><strong>画像の添付はできた</strong></em></li>
+<li><em><strong>画像サイズ変更とかはもう少し調べないとダメそう</strong></em></li>
+</ul>
+<p>そんなところです。</p>
 
     </div>
     <div class="post-footer">
