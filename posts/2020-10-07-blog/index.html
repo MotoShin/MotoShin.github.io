@@ -18,7 +18,7 @@
 まずブログ記事の作り方ですが下記コマンドを実行すると./content/posts/に新たにtest.mdが作成されます。
 hugo new posts/test.md これに記事を書いて下記コマンドをdeploy.shを実行すると./public/直下に色々展開されます。 これが皆さんの見ているブログの画面を構築する元になっている感じですね。
 画像添付していくぅ！ これが正しいやり方かわかりませんが適当に./images/test.jpgみたいに作って
-![This is a image](/images/test.jpg) でいけるんじゃね？ ってことでやってみる。
+![This is a image](test.jpg) でいけるんじゃね？ ってことでやってみる。
 ローカルで確認するとよくわからん。 調べてみると他の方法もあったので試してみる。
 Hugo内にはShrotcodeってやつがあるらしくそれを使うことでいけるらしい。
   This is a image     This is a image   こっちもローカルで確認してもよくわからん。"/>
@@ -30,7 +30,7 @@ Hugo内にはShrotcodeってやつがあるらしくそれを使うことでい�
 まずブログ記事の作り方ですが下記コマンドを実行すると./content/posts/に新たにtest.mdが作成されます。
 hugo new posts/test.md これに記事を書いて下記コマンドをdeploy.shを実行すると./public/直下に色々展開されます。 これが皆さんの見ているブログの画面を構築する元になっている感じですね。
 画像添付していくぅ！ これが正しいやり方かわかりませんが適当に./images/test.jpgみたいに作って
-![This is a image](/images/test.jpg) でいけるんじゃね？ ってことでやってみる。
+![This is a image](test.jpg) でいけるんじゃね？ ってことでやってみる。
 ローカルで確認するとよくわからん。 調べてみると他の方法もあったので試してみる。
 Hugo内にはShrotcodeってやつがあるらしくそれを使うことでいけるらしい。
   This is a image     This is a image   こっちもローカルで確認してもよくわからん。" />
@@ -111,21 +111,21 @@ Hugo内にはShrotcodeってやつがあるらしくそれを使うことでい�
 これが皆さんの見ているブログの画面を構築する元になっている感じですね。</p>
 <h4 id="画像添付していくぅ">画像添付していくぅ！</h4>
 <p>これが正しいやり方かわかりませんが適当に<code>./images/test.jpg</code>みたいに作って</p>
-<pre><code>![This is a image](/images/test.jpg)
+<pre><code>![This is a image](test.jpg)
 </code></pre><p>でいけるんじゃね？
 ってことでやってみる。</p>
-<p><img src="/images/test.jpg" alt="This is a image"></p>
+<p><img src="test.jpg" alt="This is a image"></p>
 <p>ローカルで確認するとよくわからん。
 調べてみると他の方法もあったので試してみる。</p>
 <p>Hugo内にはShrotcodeってやつがあるらしくそれを使うことでいけるらしい。</p>
 <pre><code><figure>
-    <img src="/images/test.jpg"/> <figcaption>
+    <img src="test.jpg"/> <figcaption>
             <h4>This is a image</h4>
         </figcaption>
 </figure>
 
 </code></pre><figure>
-    <img src="/images/test.jpg"/> <figcaption>
+    <img src="test.jpg"/> <figcaption>
             <h4>This is a image</h4>
         </figcaption>
 </figure>

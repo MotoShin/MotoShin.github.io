@@ -5,10 +5,28 @@
     <link>https://motoshin.github.io/tags/diary/</link>
     <description>Recent content in Diary on MotoShin Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 06 Oct 2020 20:15:09 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 07 Oct 2020 18:24:19 +0900</lastBuildDate>
     
 	<atom:link href="https://motoshin.github.io/tags/diary/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>画像を添付してみる</title>
+      <link>https://motoshin.github.io/posts/2020-10-07-blog/</link>
+      <pubDate>Wed, 07 Oct 2020 18:24:19 +0900</pubDate>
+      
+      <guid>https://motoshin.github.io/posts/2020-10-07-blog/</guid>
+      <description>今回は一昨日のブログで書いていた画像の添付をしてみます。 昨日のブログで数式の挿入して満足したけどやり方とか書いた方が読者の人たち的にはいいのかな、 とか思ったので今日は画像添付のやり方書くとともに画像添付をしようと思います。 あと今日はいちいち改行せずブログ書いてみます。
+画像添付のやり方 ブログのプロジェクト構造 まずは事前知識としてHugoのブログプロジェクトのディレクトリ構造の説明からします。
+. ├── archetypes ├── config.toml ├── content │ └── posts ├── data ├── deploy.sh ├── layouts ├── public ├── resources ├── static │ └── avatar.jpg └── themes └── m10c まぁブログのディレクトリ構造はこんな感じになってるんですね。
+まずブログ記事の作り方ですが下記コマンドを実行すると./content/posts/に新たにtest.mdが作成されます。
+hugo new posts/test.md これに記事を書いて下記コマンドをdeploy.shを実行すると./public/直下に色々展開されます。 これが皆さんの見ているブログの画面を構築する元になっている感じですね。
+画像添付していくぅ！ これが正しいやり方かわかりませんが適当に./images/test.jpgみたいに作って
+![This is a image](test.jpg) でいけるんじゃね？ ってことでやってみる。
+ローカルで確認するとよくわからん。 調べてみると他の方法もあったので試してみる。
+Hugo内にはShrotcodeってやつがあるらしくそれを使うことでいけるらしい。
+  This is a image     This is a image   こっちもローカルで確認してもよくわからん。</description>
+    </item>
     
     <item>
       <title>数式の挿入とかの練習</title>
