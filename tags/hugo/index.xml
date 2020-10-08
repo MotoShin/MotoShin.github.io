@@ -5,10 +5,22 @@
     <link>https://motoshin.github.io/tags/hugo/</link>
     <description>Recent content in Hugo on MotoShin Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 07 Oct 2020 18:24:19 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 08 Oct 2020 20:16:46 +0900</lastBuildDate>
     
 	<atom:link href="https://motoshin.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>数式の出力の仕方を解説していく</title>
+      <link>https://motoshin.github.io/posts/2020-10-08-bolg/</link>
+      <pubDate>Thu, 08 Oct 2020 20:16:46 +0900</pubDate>
+      
+      <guid>https://motoshin.github.io/posts/2020-10-08-bolg/</guid>
+      <description>夜勤明けで死にそうなMotoShinです。 頭がくらくらするので今日は簡単に書けそうな話題でいこうと思います。
+数式を出していくぅ！ 数式を出す準備 昨日出てきたblogプロジェクトのtreeコマンド結果です。
+. ├── archetypes ├── config.toml ├── content │ └── posts ├── data ├── deploy.sh ├── layouts │ ├── _default │ │ └── baseof.html │ └── partials │ └── math.html ├── public ├── resources ├── static │ └── avatar.jpg └── themes └── m10c ./layouts/partials/math.htmlというファイルを作成します。 ./layouts/partials/math.htmlの中身は下記のようになります。
+&amp;lt;link rel=&amp;#34;stylesheet&amp;#34; href=&amp;#34;https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css&amp;#34; integrity=&amp;#34;sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X&amp;#34; crossorigin=&amp;#34;anonymous&amp;#34;&amp;gt; &amp;lt;script defer src=&amp;#34;https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js&amp;#34; integrity=&amp;#34;sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4&amp;#34; crossorigin=&amp;#34;anonymous&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script defer src=&amp;#34;https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js&amp;#34; integrity=&amp;#34;sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa&amp;#34; crossorigin=&amp;#34;anonymous&amp;#34; onload=&amp;#34;renderMathInElement(document.body);&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script&amp;gt; document.addEventListener(&amp;#34;DOMContentLoaded&amp;#34;, function() { renderMathInElement(document.body, {delimiters: [ {left: &amp;#34;$$&amp;#34;, right: &amp;#34;$$&amp;#34;, display: true}, {left: &amp;#34;$&amp;#34;, right: &amp;#34;$&amp;#34;, display: false}] }); }); &amp;lt;/script&amp;gt; これはKaTeXのAuto-renderExtensionを参考にして作成しました。 .</description>
+    </item>
     
     <item>
       <title>画像を添付してみる</title>
