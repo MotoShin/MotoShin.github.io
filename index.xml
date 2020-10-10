@@ -5,10 +5,23 @@
     <link>https://motoshin.github.io/</link>
     <description>Recent content on MotoShin Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 08 Oct 2020 20:16:46 +0900</lastBuildDate>
-    
-	<atom:link href="https://motoshin.github.io/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Sat, 10 Oct 2020 17:35:30 +0900</lastBuildDate><atom:link href="https://motoshin.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>いよいよ話題がなくなってきた</title>
+      <link>https://motoshin.github.io/posts/2020-10-10-blog/</link>
+      <pubDate>Sat, 10 Oct 2020 17:35:30 +0900</pubDate>
+      
+      <guid>https://motoshin.github.io/posts/2020-10-10-blog/</guid>
+      <description>いよいよこのブログのセットアップ関係の話題がなくなってきて困っているMotoShinです。 そして普通に昨日ブログ更新サボってるんだよな〜。
+今後の話題 このブログの方針を書いてなかったので改めて書いていこうと思います。 以下のようなトピックを扱っていていこうかな、と思ってます。
+ 強化学習関連 (tag名：ReinforcementLerning) 好きなゲーム関連 (tag名：Game) 参考書紹介 (tag名：Study) プログラミング系 (tag名：Program) 日記 (tag名：Diary)  こんな感じですかね〜、まぁだらだらやっていくのでこれ以外にも出てくるとは思いますが。 それぞれの項目について少し説明していきたいと思います。
+強化学習関連 (tag名：ReinforcementLerning) まず前回のブログでも扱っていた強化学習関連の話題です。 前回のブログではいきなり強化学習の話題を扱ってしまって少し難しくなってしまったので今回は段階を踏みつつこの話題を扱っていきたいと考えています。 具体的には強化学習の前段の簡単な問題を扱っている「バンディット問題」から解説記事を書いていきたいな、と思っております。
+好きなゲーム関連 (tag名：Game) これはただゲームのお話をだらだらしていこうと思います。 おもしろいゲームのおすすめや、ゲームの考察とかしていきたいなと考えています。 多分、ソウルシリーズ系になると思うけど・・・。
+参考書紹介 (tag名：Study) 最近実は勉強しております。 メインは数学ですがこれからは英語とかも勉強していこうかな、と思っています。 学問的な部分以外でも技術的な面の勉強ももちろんしていこうと思います。 それらの中で「お、ええやん」と思った本を紹介していけてらなと思っています。
+プログラミング系 (tag名：Program) そこまで頻繁にできるかはわかりませんが実際にコードを書いて技術的な発信ができればなと考えています。
+日記 (tag名：Diary) 日記は日々の出来事とか愚痴とかつらつらと書いていこうかなと思っています。 まぁ書くことがなにもないときの苦し紛れのものになると思いますが・・・。
+今日の一言 半沢直樹シーズン2一気見しながら書いてると全然筆が進まないな・・・</description>
+    </item>
     
     <item>
       <title>数式の出力の仕方を解説していく</title>
