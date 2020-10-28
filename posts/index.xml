@@ -5,7 +5,28 @@
     <link>https://motoshin.github.io/posts/</link>
     <description>Recent content in Posts on MotoShin Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 10 Oct 2020 17:35:30 +0900</lastBuildDate><atom:link href="https://motoshin.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 28 Oct 2020 21:53:17 +0900</lastBuildDate>
+    
+	<atom:link href="https://motoshin.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>いい感じのグラフ出力アプリ作った</title>
+      <link>https://motoshin.github.io/posts/2020-10-28-blog/</link>
+      <pubDate>Wed, 28 Oct 2020 21:53:17 +0900</pubDate>
+      
+      <guid>https://motoshin.github.io/posts/2020-10-28-blog/</guid>
+      <description>めっちゃブログ更新さぼってました、大変申し訳ございませんでした…。 でも書くことなかったしちょっと忙しかったし仕方ないと思うんだ、うん。
+てことで今回は少し技術ブログチックなことを書いていこうと思います。 pythonのmatplotlibでいい感じのグラフスタイルになるパッケージ？みたいなのがあるので紹介していきます。
+SciencePlots SciencePlotsというやつです。 なんかmatplotlibのデフォルトの文字フォントって微妙なんですが、これだとちょっとかっこいい感じで文字出力してくれます。 あとはIEEEの論文スタイル用のグラフとかにもパラメータを指定することでできるようになるみたいです。 なのでこれを僕が普段グラフ出力のために使っているプログラムにも使ってみることにしましたのでご紹介します。
+graph-creator なんのひねりもないリポジトリ名ですが、graph-creatorです。 これはcsvファイルをグラフにするアプリケーションです。
+準備 まずは実行するのに必要なライブラリをpipなりなんなりでインストールしてください。 ライブラリは下記の通りです。
+ numpy matplotlib pandas SciencePlots  あと一応実行環境を記載しておくと下記の通りです。 たぶん記載した環境でなくとも動くとは思います。
+   os python version     macOS Catalina python 3.8.6   Ubuntu 20.04.1 LTS (Focal Fossa) python 3.8.3    実行 実行方法は下記のコマンドをプロジェクト直下で実行です。
+$ python main.py そうすると対話モードでアプリケーションが立ち上がるので聞かれたことにこたえていきましょう。 一応書くとこんな感じ。
+# 今はモード1しかないので1を入力 Please select a mode (1: 2-axis graph): 1 # グラフにしたいcsvファイルのプロジェクト直下からの相対パスか絶対パスを入力 Input a csv file path: example/example.</description>
+    </item>
+    
     <item>
       <title>いよいよ話題がなくなってきた</title>
       <link>https://motoshin.github.io/posts/2020-10-10-blog/</link>
