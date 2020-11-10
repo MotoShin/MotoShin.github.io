@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>DQNのお勉強中… // MotoShin Blog</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.76.4" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="MotoShin" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://motoshin.github.io/css/main.min.88e7083eff65effb7485b6e6f38d10afbec25093a6fac42d734ce9024d3defbd.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="DQNのお勉強中…"/>
+<meta name="twitter:description" content="学生の頃ニューラルネットワーク(NN)を全力で避けていました。 そのため、もちろんNNを使った強化学習手法であるDQNも真面目にやったことはありませんでした。 「これはいかん！」と思い立ち今回勉強しようと思いました。 今回のブログはDQNはなんぞやという記事ではなく、実装してみて思ったことや気付いたことなどをただ書き殴るだけのメモ帳替りのものです。 また今度ちゃんとした解説記事書くから許せ…
+リポジトリ DQNのチュートリアル
+僕が頑張って実装したものです。 お納めください。 今のところ実装してあるタスクはopen ai gymが提供しているcartpoleという環境についてDQNを実装しました。 PyTorchの強化学習チュートリアルをコピペしたcartpole.pyと、自分なりにチュートリアルの内容をクラスなどに分けてプロジェクト化したcartpoleディレクトリを作りました。
+結果 一応結果の画像を貼っておきます。 プログラム実行するととても時間がかかるので…
+  rewardのグラフ   episode: 500, simulation: 20での結果です。 この結果出すのに2時間くらいかかりました。（環境にもよると思いますが） ほんとはsimulationを100とか1000とかやりたいけどとんでもなく時間がかかりそう…
+気付き 以下、気付きや思ったことをつらつらと書いていきます。
+ NNって出力のargmax取るやつだったな〜  なぜかラベルの数値データ１つが出力するものだと認識してた。 強化学習ではどの行動を取るのかなので行動数分の出力になる   Batch Normalization  NNに画像を入力するときは必須らしい フィルターかけまくって偏ったデータを正規化するものって理解しているけどあっているかは微妙   あんまり成績が伸びない…  rewardは22くらいで伸びが止まっている 軽く調べるとみんな200くらいいっている 画像入力とベクトル入力の差かもしれないな、と考察してる   中間層の数とか入力数と出力数とかどうやって決めてるんや…  ここは職人芸ってよく聞くし数を重ねるしかないのかな〜   画像を入力にしているためウィンドウをレンダリングする必要がる  画面がないAWSとかの環境で回しっぱができない やはりベクトル入力がベストかな〜 なぜPyTorchのチュートリアルは画像入力なんだ…    参考  PyTorch 【GIF】初心者のためのCNNからバッチノーマライゼーションとその仲間たちまでの解説  "/>
+
+    <meta property="og:title" content="DQNのお勉強中…" />
+<meta property="og:description" content="学生の頃ニューラルネットワーク(NN)を全力で避けていました。 そのため、もちろんNNを使った強化学習手法であるDQNも真面目にやったことはありませんでした。 「これはいかん！」と思い立ち今回勉強しようと思いました。 今回のブログはDQNはなんぞやという記事ではなく、実装してみて思ったことや気付いたことなどをただ書き殴るだけのメモ帳替りのものです。 また今度ちゃんとした解説記事書くから許せ…
+リポジトリ DQNのチュートリアル
+僕が頑張って実装したものです。 お納めください。 今のところ実装してあるタスクはopen ai gymが提供しているcartpoleという環境についてDQNを実装しました。 PyTorchの強化学習チュートリアルをコピペしたcartpole.pyと、自分なりにチュートリアルの内容をクラスなどに分けてプロジェクト化したcartpoleディレクトリを作りました。
+結果 一応結果の画像を貼っておきます。 プログラム実行するととても時間がかかるので…
+  rewardのグラフ   episode: 500, simulation: 20での結果です。 この結果出すのに2時間くらいかかりました。（環境にもよると思いますが） ほんとはsimulationを100とか1000とかやりたいけどとんでもなく時間がかかりそう…
+気付き 以下、気付きや思ったことをつらつらと書いていきます。
+ NNって出力のargmax取るやつだったな〜  なぜかラベルの数値データ１つが出力するものだと認識してた。 強化学習ではどの行動を取るのかなので行動数分の出力になる   Batch Normalization  NNに画像を入力するときは必須らしい フィルターかけまくって偏ったデータを正規化するものって理解しているけどあっているかは微妙   あんまり成績が伸びない…  rewardは22くらいで伸びが止まっている 軽く調べるとみんな200くらいいっている 画像入力とベクトル入力の差かもしれないな、と考察してる   中間層の数とか入力数と出力数とかどうやって決めてるんや…  ここは職人芸ってよく聞くし数を重ねるしかないのかな〜   画像を入力にしているためウィンドウをレンダリングする必要がる  画面がないAWSとかの環境で回しっぱができない やはりベクトル入力がベストかな〜 なぜPyTorchのチュートリアルは画像入力なんだ…    参考  PyTorch 【GIF】初心者のためのCNNからバッチノーマライゼーションとその仲間たちまでの解説  " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://motoshin.github.io/posts/2020-11-10-blog/" />
+<meta property="article:published_time" content="2020-11-10T20:58:37+09:00" />
+<meta property="article:modified_time" content="2020-11-10T20:58:37+09:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://motoshin.github.io"><img class="app-header-avatar" src="/avatar.jpg" alt="MotoShin" /></a>
+      <h1>MotoShin Blog</h1>
+      <p>日々の事をつらつらと書いてゆきます。</p>
+      <div class="app-header-social">
+        
+          <a target="_blank" href="https://github.com/MotoShin" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg></a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">DQNのお勉強中…</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Nov 10, 2020
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          1 min read
+        </div><div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
+  <title>tag</title>
+  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line>
+</svg>
+          <a class="tag" href="https://motoshin.github.io/tags/reinforcementlerning/">ReinforcementLerning</a><a class="tag" href="https://motoshin.github.io/tags/program/">Program</a></div></div>
+    </header>
+    <div class="post-content">
+      <p>学生の頃ニューラルネットワーク(NN)を全力で避けていました。
+そのため、もちろんNNを使った強化学習手法であるDQNも真面目にやったことはありませんでした。
+「これはいかん！」と思い立ち今回勉強しようと思いました。
+今回のブログはDQNはなんぞやという記事ではなく、実装してみて思ったことや気付いたことなどをただ書き殴るだけのメモ帳替りのものです。
+また今度ちゃんとした解説記事書くから許せ…</p>
+<h3 id="リポジトリ">リポジトリ</h3>
+<p><a href="https://github.com/MotoShin/dqn-tutorial">DQNのチュートリアル</a></p>
+<p>僕が頑張って実装したものです。
+お納めください。
+今のところ実装してあるタスクはopen ai gymが提供しているcartpoleという環境についてDQNを実装しました。
+<a href="https://pytorch.org/tutorials/intermediate/reinforcement_q_learning.html">PyTorchの強化学習チュートリアル</a>をコピペした<code>cartpole.py</code>と、自分なりにチュートリアルの内容をクラスなどに分けてプロジェクト化した<code>cartpole</code>ディレクトリを作りました。</p>
+<h3 id="結果">結果</h3>
+<p>一応結果の画像を貼っておきます。
+プログラム実行するととても時間がかかるので…</p>
+<figure>
+    <img src="img.png"/> <figcaption>
+            <h4>rewardのグラフ</h4>
+        </figcaption>
+</figure>
+
+<p>episode: 500, simulation: 20での結果です。
+この結果出すのに2時間くらいかかりました。（環境にもよると思いますが）
+ほんとはsimulationを100とか1000とかやりたいけどとんでもなく時間がかかりそう…</p>
+<h3 id="気付き">気付き</h3>
+<p>以下、気付きや思ったことをつらつらと書いていきます。</p>
+<ul>
+<li>NNって出力のargmax取るやつだったな〜
+<ul>
+<li>なぜかラベルの数値データ１つが出力するものだと認識してた。</li>
+<li>強化学習ではどの行動を取るのかなので行動数分の出力になる</li>
+</ul>
+</li>
+<li>Batch Normalization
+<ul>
+<li>NNに画像を入力するときは必須らしい</li>
+<li>フィルターかけまくって偏ったデータを正規化するものって理解しているけどあっているかは微妙</li>
+</ul>
+</li>
+<li>あんまり成績が伸びない…
+<ul>
+<li>rewardは22くらいで伸びが止まっている</li>
+<li>軽く調べるとみんな200くらいいっている</li>
+<li>画像入力とベクトル入力の差かもしれないな、と考察してる</li>
+</ul>
+</li>
+<li>中間層の数とか入力数と出力数とかどうやって決めてるんや…
+<ul>
+<li>ここは職人芸ってよく聞くし数を重ねるしかないのかな〜</li>
+</ul>
+</li>
+<li>画像を入力にしているためウィンドウをレンダリングする必要がる
+<ul>
+<li>画面がないAWSとかの環境で回しっぱができない</li>
+<li>やはりベクトル入力がベストかな〜</li>
+<li>なぜPyTorchのチュートリアルは画像入力なんだ…</li>
+</ul>
+</li>
+</ul>
+<h3 id="参考">参考</h3>
+<ul>
+<li><a href="https://pytorch.org/">PyTorch</a></li>
+<li><a href="https://qiita.com/omiita/items/01855ff13cc6d3720ea4">【GIF】初心者のためのCNNからバッチノーマライゼーションとその仲間たちまでの解説</a></li>
+</ul>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

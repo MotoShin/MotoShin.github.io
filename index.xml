@@ -5,7 +5,22 @@
     <link>https://motoshin.github.io/</link>
     <description>Recent content on MotoShin Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 28 Oct 2020 21:53:17 +0900</lastBuildDate><atom:link href="https://motoshin.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 10 Nov 2020 20:58:37 +0900</lastBuildDate><atom:link href="https://motoshin.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DQNのお勉強中…</title>
+      <link>https://motoshin.github.io/posts/2020-11-10-blog/</link>
+      <pubDate>Tue, 10 Nov 2020 20:58:37 +0900</pubDate>
+      
+      <guid>https://motoshin.github.io/posts/2020-11-10-blog/</guid>
+      <description>学生の頃ニューラルネットワーク(NN)を全力で避けていました。 そのため、もちろんNNを使った強化学習手法であるDQNも真面目にやったことはありませんでした。 「これはいかん！」と思い立ち今回勉強しようと思いました。 今回のブログはDQNはなんぞやという記事ではなく、実装してみて思ったことや気付いたことなどをただ書き殴るだけのメモ帳替りのものです。 また今度ちゃんとした解説記事書くから許せ…
+リポジトリ DQNのチュートリアル
+僕が頑張って実装したものです。 お納めください。 今のところ実装してあるタスクはopen ai gymが提供しているcartpoleという環境についてDQNを実装しました。 PyTorchの強化学習チュートリアルをコピペしたcartpole.pyと、自分なりにチュートリアルの内容をクラスなどに分けてプロジェクト化したcartpoleディレクトリを作りました。
+結果 一応結果の画像を貼っておきます。 プログラム実行するととても時間がかかるので…
+  rewardのグラフ   episode: 500, simulation: 20での結果です。 この結果出すのに2時間くらいかかりました。（環境にもよると思いますが） ほんとはsimulationを100とか1000とかやりたいけどとんでもなく時間がかかりそう…
+気付き 以下、気付きや思ったことをつらつらと書いていきます。
+ NNって出力のargmax取るやつだったな〜  なぜかラベルの数値データ１つが出力するものだと認識してた。 強化学習ではどの行動を取るのかなので行動数分の出力になる   Batch Normalization  NNに画像を入力するときは必須らしい フィルターかけまくって偏ったデータを正規化するものって理解しているけどあっているかは微妙   あんまり成績が伸びない…  rewardは22くらいで伸びが止まっている 軽く調べるとみんな200くらいいっている 画像入力とベクトル入力の差かもしれないな、と考察してる   中間層の数とか入力数と出力数とかどうやって決めてるんや…  ここは職人芸ってよく聞くし数を重ねるしかないのかな〜   画像を入力にしているためウィンドウをレンダリングする必要がる  画面がないAWSとかの環境で回しっぱができない やはりベクトル入力がベストかな〜 なぜPyTorchのチュートリアルは画像入力なんだ…    参考  PyTorch 【GIF】初心者のためのCNNからバッチノーマライゼーションとその仲間たちまでの解説  </description>
+    </item>
+    
     <item>
       <title>いい感じのグラフ出力アプリ作った</title>
       <link>https://motoshin.github.io/posts/2020-10-28-blog/</link>
