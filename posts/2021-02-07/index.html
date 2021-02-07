@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>【メモ】DDPG論文の実験詳細の和訳 // MotoShin Blog</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.68.3" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="MotoShin" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://motoshin.github.io/css/main.min.88e7083eff65effb7485b6e6f38d10afbec25093a6fac42d734ce9024d3defbd.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="【メモ】DDPG論文の実験詳細の和訳"/>
+<meta name="twitter:description" content="皆さん、明けましておめでとうございます。 本年もどうぞよろしくお願いします。（年明けて１ヶ月経過…）
+そんなことは置いといて、今回はブログでもなんでもなく生存報告を兼ねたただのメモです。 DDPGという強化学習アルゴリズムの論文の実験詳細の部分の和訳もメモしたかっただけです。 なので気にしなくて結構です。
+論文の和訳 ニューラルネットワークパラメータの学習にはAdam (Kingma &amp; Ba, 2014)を用い、actorとcriticに対してそれぞれ$10^{-4}$と$10^{-3}$の学習率で学習を行った。 Qについては、$10^{-2}$のL2重み減衰を含み、$\gamma = 0.99$の割引係数を使用した。 ソフトターゲットの更新には$\tau = 0.001$を使用した。 ニューラルネットワークは、すべての隠れ層に整流非線形性(Glorot et al., 2011)を使用した。 actorの最終出力層は、アクションを束縛するためにタン層とした。 低次元ネットワークは2つの隠れ層を持ち、それぞれ400と300のユニット(130,000のパラメータ)を持っていた。 ピクセルから学習する際には、各層に32個のフィルターを持つ3つの畳み込み層（プーリングなし）を使用しました。 これに続いて、200ユニット（430,000パラメータ）の完全に接続された2つの層を使用しました。 最終的なレイヤーの重みとバイアスは，低次元の場合は$[-3 \times 10^{-3}, 3 \times 10^{-3}]$，ピクセルの場合は$[3 \times 10^{-4}, 3 \times 10^{-4}]$の一様分布から初期化した。 これは、政策と値の推定値の初期出力がゼロに近いことを保証するためであった。 他のレイヤーは、一様分布$[-\frac{1}{\sqrt{f}}, \frac{1}{\sqrt{f}}]$から初期化されました。 アクションは、完全に接続された層までは含まれなかった。 低次元問題では64、ピクセルでは16のミニバッチサイズで学習した。 リプレイバッファサイズは$10^{6}$を使用した。
+参考  DDPGの論文  "/>
+
+    <meta property="og:title" content="【メモ】DDPG論文の実験詳細の和訳" />
+<meta property="og:description" content="皆さん、明けましておめでとうございます。 本年もどうぞよろしくお願いします。（年明けて１ヶ月経過…）
+そんなことは置いといて、今回はブログでもなんでもなく生存報告を兼ねたただのメモです。 DDPGという強化学習アルゴリズムの論文の実験詳細の部分の和訳もメモしたかっただけです。 なので気にしなくて結構です。
+論文の和訳 ニューラルネットワークパラメータの学習にはAdam (Kingma &amp; Ba, 2014)を用い、actorとcriticに対してそれぞれ$10^{-4}$と$10^{-3}$の学習率で学習を行った。 Qについては、$10^{-2}$のL2重み減衰を含み、$\gamma = 0.99$の割引係数を使用した。 ソフトターゲットの更新には$\tau = 0.001$を使用した。 ニューラルネットワークは、すべての隠れ層に整流非線形性(Glorot et al., 2011)を使用した。 actorの最終出力層は、アクションを束縛するためにタン層とした。 低次元ネットワークは2つの隠れ層を持ち、それぞれ400と300のユニット(130,000のパラメータ)を持っていた。 ピクセルから学習する際には、各層に32個のフィルターを持つ3つの畳み込み層（プーリングなし）を使用しました。 これに続いて、200ユニット（430,000パラメータ）の完全に接続された2つの層を使用しました。 最終的なレイヤーの重みとバイアスは，低次元の場合は$[-3 \times 10^{-3}, 3 \times 10^{-3}]$，ピクセルの場合は$[3 \times 10^{-4}, 3 \times 10^{-4}]$の一様分布から初期化した。 これは、政策と値の推定値の初期出力がゼロに近いことを保証するためであった。 他のレイヤーは、一様分布$[-\frac{1}{\sqrt{f}}, \frac{1}{\sqrt{f}}]$から初期化されました。 アクションは、完全に接続された層までは含まれなかった。 低次元問題では64、ピクセルでは16のミニバッチサイズで学習した。 リプレイバッファサイズは$10^{6}$を使用した。
+参考  DDPGの論文  " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://motoshin.github.io/posts/2021-02-07/" />
+<meta property="article:published_time" content="2021-02-07T14:07:58+09:00" />
+<meta property="article:modified_time" content="2021-02-07T14:07:58+09:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://motoshin.github.io"><img class="app-header-avatar" src="/avatar.jpg" alt="MotoShin" /></a>
+      <h1>MotoShin Blog</h1>
+      <p>日々の事をつらつらと書いてゆきます。</p>
+      <div class="app-header-social">
+        
+          <a target="_blank" href="https://github.com/MotoShin" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg></a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {delimiters: [
+        {left: "$$", right: "$$", display: true},
+        {left: "$", right: "$", display: false}]
+        });
+    });
+</script>
+
+      
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">【メモ】DDPG論文の実験詳細の和訳</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Feb 7, 2021
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          1 min read
+        </div><div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
+  <title>tag</title>
+  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line>
+</svg>
+          <a class="tag" href="https://motoshin.github.io/tags/reinforcementlerning/">ReinforcementLerning</a></div></div>
+    </header>
+    <div class="post-content">
+      <p>皆さん、明けましておめでとうございます。
+本年もどうぞよろしくお願いします。（年明けて１ヶ月経過…）</p>
+<p>そんなことは置いといて、今回はブログでもなんでもなく生存報告を兼ねたただのメモです。
+DDPGという強化学習アルゴリズムの論文の実験詳細の部分の和訳もメモしたかっただけです。
+なので気にしなくて結構です。</p>
+<h3 id="論文の和訳">論文の和訳</h3>
+<p>ニューラルネットワークパラメータの学習にはAdam (Kingma &amp; Ba, 2014)を用い、actorとcriticに対してそれぞれ$10^{-4}$と$10^{-3}$の学習率で学習を行った。
+Qについては、$10^{-2}$のL2重み減衰を含み、$\gamma = 0.99$の割引係数を使用した。
+ソフトターゲットの更新には$\tau = 0.001$を使用した。
+ニューラルネットワークは、すべての隠れ層に整流非線形性(Glorot et al., 2011)を使用した。
+actorの最終出力層は、アクションを束縛するためにタン層とした。
+低次元ネットワークは2つの隠れ層を持ち、それぞれ400と300のユニット(130,000のパラメータ)を持っていた。
+ピクセルから学習する際には、各層に32個のフィルターを持つ3つの畳み込み層（プーリングなし）を使用しました。
+これに続いて、200ユニット（430,000パラメータ）の完全に接続された2つの層を使用しました。
+最終的なレイヤーの重みとバイアスは，低次元の場合は$[-3 \times 10^{-3}, 3 \times 10^{-3}]$，ピクセルの場合は$[3 \times 10^{-4}, 3 \times 10^{-4}]$の一様分布から初期化した。
+これは、政策と値の推定値の初期出力がゼロに近いことを保証するためであった。
+他のレイヤーは、一様分布$[-\frac{1}{\sqrt{f}}, \frac{1}{\sqrt{f}}]$から初期化されました。
+アクションは、完全に接続された層までは含まれなかった。
+低次元問題では64、ピクセルでは16のミニバッチサイズで学習した。
+リプレイバッファサイズは$10^{6}$を使用した。</p>
+<h3 id="参考">参考</h3>
+<ul>
+<li><a href="https://arxiv.org/abs/1509.02971">DDPGの論文</a></li>
+</ul>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>
