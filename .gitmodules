@@ -1,3 +1,6 @@
 [submodule "math-tools"]
 	path = math-tools
 	url = https://github.com/MotoShin/math-tools.git
+[submodule "compound-interest-calculator"]
+	path = compound-interest-calculator
+	url = https://github.com/MotoShin/compound-interest-calculator.git
