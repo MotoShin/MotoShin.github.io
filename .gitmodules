@@ -4,3 +4,6 @@
 [submodule "compound-interest-calculator"]
 	path = compound-interest-calculator
 	url = https://github.com/MotoShin/compound-interest-calculator.git
+[submodule "life-game"]
+	path = life-game
+	url = https://github.com/MotoShin/life-game.git
