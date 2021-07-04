@@ -132,7 +132,8 @@ categorical policies は離散的行動空間の場合に使用され、diagonal
 最後の層の出力を $P_{\theta}(s)$ とすると
 $$
 log\pi_{\theta}(a|s) = log\bigl[P_{\theta}(s)\bigr]_a
-$$</p>
+$$
+となる。</p>
 <h5 id="categorical-policies-1">Categorical Policies</h5>
 <p>あとで追記する。</p>
 <h3 id="trajectories">Trajectories</h3>
@@ -144,11 +145,11 @@ $$</p>
 $$
 s_0 \sim \rho_0(\cdot)
 $$</p>
-<p>環境の状態繊維が決定論歴な場合は
+<p>環境の状態遷移が決定論的な場合は
 $$
 s_{t+1} = f(s_t, a_t)
 $$
-確率論歴な場合は
+確率論的な場合は
 $$
 s_{t+1} \sim P(\cdot|s_t, a_t)
 $$
