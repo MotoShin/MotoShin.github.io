@@ -5,7 +5,21 @@
     <link>https://motoshin.github.io/</link>
     <description>Recent content on MotoShin Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 07 Feb 2021 14:07:58 +0900</lastBuildDate><atom:link href="https://motoshin.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 04 Jul 2021 15:50:29 +0900</lastBuildDate><atom:link href="https://motoshin.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Spinning Up の和訳を書いていく</title>
+      <link>https://motoshin.github.io/posts/2021-07-04-blog/</link>
+      <pubDate>Sun, 04 Jul 2021 15:50:29 +0900</pubDate>
+      
+      <guid>https://motoshin.github.io/posts/2021-07-04-blog/</guid>
+      <description>最近 Spinning Up というものの輪読会的なものを始めることになりました。 そこでその準備のため Spinning Up の和訳をつらつらと書いていこうと思います。 なお、全文ではなく僕が重要そうだな〜と思った部分を和訳してメモしていく感じです。
+Part1: Key Concepts in RL 該当ページは ここ です。 主に Key Concepts and Terminology を和訳していきます。
+Key Concepts and Terminology Action Space 離散的行動空間 (descrete action space) と連続的行動空間 (continuous action space) があるよ〜的な説明
+Policies 方策 (policy) はエージェント (agent) が行動を決定する際に使用されるルールである。 方策は決定論的 (deterministic) な場合は $\mu$ を用いて下記のように記述する。 $$ a_t = \mu(s_t) $$
+確率論的 (stochastic) の場合は通常 $\pi$ を用いて下記ように記述する。 $$ a_t \sim \pi(\cdot|s_t) $$
+パラメータがある場合は $\theta$ や $\phi$ を用いて下記のように記述する。 $$ a_t = \mu_{\theta}(s_t) $$ $$ a_t \sim \pi_{\theta}(\cdot|s_t) $$</description>
+    </item>
+    
     <item>
       <title>【メモ】DDPG論文の実験詳細の和訳</title>
       <link>https://motoshin.github.io/posts/2021-02-07/</link>
