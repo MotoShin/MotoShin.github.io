@@ -79,7 +79,7 @@ Policies 方策 (policy) はエージェント (agent) が行動を決定する�
   <title>clock</title>
   <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
 </svg>
-          1 min read
+          2 min read
         </div><div>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
   <title>tag</title>
@@ -155,6 +155,26 @@ s_{t+1} \sim P(\cdot|s_t, a_t)
 $$
 と記述する。<br>
 行動はエージェントの方策に準拠する。Trajectory は episode や rollouts と呼ばれることもある。</p>
+<h3 id="reward-and-return">Reward and Return</h3>
+<p>報酬関数 $R$ は強化学習において非常に重要です。それはタスクの現在の状態、選択した行動、そしてタスクの次の状態に依存している。
+$$
+r_t = R(s_t, a_t, s_{t+1})
+$$
+多くの場合は現在の状態 $r_t = R(s_t)$ や現在の状態と行動のペア $r_t = R(s_t, a_t)$ への依存に単純化されている。</p>
+<p>エージェントの目標は軌跡の累計報酬を最大化することであるが、これは実際にはいくつかの意味を持つ。
+これらのいずれのケースにおいてもすべて $R(\tau)$ で表記しますが、どのケースを意味しているかは文脈から明らかになるか、そもそも問題になることはないだろう（同じ式がすべてのケースに適用されるからである）。</p>
+<p>有限時区間 (finit-horizon) の報酬和は、単純な固定幅のエピソードで得られる報酬の合計である。
+$$
+R(\tau) = \sum_{T}^{t=0} r_t
+$$</p>
+<p>その他の返値としては、無限時区間割引報酬和 (unfinit-horizon return) である。これはエージェントがこれまでに得た報酬の合計ですが獲得するタイミングが未来であれば未来であるほど割引率として小さな値がかけられる。
+割引率 $\gamma$ は $\gamma \in (0,1)$ の範囲である。
+$$
+R(\tau) = \sum_{\infty}^{t=0} \gamma^{t}r_t
+$$</p>
+<p>割引率が必要な理由としては1エピソードが有限ステップで終わらないようなタスクでは、報酬和が有限に収束しない可能性があるためである。
+割引率があると報酬和は有限和に収束する。</p>
+<p>割引前の報酬和を最適化するためにアルゴリズムを設定することはよくあるが、価値関数を推定する際には割引係数を使用する。</p>
 <p><em>続きはまた後日に</em></p>
 
     </div>
