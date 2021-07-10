@@ -3,7 +3,7 @@
   <head>
     <title>Spinning Up の和訳を書いていく // MotoShin Blog</title>
     <meta charset="utf-8" />
-    <meta name="generator" content="Hugo 0.76.4" />
+    <meta name="generator" content="Hugo 0.68.3" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="author" content="MotoShin" />
     <meta name="description" content="" />
@@ -79,7 +79,7 @@ Policies 方策 (policy) はエージェント (agent) が行動を決定する�
   <title>clock</title>
   <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
 </svg>
-          2 min read
+          3 min read
         </div><div>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
   <title>tag</title>
@@ -193,10 +193,102 @@ $$
 \pi^{*} = \argmax_{\pi} J(\pi)
 $$
 このとき、$\pi^{*}$ は最適方策となる。</p>
-<p><em>続きはまた後日に</em></p>
+<h3 id="value-function">Value Function</h3>
+<p>多くの場合、状態の価値または状態と行動のペアの価値を知っておくと便利である。
+価値とは、その状態または状態と行動のペアでタスクを開始して特定の方策に従って行動した場合の報酬和の期待値を意味している。
+価値関数はほぼすべての強化学習アルゴリズムの中でなんらの方法で使用される。</p>
+<p>ここでは4つの主な価値関数について説明する。</p>
+<ol>
+<li>on-policy の価値関数 $V^{\pi}(s)$ は、ある状態 $s$ からスタートして特定の方策 $\pi$ に常に従って行動した場合の報酬和の期待値を返す。
+$$
+V^{\pi}(s) = \underset{\tau\sim\pi}{\Epsilon} \bigl[R(\tau)|s_0=s\bigr]
+$$</li>
+<li>on-policy の行動価値関数 $Q^{\pi}(s,a)$ は、ある状態 $s$ において任意の行動 $a$ をとって開始してそれ以降は方策 $\pi$ に従って行動を選択し続けた場合の報酬和の期待値を返す。
+$$
+Q^{\pi}(s,a) = \underset{\tau\sim\pi}{\Epsilon} \bigl[R(\tau)|s_0=s,a_0=a\bigr]
+$$</li>
+<li>最適な価値関数 $V^*(s)$ は、ある状態 $s$ からスタートして最適な方策に従って行動した場合の報酬和の期待値を返す。
+$$
+V^*(s) = \max_{\pi} \underset{\tau\sim\pi}{\Epsilon} \bigl[R(\tau)|s_{0}=s\bigr]
+$$</li>
+<li>最適な行動価値関数 $Q^*(s,a)$ は、ある状態 $s$ において任意の行動 $a$ をとって開始してそれ以降は最適な方策に従って行動を選択し続けた場合の報酬和の期待値を返す。
+$$
+Q^*(s,a) = \max_{\pi} \underset{\tau\sim\pi}{\Epsilon} \bigl[R(\tau)|s_{0}=s,a_{0}=a\bigr]
+$$</li>
+</ol>
+<h5 id="知っておくといいこと">知っておくといいこと</h5>
+<p>価値関数と行動価値関数の間には高頻度で発生する重要な関係がある。
+$$
+V^\pi(s) = \underset{a\sim\pi}{\Epsilon}\bigl[Q^\pi(s,a)\bigr]
+$$
+と
+$$
+V^*(s) = \max_a Q^*(s,a)
+$$
+である。<br>
+これらの関係性はこれまで与えられた定義から求めることができます。
+あなたはこれらを証明できますか？</p>
+<h3 id="the-optimal-q-function-and-the-optimal-action">The Optimal Q-Function and the Optimal Action</h3>
+<p>最適な行動価値関数 $Q^*(s,a)$ と最適な方策によって選択された行動の間には重要な関係がある。
+$Q^*(s,a)$ は状態 $s$ で任意の行動 $a$ でタスクを初め、その後に最適方策に従って行動を選択した場合の報酬和の期待値を返す、と定義する。</p>
+<p>状態 $s$ での最適な方策は、$s$ でのスタートからの報酬和の期待値を最大化する行動を選択することである。
+その結果、$Q^* $ があれば最適な行動 $a^*(s)$ を以下の方法で直接得ることができる。
+$$
+a^*(s) = \argmax_{a} Q^*(s,a)
+$$</p>
+<p><strong>Note</strong>: $Q^*(s,a)$ を最大化する行動が複数存在する場合は、それらの行動はすべて最適な行動であり、最適な方策はそれらの行動をランダムに選択することができる。
+しかし、ある行動を決定論的に選択する最適な方策は必ず存在する。</p>
+<h3 id="bellman-equations">Bellman Equations</h3>
+<p>4つの価値関数は、いずれもベルマン方程式と呼ばれる特殊な自己無撞着方程式 (self-consistency) に従う。
+ベルマン方程式の基本的な考え方は次の通りです。</p>
+<blockquote>
+<p>スタート地点の価値とは、そこにいることで得られるであろう報酬と、次に降り立つ場所の価値を足したものである。</p>
+</blockquote>
+<p>on-policyの価値関数のベルマン方程式は下記のようになる。
+$$
+V^{\pi}(s) = \underset{s^{\prime}\sim P}{\underset{a\sim\pi}{\Epsilon}}\bigl[r(s,a)+\gamma V^\pi(s^{\prime})\bigr]
+$$
+$$
+Q^{\pi}(s,a) = \underset{s^{\prime}\sim P}{\Epsilon}\Bigl[r(s,a)+\gamma\underset{a^{\prime}\sim\pi}{\Epsilon}\bigl[Q^\pi(s^{\prime},a^{\prime})\bigr]\Bigr]
+$$</p>
+<p>上記の $s^{\prime}\sim P$ は $s^{\prime}\sim P(\cdot|s,a)$ を省略したものであり、次状態 $s'$ が環境の遷移規則からサンプリングされていることを示している。
+上記の $a\sim\pi$ は $a\sim\pi(\cdot|s)$ を省略したものであり、$a^{\prime}\sim\pi$ は $a^{\prime}\sim\pi(\cdot|s^{\prime})$ を省略したものである。</p>
+<p>ベルマン方程式の最適価値関数は下記のように記述する。
+$$
+V^*(s) = \max_a \underset{s^{\prime}\sim P}{\Epsilon}\bigl[r(s,a)+\gamma V^*(s^{\prime})\bigr]
+$$
+$$
+Q^*(s,a) = \underset{s^{\prime}\sim P}{\Epsilon}\Bigl[r(s,a)+\gamma\max_{a^{\prime}} Q^*(s^{\prime},a^{\prime})\Bigr]
+$$</p>
+<p>on-policyの価値関数と最適な価値関数の重要な違いは、行動選択の際に $\max$ がないかあるかの違いである。
+これは、エージェントが行動を選択する際に、最適な行動をとるためには最高の価値を得ることができる行動を選択しなければならないという事実を反映している。</p>
+<h5 id="知っておくといいこと-1">知っておくといいこと</h5>
+<p>&ldquo;ベルマン・バックアップ (Bellman backup)&ldquo;という言葉は強化学習の文献によく出てくる。
+ベルマン・バックアップとは、ベルマン方程式の右辺である「報酬 $+$ 次の値」のことである。</p>
+<h3 id="advantage-functions">Advantage Functions</h3>
+<p>強化学習では、ある行動が絶対的に優れているかどうかではなく、<strong>平均的</strong>にどれだけ優れているかを説明しる必要がある。
+つまり、その行動の相対的な優位性を知りたいのである。
+この概念を正確に表現するために、<strong>advantage関数</strong> ( <strong>advantage function</strong> ) がある。</p>
+<p>状態 $s$ において特定の行動 $a$ をとるという特定の方策 $\pi$ に対応するadvantage関数 $A^{\pi}(s,a)$ は、
+その後ずっとランダムに行動を選択することよりも、$\pi$ の従って行動すると場合の方が、どれだけ効率的かを表している。
+$$
+A^{\pi}(s,a) = Q^{\pi}(s,a) - V^{\pi}(s)
+$$</p>
+<h5 id="知っておくといいこと-2">知っておくといいこと</h5>
+<p>これについてはあとで詳しく説明するが、advantage関数は方策勾配法によって非常に重要である。</p>
+<h3 id="optional-formalism">(Optional) Formalism</h3>
+<p>ここまでは、エージェントの環境について非公式に説明してきたが、文献を調べようとするとこの設定のための標準的な数学的定義に遭遇する可能性がある。<br>
+<strong>マルコフ決定過程</strong>,<strong>Markov Decision Processes</strong> (MDPs) は5つの tuple で $\langle S,A,R,P,\rho_0 \rangle$ と表され、それぞれは下記のような意味がある。</p>
+<ul>
+<li>$S$ は有効な状態の集合である。</li>
+<li>$A$ は有効な行動の集合である。</li>
+<li>$R : S \times A \times S \rarr \reals$ は報酬関数であり次のように表される。$r_t=R(s_t,a_t,s_{t+1})$</li>
+<li>$P : S \times A \rarr {\cal P}(S)$ は遷移確率関数であり次のように表せる : $P(s^{\prime}|s,a)$ 、この式が意味していることが状態 $s$ で行動 $a$ をとり次状態 $s^{\prime}$ に遷移する確率を意味している。</li>
+<li>そして $\rho_0$ は開始状態の分布となる</li>
+</ul>
 <h1 id="参考">参考</h1>
 <ul>
-<li>慶應技術大学理工学部 櫻井彰人. &ldquo;<a href="http://www.sakurai.comp.ae.keio.ac.jp/classes/infosem-class/2009/12RL.pdf">情報意味論(12) 強化学習</a>&rdquo;, (参照2021-07-08)</li>
+<li>慶應技術大学理工学部 櫻井彰人. &ldquo;<a href="http://www.sakurai.comp.ae.keio.ac.jp/classes/infosem-class/2009/12RL.pdf">情報意味論(12) 強化学習</a>&quot;, (参照2021-07-08)</li>
 </ul>
 
     </div>
