@@ -134,8 +134,32 @@ $$
 log\pi_{\theta}(a|s) = log\bigl[P_{\theta}(s)\bigr]_a
 $$
 となる。</p>
-<h5 id="categorical-policies-1">Categorical Policies</h5>
-<p>あとで追記する。</p>
+<h5 id="diagonal-gausian-policies">Diagonal Gausian Policies</h5>
+<p>多変量ガウス分布 (または多変量正規分布) は平均ベクトルである $\mu$ と共分散行列である $\Sigma$ によって記述される。
+対角ガウス分布 (Diagonal Gaussian distribution) は特殊なケースで、共分散行列が対角線上でのみ対応しているケースである。
+このような特殊な場合ではそれをベクトルで表すことができる。</p>
+<p>対角ガウス方策 (Diagonal Gaussian Policies) には常に観測値を行動の平均値 $\mu_\theta(s)$ に対応させるようなニューラルネットワークがあります。
+共分散行列は通常2通りの定義のされかたがある。</p>
+<ol>
+<li>状態の関数ではない単体のベクトルである標準偏差の対数 $log\sigma$ がある。すなわち $log\sigma$ は独立したパラメータである。(これらは VPG, TRPO, PPO などで使われている)</li>
+<li>状態と標準偏差の対数 $log\sigma_\theta(s)$ を対応させるニューラルネットワークがある。オプションで平均ネットワークといくとかのレイヤーを共有できる。</li>
+</ol>
+<p>どちらの場合でも、標準偏差を直接出力するのではなく、標準偏差の対数を出力することを留意する必要がある。
+なぜなら、標準偏差は負でない限り標準偏差の対数は $(-\infty, \infty)$ の間の値を自由にとるからである。
+このような制約を適用する必要がない場合は、パラメータを訓練する方が簡単である。
+標準偏差は、指数化することで標準偏差の対数からすぐに取得できるため、このように表現してもなんの情報も失うことはない。</p>
+<p><strong>Sampling</strong>: 行動の平均 $\mu_\theta(s)$ 、標準偏差 $\sigma_\theta(s)$ と spherical Gaussian ($z \sim {\cal N}(0,I)$) から
+生成されるノイズベクトル $z$ からアクションサンプルは下記のように計算できる。
+$$
+a=\mu_\theta(s)+\sigma_\theta(s)\odot z
+$$</p>
+<p>$\odot$ は2つのベクトルの要素ごとの積を表す。
+pytorchとtensorflowだとこんな感じの関数で計算できる的なことが書いてある。</p>
+<p><strong>対数尤度の求め方</strong>: $k$ 次元の行動ベクトル $a$ の対数尤度は、
+対角ガウス分布から求められる平均 $\mu=\mu_\theta(s)$ と標準偏差 $\sigma=\sigma_\theta(s)$ から下記のように計算できる。
+$$
+log\pi_\theta(a|s)=-{\frac 1 2}\Biggl(\sum_{i=1}^k \Bigl({\frac {(a_i-\mu_i)^2} {\sigma_i^2}}+klog2\pi\Bigr)\Biggr)
+$$</p>
 <h3 id="trajectories">Trajectories</h3>
 <p>状態・行動シーケンスを $\tau$ を使って下記のように記述する。
 $$
