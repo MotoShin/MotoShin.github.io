@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Spinning Up 和訳シリーズ Soft Actor-Critic // MotoShin Blog</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.68.3" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="MotoShin" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://motoshin.github.io/css/main.min.4a7ec8660f9a44b08c4da97c5f2e31b1192df1d4d0322e65c0dbbc6ecb1b863f.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Spinning Up 和訳シリーズ Soft Actor-Critic"/>
+<meta name="twitter:description" content="下記の和訳をしていきます～
+https://spinningup.openai.com/en/latest/algorithms/sac.html
+Background Soft Actor Critic (SAC) は、確率的方策をoff-policyで最適化するアルゴリズムで、確率的な方策最適化とDDPGスタイルのアプローチの橋渡しをしている。 TD3の直接の後継ではないが、（ほぼ同時に発表されている）clipped double-Q トリックが組み込まれており、SACの方策には固有の確率性があるため、target policy smoothing のような恩恵を受けることになる。
+SACの中心的な特徴は、エントロピーの正則化である。方策は、期待収益とエントロピー（方策のランダム性の尺度）の間のトレードオフを最大化するように学習する。 エントロピーを増加させることで、より多くの探索を行い、後の学習を加速させることができる。また、方策が局所最適に早々に収束してしまうことも防ぐことができる。
+Quick Facts  SAC は off-policy のアルゴリズムである 本ページで実装されたSACは、連続した行動空間を持つ環境にのみ使用できる 方策更新ルールをわずかに変更することで、離散的な行動空間を扱うように実装することができる Spinning Up の SAC の実装は、並列化をサポートしていない  Key Equations Soft Actor Critic を説明するためには、まずエントロピー正則化強化学習の設定を理解する必要がある。 エントロピー正則化された強化学習では、価値関数の方程式が少し異なります。
+Entropy-Regularized Reinforcement Learning エントロピーとは、大まかに言えば、確率変数のランダム性を示す量である。 コインの重さを変えて、ほとんどの場合に表が出るようにすればエントロピーは低く、均等に重さを変えてどちらかの結果が半分の確率で出るようにすればエントロピーは高くなる。
+$x$ を確率質量または密度関数 $P$ を持つ確率変数とすると、$x$ のエントロピー $H$ はその分布 $P$ から次のように計算される。 $$ H(P) = \underset{x \sim P}{\rm{E}}[-\log P(x)] $$
+エントロピー正則化強化学習では、エージェントは各タイムステップで、そのタイムステップでの方策のエントロピーに比例したボーナス報酬を得る。 これにより、強化学習問題は次のように変化する。 $$ \pi^{*} = \underset{\pi}{\rm arg~max} \underset{\tau\sim\pi}{\rm{E}}\Bigl[\sum_{t=0}^{\infty}\gamma^t \Bigl(R(s_t,a_t,s_{t&#43;1}) &#43; \alpha H(\pi(\cdot|s_t))\Bigr)\Bigr] $$"/>
+
+    <meta property="og:title" content="Spinning Up 和訳シリーズ Soft Actor-Critic" />
+<meta property="og:description" content="下記の和訳をしていきます～
+https://spinningup.openai.com/en/latest/algorithms/sac.html
+Background Soft Actor Critic (SAC) は、確率的方策をoff-policyで最適化するアルゴリズムで、確率的な方策最適化とDDPGスタイルのアプローチの橋渡しをしている。 TD3の直接の後継ではないが、（ほぼ同時に発表されている）clipped double-Q トリックが組み込まれており、SACの方策には固有の確率性があるため、target policy smoothing のような恩恵を受けることになる。
+SACの中心的な特徴は、エントロピーの正則化である。方策は、期待収益とエントロピー（方策のランダム性の尺度）の間のトレードオフを最大化するように学習する。 エントロピーを増加させることで、より多くの探索を行い、後の学習を加速させることができる。また、方策が局所最適に早々に収束してしまうことも防ぐことができる。
+Quick Facts  SAC は off-policy のアルゴリズムである 本ページで実装されたSACは、連続した行動空間を持つ環境にのみ使用できる 方策更新ルールをわずかに変更することで、離散的な行動空間を扱うように実装することができる Spinning Up の SAC の実装は、並列化をサポートしていない  Key Equations Soft Actor Critic を説明するためには、まずエントロピー正則化強化学習の設定を理解する必要がある。 エントロピー正則化された強化学習では、価値関数の方程式が少し異なります。
+Entropy-Regularized Reinforcement Learning エントロピーとは、大まかに言えば、確率変数のランダム性を示す量である。 コインの重さを変えて、ほとんどの場合に表が出るようにすればエントロピーは低く、均等に重さを変えてどちらかの結果が半分の確率で出るようにすればエントロピーは高くなる。
+$x$ を確率質量または密度関数 $P$ を持つ確率変数とすると、$x$ のエントロピー $H$ はその分布 $P$ から次のように計算される。 $$ H(P) = \underset{x \sim P}{\rm{E}}[-\log P(x)] $$
+エントロピー正則化強化学習では、エージェントは各タイムステップで、そのタイムステップでの方策のエントロピーに比例したボーナス報酬を得る。 これにより、強化学習問題は次のように変化する。 $$ \pi^{*} = \underset{\pi}{\rm arg~max} \underset{\tau\sim\pi}{\rm{E}}\Bigl[\sum_{t=0}^{\infty}\gamma^t \Bigl(R(s_t,a_t,s_{t&#43;1}) &#43; \alpha H(\pi(\cdot|s_t))\Bigr)\Bigr] $$" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://motoshin.github.io/posts/2022-01-16-blog/" />
+<meta property="article:published_time" content="2022-01-16T11:16:05+09:00" />
+<meta property="article:modified_time" content="2022-01-16T11:16:05+09:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://motoshin.github.io"><img class="app-header-avatar" src="/avatar.jpg" alt="MotoShin" /></a>
+      <h1>MotoShin Blog</h1>
+      <p>日々の事をつらつらと書いてゆきます。</p>
+      <div class="app-header-social">
+        
+          <a target="_blank" href="https://github.com/MotoShin" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg></a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css" integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.js" integrity="sha384-VQ8d8WVFw0yHhCk5E8I86oOhv48xLpnDZx5T9GogA/Y84DcCKWXDmSDfn13bzFZY" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+            
+            
+            delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "$", right: "$", display: false},
+                {left: "\\(", right: "\\)", display: false},
+                {left: "\\[", right: "\\]", display: true}
+            ],
+            
+            throwOnError : false
+        });
+    });
+</script>
+
+      
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Spinning Up 和訳シリーズ Soft Actor-Critic</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Jan 16, 2022
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          2 min read
+        </div><div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
+  <title>tag</title>
+  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line>
+</svg>
+          <a class="tag" href="https://motoshin.github.io/tags/spinningup/">SpinningUp</a><a class="tag" href="https://motoshin.github.io/tags/reinforcementlerning/">ReinforcementLerning</a></div></div>
+    </header>
+    <div class="post-content">
+      <p>下記の和訳をしていきます～<br>
+<a href="https://spinningup.openai.com/en/latest/algorithms/sac.html">https://spinningup.openai.com/en/latest/algorithms/sac.html</a></p>
+<h2 id="background">Background</h2>
+<p>Soft Actor Critic (SAC) は、確率的方策をoff-policyで最適化するアルゴリズムで、確率的な方策最適化とDDPGスタイルのアプローチの橋渡しをしている。
+TD3の直接の後継ではないが、（ほぼ同時に発表されている）clipped double-Q トリックが組み込まれており、SACの方策には固有の確率性があるため、target policy smoothing のような恩恵を受けることになる。</p>
+<p>SACの中心的な特徴は、エントロピーの正則化である。方策は、期待収益とエントロピー（方策のランダム性の尺度）の間のトレードオフを最大化するように学習する。
+エントロピーを増加させることで、より多くの探索を行い、後の学習を加速させることができる。また、方策が局所最適に早々に収束してしまうことも防ぐことができる。</p>
+<h3 id="quick-facts">Quick Facts</h3>
+<ul>
+<li>SAC は off-policy のアルゴリズムである</li>
+<li>本ページで実装されたSACは、連続した行動空間を持つ環境にのみ使用できる</li>
+<li>方策更新ルールをわずかに変更することで、離散的な行動空間を扱うように実装することができる</li>
+<li>Spinning Up の SAC  の実装は、並列化をサポートしていない</li>
+</ul>
+<h2 id="key-equations">Key Equations</h2>
+<p>Soft Actor Critic を説明するためには、まずエントロピー正則化強化学習の設定を理解する必要がある。
+エントロピー正則化された強化学習では、価値関数の方程式が少し異なります。</p>
+<h3 id="entropy-regularized-reinforcement-learning">Entropy-Regularized Reinforcement Learning</h3>
+<p>エントロピーとは、大まかに言えば、確率変数のランダム性を示す量である。
+コインの重さを変えて、ほとんどの場合に表が出るようにすればエントロピーは低く、均等に重さを変えてどちらかの結果が半分の確率で出るようにすればエントロピーは高くなる。</p>
+<p>$x$ を確率質量または密度関数 $P$ を持つ確率変数とすると、$x$ のエントロピー $H$ はその分布 $P$ から次のように計算される。
+$$
+H(P) = \underset{x \sim P}{\rm{E}}[-\log P(x)]
+$$</p>
+<p>エントロピー正則化強化学習では、エージェントは各タイムステップで、そのタイムステップでの方策のエントロピーに比例したボーナス報酬を得る。
+これにより、強化学習問題は次のように変化する。
+$$
+\pi^{*} = \underset{\pi}{\rm arg~max} \underset{\tau\sim\pi}{\rm{E}}\Bigl[\sum_{t=0}^{\infty}\gamma^t \Bigl(R(s_t,a_t,s_{t+1}) + \alpha H(\pi(\cdot|s_t))\Bigr)\Bigr]
+$$</p>
+<p>$Q^{\pi}$ は、最初のステップを除くすべてのタイムステップのエントロピーボーナスを含むように変更される。
+$$
+Q^{\pi}(s,a) = \underset{\tau\sim\pi}{\rm{E}}\Bigl[\sum_{t=0}^{\infty} \gamma^t R(s_t, a_t, s_{t+1}) + \alpha\sum_{t=1}^{\infty} \gamma^t H(\pi(\cdot|s_t))\mid s_0=s, a_0=a\Bigl]
+$$</p>
+<p>これらの定義より $V^{\pi}$ は $Q^{\pi}$ を使って下記のように書ける
+$$
+V^{\pi} = \underset{a \sim \pi}{\rm{E}}[Q^{\pi}(s,a)] + \alpha H(\pi(\cdot|s))
+$$</p>
+<p>そして $Q^{\pi}$ はベルマン方程式によって下記のように表せる
+$$
+\begin{align*}Q^{\pi}(s,a) &amp;= \underset{s^{\prime} \sim P}{\rm{E}}[R(s,a,s^{\prime}) + \gamma(Q^{\pi}(s^{\prime},a^{\prime}) + \alpha H(\pi(\cdot|s^{\prime})))] \\ &amp;= \underset{s^{\prime} \sim P} {\rm{E}}[R(s,a,s^{\prime}) + \gamma V^{\pi}(s^{\prime})]\end{align*}
+$$</p>
+<p><em><strong>Points!</strong></em></p>
+<blockquote>
+<p>エントロピー正則化された設定での価値関数の設定方法は少し恣意的で、実際には別の方法（例えば、 $Q^{\pi}$ に最初のタイムステップでのエントロピーボーナスを含ませる）も可能である。
+定義の選択は、論文のテーマによって少しずつ異なるかもしれない。</p>
+</blockquote>
+<h3 id="soft-actor-critic">Soft Actor-Critic</h3>
+<p>SACは、方策と2つのQ関数 $Q_{\phi_{1}}$ , $Q_{\phi_{2}}$ を同時に学習する。
+現在、SACには固定のエントロピー正則化係数 $\alpha$ を使用するタイプと、学習中に $\alpha$ を変化させることでエントロピー制約を与えるタイプの2種類がある。
+Spinning Upでは、簡単にするために、エントロピー正則化係数を固定したバージョンを使用していくが、一般的には、エントロピー制約のあるバージョンが実務家には好まれている。</p>
+<p><em><strong>Points!</strong></em></p>
+<blockquote>
+<p>SACのアルゴリズムは、時代とともに少しずつ変化している。
+古いバージョンのSACでは、Q関数に加えて、価値関数 $V_{\phi}$ も学習する。
+このページでは、余分な価値関数を省いた最新バージョンに焦点を当てる。</p>
+</blockquote>
+<p><strong>Learning Q.</strong> Q関数の学習方法はTD3と似ているが、いくつか重要な違いがある。</p>
+<p>TODO: DDPG, TD3の説明<br>
+まず、何が似ているのか？</p>
+<ol>
+<li>TD3と同様に、両方のQ関数は単一の共有targetに回帰することでMSBE最小化で学習される</li>
+<li>TD3と同様に、共有targetはtarget-Q-networkを用いて計算され、target-Q-networkのパラメータを学習の過程でポリアック平均 (polyak averaging) して得られる</li>
+<li>TD3と同様に、共有されたtargetは、<strong>clipped double-Q</strong> トリックを利用している</li>
+</ol>
+<p>target-Q-networkの更新式は下記の通り
+$$
+\phi_{targ} \larr \rho\phi_{targ} + (1 - \rho)\phi
+$$</p>
+<p>この $\rho$ というハイパーパラメータは0から1の値をとる（通常は1に近い値となる）。（このハイパーパラメータを <code>polyak</code> と呼称する）</p>
+<p>何が違うのか？</p>
+<ol>
+<li>TD3とは異なり、targetにはSACのエントロピー正則化に由来する項も含まれている</li>
+<li>TD3とは異なり、targetで使用される次の状態のアクションは、target policyではなく<strong>現在の方策</strong>から得られる</li>
+<li>TD3とは異なり、target policy smoothing が明示されていない。TD3は決定論的な方策を学習するため、次の状態のアクションにランダムなノイズを加えることでsmoothingを実現している。SACは確率的な方策を学習するので、その確率的なノイズで十分に同様の効果を得ることができる</li>
+</ol>
+<p>Q-loss の最終的な形を示す前に、エントロピー正則化による貢献がどのようなものかを説明する。
+まず、先ほどのエントロピー正則化された $Q_{\pi}$ の再帰ベルマン方程式を、エントロピーの定義を使って少し書き換えてみる。
+$$
+\begin{align*}Q^{\pi}(s,a) &amp;= \underset{s^{\prime}\sim P}{\rm{E}}[R(s,a,s^{\prime}) + \gamma(Q^{\pi}(s^{\prime},a^{\prime}) + \alpha H(\pi(\cdot|s^{\prime})))] \\ &amp;= \underset{a^{\prime}\sim\pi}{\underset{s^{\prime}\sim P}{\rm{E}}}[R(s,a,s^{\prime}) + \gamma(Q^{\pi}(s^{\prime},a^{\prime}) - \alpha\log\pi(a^{\prime}|s^{\prime}))]\end{align*}
+$$</p>
+<p>右辺 (RHS) は、次の状態（replay bufferから得られる）と次の行動（replay bufferではなく、現在の方策から得られる）に対する期待値である。
+これは期待値なので、サンプルで近似することができる。
+$$
+\begin{array}{ll}Q^{\pi}(s,a) \approx r + \gamma(Q^{\pi}(s^{\prime},\tilde{a}^{\prime}) - \alpha\log\pi(\tilde{a}^{\prime}|s^{\prime})), &amp; \tilde{a}^{\prime} \sim \pi(\cdot|s^{\prime}).\end{array}
+$$</p>
+<p><em><strong>Points!</strong></em></p>
+<blockquote>
+<p>次の行動の表記を $a^{\prime}$ ではなく $\tilde{a}^{\prime}$ に変更することで、次の行動が方策から新たにサンプリングされなければならないことを強調している（対照的に、$r$ と $s^{\prime}$ は replay buffer から得られるべきものである）。</p>
+</blockquote>
+<p>SACは、このようなtargetのサンプル近似を用いて、各Q関数のMSBEロスを設定する。TD3と同様、SACは clipped double-Q トリックを使用して2つのQの近似値の間で最小のQ値を取る。
+$$
+L(\phi_{i}, \mathcal{D}) = \underset{(s,a,r,s^{\prime},d)\sim\mathcal{D}}{\rm{E}}\Bigl[\Bigl(Q_{\phi_{i}}-y(r,s^{\prime},d)\Bigr)^2\Bigr]
+$$</p>
+<p>ここで target は次のように与えられる
+$$
+\begin{array}{ll}y(r,s^{\prime},d) = r + \gamma(1-d)\bigl(\underset{j=1,2}{\min}Q_{\phi_{\rm{targ},j}}(s^{\prime},\tilde{a}^{\prime}) - \alpha\log\pi_{\theta}(\tilde{a}^{\prime}|s^{\prime})\bigr), &amp; \tilde{a}^{\prime}\sim\pi_{\theta}(\cdot|s^{\prime}).\end{array}
+$$</p>
+<p><strong>Learning the Policy.</strong> 方策は、各状態において、将来の期待収益と将来の期待エントロピーを最大化するように行動すべきである。
+つまり、$V^{\pi}(s)$ を最大化するべきであり、これを展開すると次のようになる。
+$$
+\begin{align*}V^{\pi}(s) &amp;= \underset{a\sim\pi}{\rm{E}}[Q^{\pi}(s,a)] + \alpha H(\pi(\cdot|s)) \\ &amp;= \underset{a\sim\pi}{\rm{E}}[Q^{\pi}(s,a)-\alpha\log\pi(a|s)].\end{align*}
+$$</p>
+<p>方策を最適化する方法として、reparameterization trick という手法を用いている。
+これは、状態、方策パラメータ、独立したノイズの決定論的な関数を計算することで、$\pi_{\theta}(\cdot|s)$ からサンプルを抽出するというものである。
+例として、SAC論文の著者に倣って、我々は squashed Gaussian policy を使用する。
+$$
+\begin{array}{ll}\tilde{a}_{\theta}(s,\xi) = \tanh(\mu_{\theta} + \sigma_{\theta}(s)\odot\xi), &amp; \xi\sim\mathcal{N}(0,I).\end{array}
+$$</p>
+<p><em><strong>Points!</strong></em></p>
+<blockquote>
+<p>この方策は、他の方策最適化アルゴリズムで使用している方策とは2つの重要な違いがある。</p>
+</blockquote>
+<blockquote>
+<p>The squashing function. SAC方策では、行動が有限の範囲に制限されることを保証するために、$\tanh$ が用いられている。これは、VPG, TRPO, PPO にはないものである。また、分布も異なる。SACのポリシーは、$\tanh$ の前は他のアルゴリズムのポリシーと同様に因数分解されたガウス型だが、$\tanh$ の後はそうではない。（行動の対数尤度は閉形式で計算できるが、詳細は論文の付録を参照）</p>
+</blockquote>
+<blockquote>
+<p>The way standard deviations are parameterized. VPG, TRPO, PPOでは、log std devs をニューラルネットワークからの出力として表現しているが、これは状態に複雑に依存していることを意味する。状態に依存しないlog std devsを持つSACは、私たちの経験上うまくいかなかった。（その理由を考察せよ、あるいは、よりいい方法として実験を検証せよ）</p>
+</blockquote>
+<p>reparameterization trickにより、行動に対する期待値（分布が方策パラメータに依存する難点がある）を、ノイズに対する期待値（難点が解消される、分布がパラメータに依存しなくなる）に書き換えることができる。
+$$
+\underset{a\sim\pi_{\theta}}{\rm{E}}[Q^{\pi_{\theta}}(s,a) - \alpha\log\pi_\theta(a|s)] = \underset{\xi\sim\mathcal{N}}{\rm{E}}[Q^{\pi_\theta}(s,\tilde{a}_{\theta}(s,\xi)) - \alpha\log\pi_{\theta}(\tilde{a}_{\theta}(a,\xi)|s)]
+$$</p>
+<p>方策のlossを求めるためには、最終的に $Q^{\pi_{\theta}}$ を関数近似器で置き換える必要がある。
+TD3では $Q_{\phi_1}$ （最初のQ値の近似）を使っていたのに対し、SACでは $\underset{j=1,2}{\min}Q_{\phi_{j}}$ を使用する。このようにして方策は次のように最適化される。
+$$
+\max_{\theta}\underset{\xi\sim\mathcal{N}}{\underset{s\sim\mathcal{D}}{\rm{E}}}\Bigl[\min_{j=1,2}Q_{\phi_{j}}(s,\tilde{a}_{\theta}(s,\xi)) - \alpha\log\pi_{\theta}(\tilde{a}_{\theta}(s,\xi)|s)\Bigr],
+$$
+となり、min-double-Q trick, 確率, エントロピー項を除いて、DDPGやTD3の方策最適化とほぼ同じになる。</p>
+<h2 id="exploration-vs-exploitation">Exploration vs. Exploitation</h2>
+<p>SACは、エントロピー正則化を用いて確率的方策を学習し、on-policyで探索を行う。
+エントロピー正則化の係数は $\alpha$ は、探索と活用のtrade-offを明示的にコントロールするもので、$\alpha$ が大きいほど探索が多くなり、小さいほど活用が多くなる。
+適切な係数（最も安定した、最も高い報酬をもたらすことができるようにするための学習をもたらす係数）は、環境によって異なるため、慎重なチューニングが必要になるかもしれない。</p>
+<p>テストの際には、学習した内容を方策がどの程度活用しているかを確認するために、確率的な要素を取り除き、分布からのサンプルの代わりに平均行動を使用する。
+これにより、元の確率的方策よりも性能が向上する傾向にある。</p>
+<p><em><strong>Points!</strong></em></p>
+<blockquote>
+<p>SACの実装では、学習開始時の探索性を高めるための工夫をしている。開始時の固定ステップ数（start_stepキーワード引数で設定）では、エージェントは有効な行動の一様ランダム分布からサンプリングされた行動を取る。その後は、通常のSACの探索に戻る。</p>
+</blockquote>
+<h2 id="pseudocode">Pseudocode</h2>
+<p><a href="https://spinningup.openai.com/en/latest/algorithms/sac.html#pseudocode">https://spinningup.openai.com/en/latest/algorithms/sac.html#pseudocode</a></p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

@@ -5,10 +5,26 @@
     <link>https://motoshin.github.io/posts/</link>
     <description>Recent content in Posts on MotoShin Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 04 Jul 2021 15:50:29 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 16 Jan 2022 11:16:05 +0900</lastBuildDate>
     
 	<atom:link href="https://motoshin.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Spinning Up 和訳シリーズ Soft Actor-Critic</title>
+      <link>https://motoshin.github.io/posts/2022-01-16-blog/</link>
+      <pubDate>Sun, 16 Jan 2022 11:16:05 +0900</pubDate>
+      
+      <guid>https://motoshin.github.io/posts/2022-01-16-blog/</guid>
+      <description>下記の和訳をしていきます～
+https://spinningup.openai.com/en/latest/algorithms/sac.html
+Background Soft Actor Critic (SAC) は、確率的方策をoff-policyで最適化するアルゴリズムで、確率的な方策最適化とDDPGスタイルのアプローチの橋渡しをしている。 TD3の直接の後継ではないが、（ほぼ同時に発表されている）clipped double-Q トリックが組み込まれており、SACの方策には固有の確率性があるため、target policy smoothing のような恩恵を受けることになる。
+SACの中心的な特徴は、エントロピーの正則化である。方策は、期待収益とエントロピー（方策のランダム性の尺度）の間のトレードオフを最大化するように学習する。 エントロピーを増加させることで、より多くの探索を行い、後の学習を加速させることができる。また、方策が局所最適に早々に収束してしまうことも防ぐことができる。
+Quick Facts  SAC は off-policy のアルゴリズムである 本ページで実装されたSACは、連続した行動空間を持つ環境にのみ使用できる 方策更新ルールをわずかに変更することで、離散的な行動空間を扱うように実装することができる Spinning Up の SAC の実装は、並列化をサポートしていない  Key Equations Soft Actor Critic を説明するためには、まずエントロピー正則化強化学習の設定を理解する必要がある。 エントロピー正則化された強化学習では、価値関数の方程式が少し異なります。
+Entropy-Regularized Reinforcement Learning エントロピーとは、大まかに言えば、確率変数のランダム性を示す量である。 コインの重さを変えて、ほとんどの場合に表が出るようにすればエントロピーは低く、均等に重さを変えてどちらかの結果が半分の確率で出るようにすればエントロピーは高くなる。
+$x$ を確率質量または密度関数 $P$ を持つ確率変数とすると、$x$ のエントロピー $H$ はその分布 $P$ から次のように計算される。 $$ H(P) = \underset{x \sim P}{\rm{E}}[-\log P(x)] $$
+エントロピー正則化強化学習では、エージェントは各タイムステップで、そのタイムステップでの方策のエントロピーに比例したボーナス報酬を得る。 これにより、強化学習問題は次のように変化する。 $$ \pi^{*} = \underset{\pi}{\rm arg~max} \underset{\tau\sim\pi}{\rm{E}}\Bigl[\sum_{t=0}^{\infty}\gamma^t \Bigl(R(s_t,a_t,s_{t+1}) + \alpha H(\pi(\cdot|s_t))\Bigr)\Bigr] $$</description>
+    </item>
     
     <item>
       <title>Spinning Up の和訳を書いていく</title>
