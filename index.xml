@@ -6,8 +6,15 @@
     <description>Recent content on MotoShin Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 16 Jan 2022 11:16:05 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 20 Dec 2024 13:43:44 +0900</lastBuildDate>
     <atom:link href="https://motoshin.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GitHub を使い倒したいよなぁ？</title>
+      <link>https://motoshin.github.io/posts/imtakalab-advent-calendar-2024/</link>
+      <pubDate>Fri, 20 Dec 2024 13:43:44 +0900</pubDate>
+      <guid>https://motoshin.github.io/posts/imtakalab-advent-calendar-2024/</guid>
+      <description>&lt;p&gt;これは「imtakalab Advent Calendar 2024」の23日目の記事です。&lt;br&gt;&#xA;&lt;a href=&#34;https://adventar.org/calendars/10354&#34;&gt;https://adventar.org/calendars/10354&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;目次&#34;&gt;目次&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB&#34;&gt;はじめに&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#github-%E3%82%92%E4%BD%BF%E3%81%84%E5%80%92%E3%81%99&#34;&gt;GitHub を使い倒す&lt;/a&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#pull-request-%E3%81%AE%E6%B4%BB%E7%94%A8&#34;&gt;Pull Request の活用&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#release-%E3%81%AE%E6%B4%BB%E7%94%A8&#34;&gt;Release の活用&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#%E3%81%BE%E3%81%A8%E3%82%81&#34;&gt;まとめ&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;はじめに&#34;&gt;はじめに&lt;/h2&gt;&#xA;&lt;p&gt;どうも MotoShin です。&#xA;すごい久しぶりのブログ更新になりますが、所属研究室で Advent Calendar をやるとのことなので久しぶりに記事を書いてみようと思います。&#xA;私は社会人博士として会社で働きながら研究室に所属しているのですが、博士課程に進む前に決めていたテーマとして研究室の開発手法のモダン化を掲げていました（実は）。&#xA;そこで Docker や Git を使用していくための勉強会を開いたり、研究室用の GitHub Organization を作ったりして環境を整備していました。&#xA;そのお陰で Git の利用と GitHub の簡単な利用は確かに増えて、一部では Docker を使った環境構築をしている人も出てきました。&#xA;個人的にはかなりの手応えを感じていますが、まだまだ足りない部分も多いので、今回は GitHub を使い倒す方法を紹介していきたいと思います。&lt;/p&gt;&#xA;&lt;h2 id=&#34;github-を使い倒す&#34;&gt;GitHub を使い倒す&lt;/h2&gt;&#xA;&lt;p&gt;皆さんは&lt;strong&gt;もちろん&lt;/strong&gt; Git を手足のように使いこなせていると思います。&#xA;あんなに勉強会とかしてもらったしね、もちろんね、使いこなせてるよね。&#xA;しかし、GitHub を使いこなせているかと言われると🤔となる人も多いのではないでしょうか。&#xA;GitHub はリモートリポジトリを管理するためだけのサービスだと思っている人が多いのではないでしょうか？&lt;/p&gt;&#xA;&lt;p&gt;そこで、GitHub でここはできるようになってほしい、というポイントや自分がよく使っている機能などを紹介していきたいと思います。&lt;/p&gt;&#xA;&lt;p&gt;なお、ここからは下記のリポジトリで実際に作業していきながら話を進めていきたいと思います。&lt;br&gt;&#xA;&lt;a href=&#34;https://github.com/MotoShin/imtakalab-advent-calendar-2024-handson&#34;&gt;https://github.com/MotoShin/imtakalab-advent-calendar-2024-handson&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h3 id=&#34;pull-request-の活用&#34;&gt;Pull Request の活用&lt;/h3&gt;&#xA;&lt;p&gt;まず GitHub を使う上で絶対に使ってほしいのが Pull Request (PR) です。&#xA;PR は GitHub でのコードレビューを行うための機能です。&#xA;UI 上で差分を確認しながらコメントを残したり、コードの変更をリクエストすることができます。&#xA;何より変更履歴を振り返る際に PR を出しておくと、差分とともに振り返ることができるので非常に便利です。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Spinning Up 和訳シリーズ Soft Actor-Critic</title>
       <link>https://motoshin.github.io/posts/2022-01-16-blog/</link>

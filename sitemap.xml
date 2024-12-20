@@ -2,10 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://motoshin.github.io/tags/adventcalendar/</loc>
+    <lastmod>2024-12-20T13:43:44+09:00</lastmod>
+  </url><url>
+    <loc>https://motoshin.github.io/tags/github/</loc>
+    <lastmod>2024-12-20T13:43:44+09:00</lastmod>
+  </url><url>
+    <loc>https://motoshin.github.io/posts/imtakalab-advent-calendar-2024/</loc>
+    <lastmod>2024-12-20T13:43:44+09:00</lastmod>
+  </url><url>
     <loc>https://motoshin.github.io/</loc>
     <lastmod>2024-12-20T13:43:44+09:00</lastmod>
   </url><url>
     <loc>https://motoshin.github.io/posts/</loc>
+    <lastmod>2024-12-20T13:43:44+09:00</lastmod>
+  </url><url>
+    <loc>https://motoshin.github.io/tags/</loc>
     <lastmod>2024-12-20T13:43:44+09:00</lastmod>
   </url><url>
     <loc>https://motoshin.github.io/tags/reinforcementlerning/</loc>
@@ -15,9 +27,6 @@
     <lastmod>2022-01-16T11:16:05+09:00</lastmod>
   </url><url>
     <loc>https://motoshin.github.io/tags/spinningup/</loc>
-    <lastmod>2022-01-16T11:16:05+09:00</lastmod>
-  </url><url>
-    <loc>https://motoshin.github.io/tags/</loc>
     <lastmod>2022-01-16T11:16:05+09:00</lastmod>
   </url><url>
     <loc>https://motoshin.github.io/posts/2021-07-04-blog/</loc>
@@ -58,9 +67,6 @@
   </url><url>
     <loc>https://motoshin.github.io/posts/2020-10-05-blog/</loc>
     <lastmod>2020-10-05T18:35:59+09:00</lastmod>
-  </url><url>
-    <loc>https://motoshin.github.io/tags/github/</loc>
-    <lastmod>2020-10-04T18:11:00+09:00</lastmod>
   </url><url>
     <loc>https://motoshin.github.io/tags/githubpages/</loc>
     <lastmod>2020-10-04T18:11:00+09:00</lastmod>
