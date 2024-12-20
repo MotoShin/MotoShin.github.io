@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <title>GitHub を使い倒したいよなぁ？ // MotoShin Blog</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.140.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="MotoShin" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="http://localhost:1313/css/main.min.5b1fcc8902588589c4767187402a3c29f8b8d7a6fdef6d9f8f77045bb0d14fee.css" />
+
+    
+    
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="GitHub を使い倒したいよなぁ？">
+  <meta name="twitter:description" content="これは「imtakalab Advent Calendar 2024」の23日目の記事です。
+https://adventar.org/calendars/10354
+目次 はじめに GitHub を使い倒す Pull Request の活用 Release の活用 まとめ はじめに どうも MotoShin です。 すごい久しぶりのブログ更新になりますが、所属研究室で Advent Calendar をやるとのことなので久しぶりに記事を書いてみようと思います。 私は社会人博士として会社で働きながら研究室に所属しているのですが、博士課程に進む前に決めていたテーマとして研究室の開発手法のモダン化を掲げていました（実は）。 そこで Docker や Git を使用していくための勉強会を開いたり、研究室用の GitHub Organization を作ったりして環境を整備していました。 そのお陰で Git の利用と GitHub の簡単な利用は確かに増えて、一部では Docker を使った環境構築をしている人も出てきました。 個人的にはかなりの手応えを感じていますが、まだまだ足りない部分も多いので、今回は GitHub を使い倒す方法を紹介していきたいと思います。
+GitHub を使い倒す 皆さんはもちろん Git を手足のように使いこなせていると思います。 あんなに勉強会とかしてもらったしね、もちろんね、使いこなせてるよね。 しかし、GitHub を使いこなせているかと言われると🤔となる人も多いのではないでしょうか。 GitHub はリモートリポジトリを管理するためだけのサービスだと思っている人が多いのではないでしょうか？
+そこで、GitHub でここはできるようになってほしい、というポイントや自分がよく使っている機能などを紹介していきたいと思います。
+なお、ここからは下記のリポジトリで実際に作業していきながら話を進めていきたいと思います。
+https://github.com/MotoShin/imtakalab-advent-calendar-2024-handson
+Pull Request の活用 まず GitHub を使う上で絶対に使ってほしいのが Pull Request (PR) です。 PR は GitHub でのコードレビューを行うための機能です。 UI 上で差分を確認しながらコメントを残したり、コードの変更をリクエストすることができます。 何より変更履歴を振り返る際に PR を出しておくと、差分とともに振り返ることができるので非常に便利です。">
+
+    <meta property="og:url" content="http://localhost:1313/posts/imtakalab-advent-calendar-2024/">
+  <meta property="og:site_name" content="MotoShin Blog">
+  <meta property="og:title" content="GitHub を使い倒したいよなぁ？">
+  <meta property="og:description" content="これは「imtakalab Advent Calendar 2024」の23日目の記事です。
+https://adventar.org/calendars/10354
+目次 はじめに GitHub を使い倒す Pull Request の活用 Release の活用 まとめ はじめに どうも MotoShin です。 すごい久しぶりのブログ更新になりますが、所属研究室で Advent Calendar をやるとのことなので久しぶりに記事を書いてみようと思います。 私は社会人博士として会社で働きながら研究室に所属しているのですが、博士課程に進む前に決めていたテーマとして研究室の開発手法のモダン化を掲げていました（実は）。 そこで Docker や Git を使用していくための勉強会を開いたり、研究室用の GitHub Organization を作ったりして環境を整備していました。 そのお陰で Git の利用と GitHub の簡単な利用は確かに増えて、一部では Docker を使った環境構築をしている人も出てきました。 個人的にはかなりの手応えを感じていますが、まだまだ足りない部分も多いので、今回は GitHub を使い倒す方法を紹介していきたいと思います。
+GitHub を使い倒す 皆さんはもちろん Git を手足のように使いこなせていると思います。 あんなに勉強会とかしてもらったしね、もちろんね、使いこなせてるよね。 しかし、GitHub を使いこなせているかと言われると🤔となる人も多いのではないでしょうか。 GitHub はリモートリポジトリを管理するためだけのサービスだと思っている人が多いのではないでしょうか？
+そこで、GitHub でここはできるようになってほしい、というポイントや自分がよく使っている機能などを紹介していきたいと思います。
+なお、ここからは下記のリポジトリで実際に作業していきながら話を進めていきたいと思います。
+https://github.com/MotoShin/imtakalab-advent-calendar-2024-handson
+Pull Request の活用 まず GitHub を使う上で絶対に使ってほしいのが Pull Request (PR) です。 PR は GitHub でのコードレビューを行うための機能です。 UI 上で差分を確認しながらコメントを残したり、コードの変更をリクエストすることができます。 何より変更履歴を振り返る際に PR を出しておくと、差分とともに振り返ることができるので非常に便利です。">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-12-20T13:43:44+09:00">
+    <meta property="article:modified_time" content="2024-12-20T13:43:44+09:00">
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="http://localhost:1313/"><img class="app-header-avatar" src="/avatar.jpg" alt="MotoShin" /></a>
+      <h1>MotoShin Blog</h1>
+      <p>日々の事をつらつらと書いてゆきます。</p>
+      <div class="app-header-social">
+        
+          <a target="_blank" href="https://github.com/MotoShin" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <svg class="icon icon-github" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>github</title><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+</svg></a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">GitHub を使い倒したいよなぁ？</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <svg class="icon icon-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>calendar</title><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+</svg>
+          Dec 20, 2024
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <svg class="icon icon-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>clock</title><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+</svg>
+          2 min read
+        </div></div>
+    </header>
+    <div class="post-content">
+      <p>これは「imtakalab Advent Calendar 2024」の23日目の記事です。<br>
+<a href="https://adventar.org/calendars/10354">https://adventar.org/calendars/10354</a></p>
+<h2 id="目次">目次</h2>
+<ul>
+<li><a href="#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB">はじめに</a></li>
+<li><a href="#github-%E3%82%92%E4%BD%BF%E3%81%84%E5%80%92%E3%81%99">GitHub を使い倒す</a>
+<ul>
+<li><a href="#pull-request-%E3%81%AE%E6%B4%BB%E7%94%A8">Pull Request の活用</a></li>
+<li><a href="#release-%E3%81%AE%E6%B4%BB%E7%94%A8">Release の活用</a></li>
+</ul>
+</li>
+<li><a href="#%E3%81%BE%E3%81%A8%E3%82%81">まとめ</a></li>
+</ul>
+<h2 id="はじめに">はじめに</h2>
+<p>どうも MotoShin です。
+すごい久しぶりのブログ更新になりますが、所属研究室で Advent Calendar をやるとのことなので久しぶりに記事を書いてみようと思います。
+私は社会人博士として会社で働きながら研究室に所属しているのですが、博士課程に進む前に決めていたテーマとして研究室の開発手法のモダン化を掲げていました（実は）。
+そこで Docker や Git を使用していくための勉強会を開いたり、研究室用の GitHub Organization を作ったりして環境を整備していました。
+そのお陰で Git の利用と GitHub の簡単な利用は確かに増えて、一部では Docker を使った環境構築をしている人も出てきました。
+個人的にはかなりの手応えを感じていますが、まだまだ足りない部分も多いので、今回は GitHub を使い倒す方法を紹介していきたいと思います。</p>
+<h2 id="github-を使い倒す">GitHub を使い倒す</h2>
+<p>皆さんは<strong>もちろん</strong> Git を手足のように使いこなせていると思います。
+あんなに勉強会とかしてもらったしね、もちろんね、使いこなせてるよね。
+しかし、GitHub を使いこなせているかと言われると🤔となる人も多いのではないでしょうか。
+GitHub はリモートリポジトリを管理するためだけのサービスだと思っている人が多いのではないでしょうか？</p>
+<p>そこで、GitHub でここはできるようになってほしい、というポイントや自分がよく使っている機能などを紹介していきたいと思います。</p>
+<p>なお、ここからは下記のリポジトリで実際に作業していきながら話を進めていきたいと思います。<br>
+<a href="https://github.com/MotoShin/imtakalab-advent-calendar-2024-handson">https://github.com/MotoShin/imtakalab-advent-calendar-2024-handson</a></p>
+<h3 id="pull-request-の活用">Pull Request の活用</h3>
+<p>まず GitHub を使う上で絶対に使ってほしいのが Pull Request (PR) です。
+PR は GitHub でのコードレビューを行うための機能です。
+UI 上で差分を確認しながらコメントを残したり、コードの変更をリクエストすることができます。
+何より変更履歴を振り返る際に PR を出しておくと、差分とともに振り返ることができるので非常に便利です。</p>
+<p>まず、<a href="https://github.com/MotoShin/imtakalab-advent-calendar-2024-handson/blob/main/greeting.txt">greeting.txt</a> というファイルを作成してこのファイルに変更を加えることを考えます。変更前のgreeting.txtの中身は以下の通りです。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>Hello, World.
+</span></span></code></pre></div><p>これを下記のように変更したいとしましょう。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>Hello, World.
+</span></span><span style="display:flex;"><span>こんにちは、世界。
+</span></span></code></pre></div><p>日本語にした途端、壮大な物語が始まりそうな気がしますね。</p>
+<p>この変更を行うために、まずはブランチを切ります。（まさかmainブランチに直接プッシュなんてしませんよね、許されませんよ。）</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git checkout -b add-japanese-greeting
+</span></span></code></pre></div><p>はい。そんでもって、greeting.txt を編集して <code>こんにちは、世界。</code> の行を追加します。
+その後、コミットしてリモートリポジトリにプッシュします。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git add greeting.txt
+</span></span><span style="display:flex;"><span>$ git commit -m <span style="color:#e6db74">&#34;Add Japanese greeting&#34;</span>
+</span></span><span style="display:flex;"><span>$ git push origin add-japanese-greeting
+</span></span></code></pre></div><p>そうすると、GitHub 上で新しいブランチが作られた旨のメッセージが出てきます。
+この緑色の <code>Compare &amp; pull request</code> ボタンを押して Pull Request を作成します。</p>
+<figure><img src="after-push.png">
+</figure>
+
+<p>Pull Request のタイトルと本文を書いて、<code>Create pull request</code> ボタンを押せば Pull Request が作成されます。
+そうやって作成された PR が下記です。<br>
+<a href="https://github.com/MotoShin/imtakalab-advent-calendar-2024-handson/pull/1">https://github.com/MotoShin/imtakalab-advent-calendar-2024-handson/pull/1</a></p>
+<p>PR が作成されたら、コードレビューをしてみましょう。
+差分確認には下記の画像の赤枠で囲っている <code>Files changed</code> タブをクリックすると差分を確認できます。</p>
+<figure><img src="pr-page.png">
+</figure>
+
+<p>そうすると変更差分が UI 上でわかりやすく表示されていることがわかります。
+今回の変更は追加のみで規模も小さいですが、変更箇所が多くなってくるとこの差分表示が非常に便利です。</p>
+<figure><img src="pr-diff.png">
+</figure>
+
+<p>更に、この画面では変更箇所についてコメントを残すことも可能です。緑色の行にマウスカーソルをもっていくと <code>+</code> マークが表示されるので、そのマークをクリックするとコメントを残すことができます。
+この機能によって PR レビュー者が PR 作成者に変更意図を質問したり、ミスを指摘できたりします。
+また、1人での作業でも変更箇所に何かしらメモ書きを残すことが可能で、変更理由などを振り返りたいときに便利です。</p>
+<figure><img src="pr-comment.png">
+</figure>
+
+<p>そして、PR レビューをする立場になった場合に絶対にやってほしいのが Approve です。
+これは一見するとやり方が難しいですが、PR の変更内容を確認して問題がなかったという証跡にもなるので非常に重要です。
+PR レビューの際は絶対に実施するようにしましょう。</p>
+<p>やり方は下記の通りです。
+差分の画面にて、<code>Review changes</code> ボタン（下記の赤枠のボタン）をクリックします。</p>
+<figure><img src="pr-diff-approve.png">
+</figure>
+
+<p>すると、コメント入力欄が表示されるので何かメッセージを入力（入力しなくてもいい）して、<code>Approve</code> を選択して <code>Submit review</code> ボタンを押します。</p>
+<figure><img src="approve-comment.png">
+</figure>
+
+<p>すると、PR 作成画面に遷移して、Approve が表示されていることが確認できます。
+Approve は PR 作成者自身ではつけることができないので、複数人で開発しているときのみ使える機能です。</p>
+<figure><img src="approve.png">
+</figure>
+
+<p>これで PR で実施するべきことは完了したので、PR をマージしてしまいましょう。
+PR 作成者自身がマージすることもできますが、他の人がマージすることもできます。
+PR 画面下部にて <code>Merge pull request</code> ボタンを押すとマージされます。</p>
+<h3 id="release-の活用">Release の活用</h3>
+<p>次に GitHub の Release 機能を活用してみましょう。
+Release はバージョンリリースを行うための機能で、GitHub 上でリリースノートを作成することができます。
+自分がよく使う場面としては、論文を書いた当時のコードをシンクするために使っています。
+論文に載せた結果を出したプログラムコードを Release として登録しておくことで、論文の結果の再現をしたくなった際に Release 履歴を辿ればすぐに当時のコードまで遡ることができてすぐに再現実験ができます。
+実際の業務では Release を行ったアプリケーションコードを deploy することで、deploy したバージョンにバグがあっても前の Release に戻すことで切り戻せるなどの利用方法があります。
+また、Release したバージョン同士で差分を見ることもできるので、どのバージョンでどのような変更があったかを確認することもできます。</p>
+<p>とりあえず、特定の段階で Release を作っておけばすぐに戻したり差分を見れたり色々できるので便利、ということです。</p>
+<p>では、早速 Release を作ってみましょう。
+Release を作るにはまず Release 用のタグを作成する必要があります。
+tag は git のコマンドで作成することができます。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># v0.0.1という名前のtagの作成</span>
+</span></span><span style="display:flex;"><span>$ git tag v0.0.1
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># tag一覧の表示</span>
+</span></span><span style="display:flex;"><span>$ git tag
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># tagのpush</span>
+</span></span><span style="display:flex;"><span>$ git push origin v0.0.1
+</span></span></code></pre></div><p>これで GitHub のリモートリポジトリ上に <code>v0.0.1</code> という名前の tag が作成されました。
+UI 上で見てみましょう。
+画像の赤枠の部分を押下すると tag 一覧が表示されます。</p>
+<figure><img src="repository-top.png">
+</figure>
+
+<p>tag 一覧に <code>v0.0.1</code> が表示されていることが確認できます。</p>
+<figure><img src="tag-list.png">
+</figure>
+
+<p>この <code>v0.0.1</code> の tag を Release として登録してみましょう。
+Release 画面に遷移するために、上記画像 <code>Releases</code> タブをクリックします。
+そうすると <code>Create a new release</code> ボタンが表示されるのでクリックします。</p>
+<p>ボタン押下後、下記のような画面が出てきます。</p>
+<figure><img src="release.png">
+</figure>
+
+<p>この画面では Release のタイトルや本文、Release に含める tag の指定することができます。
+下記の操作を画像に書いてある番号順に実施します。</p>
+<ol>
+<li>プルダウンにて Release 対象の tag (v0.0.1) を選択</li>
+<li>Release のタイトルを入力</li>
+<li><code>General Release Notes</code> ボタンを押下すると Release 内容を本文に自動入力してくれる！</li>
+<li><code>Publish release</code> ボタンを押下すると Release が作成される</li>
+</ol>
+<p>こうすると下記のように Release が作成されます。<br>
+<a href="https://github.com/MotoShin/imtakalab-advent-calendar-2024-handson/releases/tag/v0.0.1">https://github.com/MotoShin/imtakalab-advent-calendar-2024-handson/releases/tag/v0.0.1</a></p>
+<h2 id="まとめ">まとめ</h2>
+<p>今回は、GitHub を使い倒すための Pull Request と Release の活用方法を紹介しました。
+本来は、GitHub Actions や GitHub Pages なども紹介したかったのですが、ここまでであまりにも長くなってしまったので、今回はここまでとさせていただきます。
+GitHub はリモートリポジトリを管理するためだけのサービスではなく、様々な機能を持っているので、ぜひ活用してみてください。
+（気が向いたら GitHub Actions や GitHub Pages についても記事を書きたいと思います）</p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>
