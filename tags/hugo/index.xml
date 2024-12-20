@@ -4,123 +4,44 @@
     <title>Hugo on MotoShin Blog</title>
     <link>https://motoshin.github.io/tags/hugo/</link>
     <description>Recent content in Hugo on MotoShin Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
+    <language>en</language>
     <lastBuildDate>Thu, 08 Oct 2020 20:16:46 +0900</lastBuildDate>
-    
-	<atom:link href="https://motoshin.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <atom:link href="https://motoshin.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>数式の出力の仕方を解説していく</title>
       <link>https://motoshin.github.io/posts/2020-10-08-bolg/</link>
       <pubDate>Thu, 08 Oct 2020 20:16:46 +0900</pubDate>
-      
       <guid>https://motoshin.github.io/posts/2020-10-08-bolg/</guid>
-      <description>夜勤明けで死にそうなMotoShinです。 頭がくらくらするので今日は簡単に書けそうな話題でいこうと思います。
-数式を出していくぅ！ 数式を出す準備 昨日出てきたblogプロジェクトのtreeコマンド結果です。
-. ├── archetypes ├── config.toml ├── content │ └── posts ├── data ├── deploy.sh ├── layouts │ ├── _default │ │ └── baseof.html │ └── partials │ └── math.html ├── public ├── resources ├── static │ └── avatar.jpg └── themes └── m10c ./layouts/partials/math.htmlというファイルを作成します。 ./layouts/partials/math.htmlの中身は下記のようになります。
-&amp;lt;link rel=&amp;#34;stylesheet&amp;#34; href=&amp;#34;https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css&amp;#34; integrity=&amp;#34;sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X&amp;#34; crossorigin=&amp;#34;anonymous&amp;#34;&amp;gt; &amp;lt;script defer src=&amp;#34;https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js&amp;#34; integrity=&amp;#34;sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4&amp;#34; crossorigin=&amp;#34;anonymous&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script defer src=&amp;#34;https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js&amp;#34; integrity=&amp;#34;sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa&amp;#34; crossorigin=&amp;#34;anonymous&amp;#34; onload=&amp;#34;renderMathInElement(document.body);&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script&amp;gt; document.addEventListener(&amp;#34;DOMContentLoaded&amp;#34;, function() { renderMathInElement(document.body, {delimiters: [ {left: &amp;#34;$$&amp;#34;, right: &amp;#34;$$&amp;#34;, display: true}, {left: &amp;#34;$&amp;#34;, right: &amp;#34;$&amp;#34;, display: false}] }); }); &amp;lt;/script&amp;gt; これはKaTeXのAuto-renderExtensionを参考にして作成しました。 .</description>
+      <description>&lt;p&gt;夜勤明けで死にそうなMotoShinです。&#xA;頭がくらくらするので今日は簡単に書けそうな話題でいこうと思います。&lt;/p&gt;&#xA;&lt;h3 id=&#34;数式を出していくぅ&#34;&gt;数式を出していくぅ！&lt;/h3&gt;&#xA;&lt;h4 id=&#34;数式を出す準備&#34;&gt;数式を出す準備&lt;/h4&gt;&#xA;&lt;p&gt;昨日出てきたblogプロジェクトのtreeコマンド結果です。&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;.&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── archetypes&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── config.toml&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── content&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│   └── posts&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── data&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── deploy.sh&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── layouts&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│   ├── _default&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│   │   └── baseof.html&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│   └── partials&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│       └── math.html&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── public&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── resources&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── static&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│   └── avatar.jpg&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;└── themes&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    └── m10c&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;./layouts/partials/math.html&lt;/code&gt;というファイルを作成します。&#xA;&lt;code&gt;./layouts/partials/math.html&lt;/code&gt;の中身は下記のようになります。&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;link&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;rel&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;stylesheet&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;href&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;integrity&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;crossorigin&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;anonymous&amp;#34;&lt;/span&gt;&amp;gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;defer&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;src&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;integrity&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;crossorigin&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;anonymous&amp;#34;&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&amp;gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;defer&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;src&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;integrity&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;crossorigin&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;anonymous&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;onload&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;renderMathInElement(document.body);&amp;#34;&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&amp;gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&amp;gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    document.&lt;span style=&#34;color:#a6e22e&#34;&gt;addEventListener&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;DOMContentLoaded&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt;() {&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#a6e22e&#34;&gt;renderMathInElement&lt;/span&gt;(document.&lt;span style=&#34;color:#a6e22e&#34;&gt;body&lt;/span&gt;, {&lt;span style=&#34;color:#a6e22e&#34;&gt;delimiters&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; [&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        {&lt;span style=&#34;color:#a6e22e&#34;&gt;left&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;$$&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;right&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;$$&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;display&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;},&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        {&lt;span style=&#34;color:#a6e22e&#34;&gt;left&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;$&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;right&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;$&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;display&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;}]&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        });&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    });&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&amp;gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;これは&lt;a href=&#34;https://katex.org/docs/autorender.html&#34;&gt;KaTeXのAuto-renderExtension&lt;/a&gt;を参考にして作成しました。&#xA;&lt;code&gt;./layouts/partials/math.html&lt;/code&gt;を作成したあとは&lt;code&gt;./layouts/_default/baseof.html&lt;/code&gt;のbodyタグの中のmainタグの中に以下を追記します。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>画像を添付してみる</title>
       <link>https://motoshin.github.io/posts/2020-10-07-blog/</link>
       <pubDate>Wed, 07 Oct 2020 18:24:19 +0900</pubDate>
-      
       <guid>https://motoshin.github.io/posts/2020-10-07-blog/</guid>
-      <description>今回は一昨日のブログで書いていた画像の添付をしてみます。 昨日のブログで数式の挿入して満足したけどやり方とか書いた方が読者の人たち的にはいいのかな、 とか思ったので今日は画像添付のやり方書くとともに画像添付をしようと思います。 あと今日はいちいち改行せずブログ書いてみます。
-画像添付のやり方 ブログのプロジェクト構造 まずは事前知識としてHugoのブログプロジェクトのディレクトリ構造の説明からします。
-. ├── archetypes ├── config.toml ├── content │ └── posts ├── data ├── deploy.sh ├── layouts ├── public ├── resources ├── static │ └── avatar.jpg └── themes └── m10c まぁブログのディレクトリ構造はこんな感じになってるんですね。
-まずブログ記事の作り方ですが下記コマンドを実行すると./content/posts/に新たにtest.mdが作成されます。
-hugo new posts/test.md これに記事を書いて下記コマンドをdeploy.shを実行すると./public/直下に色々展開されます。 これが皆さんの見ているブログの画面を構築する元になっている感じですね。
-画像添付していくぅ！ どうやらPege Bundleっていうのを使うみたい。
-これを下のように書いて使うとこんな感じ。
-![This is a image](test.jpg) 調べてみると他の方法もあったので試してみる。
-Hugo内にはShrotcodeってやつがあるらしくそれを使うことでいけるらしい。 うまくエスケープできなかったから詳しくはここを見てくれ！ Shortcodes
-  This is a image   画像サイズの調整は簡単にはできないらしい・・・。
-今日のまとめ  画像の添付はできた 画像サイズ変更とかはもう少し調べないとダメそう  そんなところです。</description>
+      <description>&lt;p&gt;今回は一昨日のブログで書いていた画像の添付をしてみます。&#xA;昨日のブログで数式の挿入して満足したけどやり方とか書いた方が読者の人たち的にはいいのかな、&#xA;とか思ったので今日は画像添付のやり方書くとともに画像添付をしようと思います。&#xA;あと今日はいちいち改行せずブログ書いてみます。&lt;/p&gt;&#xA;&lt;h3 id=&#34;画像添付のやり方&#34;&gt;画像添付のやり方&lt;/h3&gt;&#xA;&lt;h4 id=&#34;ブログのプロジェクト構造&#34;&gt;ブログのプロジェクト構造&lt;/h4&gt;&#xA;&lt;p&gt;まずは事前知識としてHugoのブログプロジェクトのディレクトリ構造の説明からします。&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;.&#xA;├── archetypes&#xA;├── config.toml&#xA;├── content&#xA;│   └── posts&#xA;├── data&#xA;├── deploy.sh&#xA;├── layouts&#xA;├── public&#xA;├── resources&#xA;├── static&#xA;│   └── avatar.jpg&#xA;└── themes&#xA;    └── m10c&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;まぁブログのディレクトリ構造はこんな感じになってるんですね。&lt;/p&gt;&#xA;&lt;p&gt;まずブログ記事の作り方ですが下記コマンドを実行すると&lt;code&gt;./content/posts/&lt;/code&gt;に新たにtest.mdが作成されます。&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;hugo new posts/test.md&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;これに記事を書いて下記コマンドを&lt;code&gt;deploy.sh&lt;/code&gt;を実行すると&lt;code&gt;./public/&lt;/code&gt;直下に色々展開されます。&#xA;これが皆さんの見ているブログの画面を構築する元になっている感じですね。&lt;/p&gt;&#xA;&lt;h4 id=&#34;画像添付していくぅ&#34;&gt;画像添付していくぅ！&lt;/h4&gt;&#xA;&lt;p&gt;どうやら&lt;a href=&#34;https://gohugo.io/content-management/page-bundles&#34;&gt;Pege Bundle&lt;/a&gt;っていうのを使うみたい。&lt;/p&gt;&#xA;&lt;p&gt;これを下のように書いて使うとこんな感じ。&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;![This is a image](test.jpg)&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img src=&#34;test.jpg&#34; alt=&#34;This is a image&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;調べてみると他の方法もあったので試してみる。&lt;/p&gt;&#xA;&lt;p&gt;Hugo内にはShrotcodeってやつがあるらしくそれを使うことでいけるらしい。&#xA;うまくエスケープできなかったから詳しくはここを見てくれ！&#xA;&lt;a href=&#34;https://gohugo.io/content-management/shortcodes/&#34;&gt;Shortcodes&lt;/a&gt;&lt;/p&gt;&#xA;&lt;figure&gt;&lt;img src=&#34;test.jpg&#34;&gt;&lt;figcaption&gt;&#xA;      &lt;h4&gt;This is a image&lt;/h4&gt;&#xA;    &lt;/figcaption&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;p&gt;画像サイズの調整は簡単にはできないらしい・・・。&lt;/p&gt;&#xA;&lt;h3 id=&#34;今日のまとめ&#34;&gt;今日のまとめ&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;em&gt;&lt;strong&gt;画像の添付はできた&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;em&gt;&lt;strong&gt;画像サイズ変更とかはもう少し調べないとダメそう&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;そんなところです。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>数式の挿入とかの練習</title>
       <link>https://motoshin.github.io/posts/2020-10-06-blog/</link>
       <pubDate>Tue, 06 Oct 2020 20:15:09 +0900</pubDate>
-      
       <guid>https://motoshin.github.io/posts/2020-10-06-blog/</guid>
-      <description>今日は昨日の記事にも書いた通り数式の挿入の練習をしようと思います。
-こんな感じでこのブログに慣れるためにも、しばらくの間はしょうもない話題で毎日投稿していこうと思います。
-数式の書き方 では、いきなり本題です。
-数式書いてみます。
-KaTeXってやつで数式描画してるみたいです。
-これも色々勉強が必要そうだ・・・。
-$$ f(x)= \sum_{k=0}^{\infty} \frac{ f^{(k)}(x_0)}{n!} \left( x-x_0 \right)^k $$
-文中の数式 $y = f(x)$ のテスト。
-お～、なかなかええやん。数式綺麗やん。
-満足してしまったのと、結構時間かかってしまったので今日はここまでにしておこうと思います。
-今日の一言 プロフ画像変えてみました。
-川越で撮った謎のカメレオンです。</description>
+      <description>&lt;p&gt;今日は昨日の記事にも書いた通り数式の挿入の練習をしようと思います。&lt;/p&gt;&#xA;&lt;p&gt;こんな感じでこのブログに慣れるためにも、しばらくの間はしょうもない話題で毎日投稿していこうと思います。&lt;/p&gt;&#xA;&lt;h3 id=&#34;数式の書き方&#34;&gt;数式の書き方&lt;/h3&gt;&#xA;&lt;p&gt;では、いきなり本題です。&lt;br&gt;&#xA;数式書いてみます。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://katex.org/&#34;&gt;KaTeX&lt;/a&gt;ってやつで数式描画してるみたいです。&lt;br&gt;&#xA;これも色々勉強が必要そうだ・・・。&lt;/p&gt;&#xA;&lt;p&gt;$$&#xA;f(x)= \sum_{k=0}^{\infty} \frac{ f^{(k)}(x_0)}{n!} \left( x-x_0 \right)^k&#xA;$$&lt;/p&gt;&#xA;&lt;p&gt;文中の数式 $y = f(x)$ のテスト。&lt;/p&gt;&#xA;&lt;p&gt;お～、なかなかええやん。数式綺麗やん。&lt;/p&gt;&#xA;&lt;p&gt;満足してしまったのと、結構時間かかってしまったので今日はここまでにしておこうと思います。&lt;/p&gt;&#xA;&lt;h3 id=&#34;今日の一言&#34;&gt;今日の一言&lt;/h3&gt;&#xA;&lt;p&gt;プロフ画像変えてみました。&lt;br&gt;&#xA;川越で撮った謎のカメレオンです。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>ブログのテーマ選び難しい問題</title>
       <link>https://motoshin.github.io/posts/2020-10-05-blog/</link>
       <pubDate>Mon, 05 Oct 2020 18:35:59 +0900</pubDate>
-      
       <guid>https://motoshin.github.io/posts/2020-10-05-blog/</guid>
-      <description>ブログのテーマって皆さんどのように決めているんでしょうか？
-難しくないですか、テーマ。
-今の僕はHugoってやつ使ってブログ書いてるんですがそれのテーマ一覧がこれですよ。
-https://themes.gohugo.io/
-いや、ムズいわ
-これ選ぶだけで一日潰れちゃうよ
-てことで今日はブログのテーマについてだらだら書いていこうと思います。
-ブログのテーマ選びの難しさ ブログのテーマって何がムズいって「これだ！」ってやつがあってウキウキで設定してみるとなんか違うな、
-ってなるところだと思うんです。
-なんなんでしょうね、あれ。
-今設定してるテーマも「m10c」ってやつなんですけど、すごいシンプルでええやん！ってなったんですが
-いざ設定してみるとうーんって感じになりました。
-（テーマがイケてないという意味ではないです。全部いいテーマです。製作者さんマジリスペクト）
-自分で作ればええやんって思うけど自分にそんなセンスはないんだよな～
-ブログのテーマに欲しいもの なので僕がブログテーマに対して何を求めているのかを頭の整理もかねて書き出したいと思います。
-欲しい機能は以下のような感じです。
- tag機能 コメント機能 数式をLatex風に書ける機能 いい感じにおしゃれなUI  こんな感じです。
-僕が重視したいのが
- 数式をLatex風に書ける機能
- です。
-なんてったって技術ブログですからね()。
-これが備わっていたのでこの「m10c」も選んでみました。
-なんかいい感じに以下のページみたいに書けるらしいです。
-https://themes.gohugo.io//theme/hugo-theme-m10c/post/math-typesetting/
-（まだどうやるかはわかっていません。）
-これらがいい感じに内蔵されてるテーマあったら教えてください、お願いします。
-結論 今日のブログをまとめるとこんな感じです。
- ブログのテーマ作ってる人はすごい 不満があるなら自分で作れ  そんなところです。
-次回 次回は、このテーマに慣れるために画像とか数式とか書いていこうと思います。</description>
+      <description>&lt;p&gt;ブログのテーマって皆さんどのように決めているんでしょうか？&lt;br&gt;&#xA;難しくないですか、テーマ。&lt;br&gt;&#xA;今の僕はHugoってやつ使ってブログ書いてるんですがそれのテーマ一覧がこれですよ。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://themes.gohugo.io/&#34;&gt;https://themes.gohugo.io/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;いや、ムズいわ&lt;br&gt;&#xA;これ選ぶだけで一日潰れちゃうよ&lt;/p&gt;&#xA;&lt;p&gt;てことで今日はブログのテーマについてだらだら書いていこうと思います。&lt;/p&gt;&#xA;&lt;h2 id=&#34;ブログのテーマ選びの難しさ&#34;&gt;ブログのテーマ選びの難しさ&lt;/h2&gt;&#xA;&lt;p&gt;ブログのテーマって何がムズいって「これだ！」ってやつがあってウキウキで設定してみるとなんか違うな、&lt;br&gt;&#xA;ってなるところだと思うんです。&lt;br&gt;&#xA;なんなんでしょうね、あれ。&lt;br&gt;&#xA;今設定してるテーマも「m10c」ってやつなんですけど、すごいシンプルでええやん！ってなったんですが&lt;br&gt;&#xA;いざ設定してみるとうーんって感じになりました。&lt;br&gt;&#xA;（テーマがイケてないという意味ではないです。全部いいテーマです。製作者さんマジリスペクト）&lt;/p&gt;&#xA;&lt;p&gt;自分で作ればええやんって思うけど自分にそんなセンスはないんだよな～&lt;/p&gt;&#xA;&lt;h2 id=&#34;ブログのテーマに欲しいもの&#34;&gt;ブログのテーマに欲しいもの&lt;/h2&gt;&#xA;&lt;p&gt;なので僕がブログテーマに対して何を求めているのかを頭の整理もかねて書き出したいと思います。&lt;br&gt;&#xA;欲しい機能は以下のような感じです。&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;tag機能&lt;/li&gt;&#xA;&lt;li&gt;コメント機能&lt;/li&gt;&#xA;&lt;li&gt;数式をLatex風に書ける機能&lt;/li&gt;&#xA;&lt;li&gt;いい感じにおしゃれなUI&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;こんな感じです。&lt;br&gt;&#xA;僕が重視したいのが&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;数式をLatex風に書ける機能&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;です。&lt;br&gt;&#xA;なんてったって技術ブログですからね()。&lt;br&gt;&#xA;これが備わっていたのでこの「m10c」も選んでみました。&lt;br&gt;&#xA;なんかいい感じに以下のページみたいに書けるらしいです。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://themes.gohugo.io//theme/hugo-theme-m10c/post/math-typesetting/&#34;&gt;https://themes.gohugo.io//theme/hugo-theme-m10c/post/math-typesetting/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;（まだどうやるかはわかっていません。）&lt;br&gt;&#xA;これらがいい感じに内蔵されてるテーマあったら教えてください、お願いします。&lt;/p&gt;&#xA;&lt;h2 id=&#34;結論&#34;&gt;結論&lt;/h2&gt;&#xA;&lt;p&gt;今日のブログをまとめるとこんな感じです。&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;em&gt;&lt;strong&gt;ブログのテーマ作ってる人はすごい&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;em&gt;&lt;strong&gt;不満があるなら自分で作れ&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;そんなところです。&lt;/p&gt;&#xA;&lt;h2 id=&#34;次回&#34;&gt;次回&lt;/h2&gt;&#xA;&lt;p&gt;次回は、このテーマに慣れるために画像とか数式とか書いていこうと思います。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>ブログをGitHub Pagesに移行しました。</title>
       <link>https://motoshin.github.io/posts/2020-10-04-create-blog-1/</link>
       <pubDate>Sun, 04 Oct 2020 18:11:00 +0900</pubDate>
-      
       <guid>https://motoshin.github.io/posts/2020-10-04-create-blog-1/</guid>
-      <description>GitHub Pagesでブログ！？ 第一印象はこんな感じでした。
-僕のGithub Pagesのイメージはほんとにhtmlのペライチしか表示できないと思っていたので結構驚きました。
-移行した理由 移行した理由としては以下の理由があります。
- AWSの無料トライアル？期間みたいのが終わってた githubでの管理なのでやりやすそう なんかイケてそう  まぁ、こんか感じです。
- AWSの無料トライアル？期間みたいのが終わってた
- これはほんと驚きました。
-今まで1500円とかだった料金が9月いきなり7000円越えとかになっていて急いで全部のインスタンスを消しました。
-確認してほんとによかった・・・。
- githubでの管理なのでやりやすそう
- これは管理もそうですが、ブログの記事自体もmarkdownで記述できるという点もあります。
- なんかイケてそう
- なんかイケてそうだなって思いました（フィーリング）。
-Hugoっていうやつがブログ生成しててgo言語使っててなんかイケてそう（）。
-今後の方向性 とりあえずカスタムドメインとか使えそうなので前のブログのドメインを復活させようかな、とか思ってます。
-あとは前のブログの記事復活できたらやります。（たぶんやらないかも）
-今日はこんなところです。</description>
+      <description>&lt;h2 id=&#34;github-pagesでブログ&#34;&gt;GitHub Pagesでブログ！？&lt;/h2&gt;&#xA;&lt;p&gt;第一印象はこんな感じでした。&lt;br&gt;&#xA;僕のGithub Pagesのイメージはほんとにhtmlのペライチしか表示できないと思っていたので結構驚きました。&lt;/p&gt;&#xA;&lt;h2 id=&#34;移行した理由&#34;&gt;移行した理由&lt;/h2&gt;&#xA;&lt;p&gt;移行した理由としては以下の理由があります。&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;AWSの無料トライアル？期間みたいのが終わってた&lt;/li&gt;&#xA;&lt;li&gt;githubでの管理なのでやりやすそう&lt;/li&gt;&#xA;&lt;li&gt;なんかイケてそう&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;まぁ、こんか感じです。&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;AWSの無料トライアル？期間みたいのが終わってた&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;これはほんと驚きました。&lt;br&gt;&#xA;今まで1500円とかだった料金が9月いきなり7000円越えとかになっていて急いで全部のインスタンスを消しました。&lt;br&gt;&#xA;確認してほんとによかった・・・。&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;githubでの管理なのでやりやすそう&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;これは管理もそうですが、ブログの記事自体もmarkdownで記述できるという点もあります。&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;なんかイケてそう&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;なんかイケてそうだなって思いました（フィーリング）。&lt;br&gt;&#xA;Hugoっていうやつがブログ生成しててgo言語使っててなんかイケてそう（）。&lt;/p&gt;&#xA;&lt;h2 id=&#34;今後の方向性&#34;&gt;今後の方向性&lt;/h2&gt;&#xA;&lt;p&gt;とりあえずカスタムドメインとか使えそうなので前のブログのドメインを復活させようかな、とか思ってます。&lt;br&gt;&#xA;あとは前のブログの記事復活できたらやります。（たぶんやらないかも）&lt;/p&gt;&#xA;&lt;p&gt;今日はこんなところです。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

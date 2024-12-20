@@ -1,48 +1,54 @@
 <!doctype html>
-<html lang="en-us">
+<html lang="en">
   <head>
     <title>Spinning Up の和訳を書いていく // MotoShin Blog</title>
     <meta charset="utf-8" />
-    <meta name="generator" content="Hugo 0.68.3" />
+    <meta name="generator" content="Hugo 0.140.0">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="author" content="MotoShin" />
     <meta name="description" content="" />
-    <link rel="stylesheet" href="https://motoshin.github.io/css/main.min.4a7ec8660f9a44b08c4da97c5f2e31b1192df1d4d0322e65c0dbbc6ecb1b863f.css" />
+    <link rel="stylesheet" href="https://motoshin.github.io/css/main.min.5b1fcc8902588589c4767187402a3c29f8b8d7a6fdef6d9f8f77045bb0d14fee.css" />
 
     
-    <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Spinning Up の和訳を書いていく"/>
-<meta name="twitter:description" content="最近 Spinning Up というものの輪読会的なものを始めることになりました。 そこでその準備のため Spinning Up の和訳をつらつらと書いていこうと思います。 なお、全文ではなく僕が重要そうだな〜と思った部分を和訳してメモしていく感じです。
+    
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Spinning Up の和訳を書いていく">
+  <meta name="twitter:description" content="最近 Spinning Up というものの輪読会的なものを始めることになりました。 そこでその準備のため Spinning Up の和訳をつらつらと書いていこうと思います。 なお、全文ではなく僕が重要そうだな〜と思った部分を和訳してメモしていく感じです。
 Part1: Key Concepts in RL 該当ページは ここ です。 主に Key Concepts and Terminology を和訳していきます。
 Key Concepts and Terminology Action Space 離散的行動空間 (descrete action space) と連続的行動空間 (continuous action space) があるよ〜的な説明
 Policies 方策 (policy) はエージェント (agent) が行動を決定する際に使用されるルールである。 方策は決定論的 (deterministic) な場合は $\mu$ を用いて下記のように記述する。 $$ a_t = \mu(s_t) $$
 確率論的 (stochastic) の場合は通常 $\pi$ を用いて下記ように記述する。 $$ a_t \sim \pi(\cdot|s_t) $$
-パラメータがある場合は $\theta$ や $\phi$ を用いて下記のように記述する。 $$ a_t = \mu_{\theta}(s_t) $$ $$ a_t \sim \pi_{\theta}(\cdot|s_t) $$"/>
+パラメータがある場合は $\theta$ や $\phi$ を用いて下記のように記述する。 $$ a_t = \mu_{\theta}(s_t) $$ $$ a_t \sim \pi_{\theta}(\cdot|s_t) $$">
 
-    <meta property="og:title" content="Spinning Up の和訳を書いていく" />
-<meta property="og:description" content="最近 Spinning Up というものの輪読会的なものを始めることになりました。 そこでその準備のため Spinning Up の和訳をつらつらと書いていこうと思います。 なお、全文ではなく僕が重要そうだな〜と思った部分を和訳してメモしていく感じです。
+    <meta property="og:url" content="https://motoshin.github.io/posts/2021-07-04-blog/">
+  <meta property="og:site_name" content="MotoShin Blog">
+  <meta property="og:title" content="Spinning Up の和訳を書いていく">
+  <meta property="og:description" content="最近 Spinning Up というものの輪読会的なものを始めることになりました。 そこでその準備のため Spinning Up の和訳をつらつらと書いていこうと思います。 なお、全文ではなく僕が重要そうだな〜と思った部分を和訳してメモしていく感じです。
 Part1: Key Concepts in RL 該当ページは ここ です。 主に Key Concepts and Terminology を和訳していきます。
 Key Concepts and Terminology Action Space 離散的行動空間 (descrete action space) と連続的行動空間 (continuous action space) があるよ〜的な説明
 Policies 方策 (policy) はエージェント (agent) が行動を決定する際に使用されるルールである。 方策は決定論的 (deterministic) な場合は $\mu$ を用いて下記のように記述する。 $$ a_t = \mu(s_t) $$
 確率論的 (stochastic) の場合は通常 $\pi$ を用いて下記ように記述する。 $$ a_t \sim \pi(\cdot|s_t) $$
-パラメータがある場合は $\theta$ や $\phi$ を用いて下記のように記述する。 $$ a_t = \mu_{\theta}(s_t) $$ $$ a_t \sim \pi_{\theta}(\cdot|s_t) $$" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://motoshin.github.io/posts/2021-07-04-blog/" />
-<meta property="article:published_time" content="2021-07-04T15:50:29+09:00" />
-<meta property="article:modified_time" content="2021-07-04T15:50:29+09:00" />
+パラメータがある場合は $\theta$ や $\phi$ を用いて下記のように記述する。 $$ a_t = \mu_{\theta}(s_t) $$ $$ a_t \sim \pi_{\theta}(\cdot|s_t) $$">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2021-07-04T15:50:29+09:00">
+    <meta property="article:modified_time" content="2021-07-04T15:50:29+09:00">
+    <meta property="article:tag" content="SpinningUp">
+    <meta property="article:tag" content="ReinforcementLerning">
 
 
   </head>
   <body>
     <header class="app-header">
-      <a href="https://motoshin.github.io"><img class="app-header-avatar" src="/avatar.jpg" alt="MotoShin" /></a>
+      <a href="https://motoshin.github.io/"><img class="app-header-avatar" src="/avatar.jpg" alt="MotoShin" /></a>
       <h1>MotoShin Blog</h1>
       <p>日々の事をつらつらと書いてゆきます。</p>
       <div class="app-header-social">
         
           <a target="_blank" href="https://github.com/MotoShin" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
   <title>github</title>
-  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+  <svg class="icon icon-github" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>github</title><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
 </svg></a>
         
       </div>
@@ -78,20 +84,20 @@ Policies 方策 (policy) はエージェント (agent) が行動を決定する�
         <div>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
   <title>calendar</title>
-  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+  <svg class="icon icon-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>calendar</title><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
 </svg>
           Jul 4, 2021
         </div>
         <div>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
   <title>clock</title>
-  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+  <svg class="icon icon-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>clock</title><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
 </svg>
           3 min read
         </div><div>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
   <title>tag</title>
-  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line>
+  <svg class="icon icon-tag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>tag</title><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
 </svg>
           <a class="tag" href="https://motoshin.github.io/tags/spinningup/">SpinningUp</a><a class="tag" href="https://motoshin.github.io/tags/reinforcementlerning/">ReinforcementLerning</a></div></div>
     </header>
@@ -222,9 +228,9 @@ J(\pi) = \int_{\tau} P(\tau|\pi)R(\tau) = \underset{\tau\sim\pi}{\Epsilon} \bigl
 $$</p>
 <p>そして強化学習の最適化問題は、次のように表すことができます。
 $$
-\pi^{*} = \argmax_{\pi} J(\pi)
+\pi^{<em>} = \argmax_{\pi} J(\pi)
 $$
-このとき、$\pi^{*}$ は最適方策となる。</p>
+このとき、$\pi^{</em>}$ は最適方策となる。</p>
 <h3 id="value-function">Value Function</h3>
 <p>多くの場合、状態の価値または状態と行動のペアの価値を知っておくと便利である。
 価値とは、その状態または状態と行動のペアでタスクを開始して特定の方策に従って行動した場合の報酬和の期待値を意味している。
@@ -239,13 +245,13 @@ $$</li>
 $$
 Q^{\pi}(s,a) = \underset{\tau\sim\pi}{\Epsilon} \bigl[R(\tau)|s_0=s,a_0=a\bigr]
 $$</li>
-<li>最適な価値関数 $V^*(s)$ は、ある状態 $s$ からスタートして最適な方策に従って行動した場合の報酬和の期待値を返す。
+<li>最適な価値関数 $V^<em>(s)$ は、ある状態 $s$ からスタートして最適な方策に従って行動した場合の報酬和の期待値を返す。
 $$
-V^*(s) = \max_{\pi} \underset{\tau\sim\pi}{\Epsilon} \bigl[R(\tau)|s_{0}=s\bigr]
+V^</em>(s) = \max_{\pi} \underset{\tau\sim\pi}{\Epsilon} \bigl[R(\tau)|s_{0}=s\bigr]
 $$</li>
-<li>最適な行動価値関数 $Q^*(s,a)$ は、ある状態 $s$ において任意の行動 $a$ をとって開始してそれ以降は最適な方策に従って行動を選択し続けた場合の報酬和の期待値を返す。
+<li>最適な行動価値関数 $Q^<em>(s,a)$ は、ある状態 $s$ において任意の行動 $a$ をとって開始してそれ以降は最適な方策に従って行動を選択し続けた場合の報酬和の期待値を返す。
 $$
-Q^*(s,a) = \max_{\pi} \underset{\tau\sim\pi}{\Epsilon} \bigl[R(\tau)|s_{0}=s,a_{0}=a\bigr]
+Q^</em>(s,a) = \max_{\pi} \underset{\tau\sim\pi}{\Epsilon} \bigl[R(\tau)|s_{0}=s,a_{0}=a\bigr]
 $$</li>
 </ol>
 <h5 id="知っておくといいこと">知っておくといいこと</h5>
@@ -255,18 +261,18 @@ V^\pi(s) = \underset{a\sim\pi}{\Epsilon}\bigl[Q^\pi(s,a)\bigr]
 $$
 と
 $$
-V^*(s) = \max_a Q^*(s,a)
+V^<em>(s) = \max_a Q^</em>(s,a)
 $$
 である。<br>
 これらの関係性はこれまで与えられた定義から求めることができます。
 あなたはこれらを証明できますか？</p>
 <h3 id="the-optimal-q-function-and-the-optimal-action">The Optimal Q-Function and the Optimal Action</h3>
-<p>最適な行動価値関数 $Q^*(s,a)$ と最適な方策によって選択された行動の間には重要な関係がある。
-$Q^*(s,a)$ は状態 $s$ で任意の行動 $a$ でタスクを初め、その後に最適方策に従って行動を選択した場合の報酬和の期待値を返す、と定義する。</p>
+<p>最適な行動価値関数 $Q^<em>(s,a)$ と最適な方策によって選択された行動の間には重要な関係がある。
+$Q^</em>(s,a)$ は状態 $s$ で任意の行動 $a$ でタスクを初め、その後に最適方策に従って行動を選択した場合の報酬和の期待値を返す、と定義する。</p>
 <p>状態 $s$ での最適な方策は、$s$ でのスタートからの報酬和の期待値を最大化する行動を選択することである。
-その結果、$Q^* $ があれば最適な行動 $a^*(s)$ を以下の方法で直接得ることができる。
+その結果、$Q^* $ があれば最適な行動 $a^<em>(s)$ を以下の方法で直接得ることができる。
 $$
-a^*(s) = \argmax_{a} Q^*(s,a)
+a^</em>(s) = \argmax_{a} Q^*(s,a)
 $$</p>
 <p><strong>Note</strong>: $Q^*(s,a)$ を最大化する行動が複数存在する場合は、それらの行動はすべて最適な行動であり、最適な方策はそれらの行動をランダムに選択することができる。
 しかし、ある行動を決定論的に選択する最適な方策は必ず存在する。</p>
@@ -283,14 +289,14 @@ $$
 $$
 Q^{\pi}(s,a) = \underset{s^{\prime}\sim P}{\Epsilon}\Bigl[r(s,a)+\gamma\underset{a^{\prime}\sim\pi}{\Epsilon}\bigl[Q^\pi(s^{\prime},a^{\prime})\bigr]\Bigr]
 $$</p>
-<p>上記の $s^{\prime}\sim P$ は $s^{\prime}\sim P(\cdot|s,a)$ を省略したものであり、次状態 $s'$ が環境の遷移規則からサンプリングされていることを示している。
+<p>上記の $s^{\prime}\sim P$ は $s^{\prime}\sim P(\cdot|s,a)$ を省略したものであり、次状態 $s&rsquo;$ が環境の遷移規則からサンプリングされていることを示している。
 上記の $a\sim\pi$ は $a\sim\pi(\cdot|s)$ を省略したものであり、$a^{\prime}\sim\pi$ は $a^{\prime}\sim\pi(\cdot|s^{\prime})$ を省略したものである。</p>
 <p>ベルマン方程式の最適価値関数は下記のように記述する。
 $$
-V^*(s) = \max_a \underset{s^{\prime}\sim P}{\Epsilon}\bigl[r(s,a)+\gamma V^*(s^{\prime})\bigr]
+V^<em>(s) = \max_a \underset{s^{\prime}\sim P}{\Epsilon}\bigl[r(s,a)+\gamma V^</em>(s^{\prime})\bigr]
 $$
 $$
-Q^*(s,a) = \underset{s^{\prime}\sim P}{\Epsilon}\Bigl[r(s,a)+\gamma\max_{a^{\prime}} Q^*(s^{\prime},a^{\prime})\Bigr]
+Q^<em>(s,a) = \underset{s^{\prime}\sim P}{\Epsilon}\Bigl[r(s,a)+\gamma\max_{a^{\prime}} Q^</em>(s^{\prime},a^{\prime})\Bigr]
 $$</p>
 <p>on-policyの価値関数と最適な価値関数の重要な違いは、行動選択の際に $\max$ がないかあるかの違いである。
 これは、エージェントが行動を選択する際に、最適な行動をとるためには最高の価値を得ることができる行動を選択しなければならないという事実を反映している。</p>
@@ -320,7 +326,7 @@ $$</p>
 </ul>
 <h1 id="参考">参考</h1>
 <ul>
-<li>慶應技術大学理工学部 櫻井彰人. &ldquo;<a href="http://www.sakurai.comp.ae.keio.ac.jp/classes/infosem-class/2009/12RL.pdf">情報意味論(12) 強化学習</a>&quot;, (参照2021-07-08)</li>
+<li>慶應技術大学理工学部 櫻井彰人. &ldquo;<a href="http://www.sakurai.comp.ae.keio.ac.jp/classes/infosem-class/2009/12RL.pdf">情報意味論(12) 強化学習</a>&rdquo;, (参照2021-07-08)</li>
 </ul>
 
     </div>

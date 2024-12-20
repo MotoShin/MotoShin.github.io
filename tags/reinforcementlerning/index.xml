@@ -4,68 +4,37 @@
     <title>ReinforcementLerning on MotoShin Blog</title>
     <link>https://motoshin.github.io/tags/reinforcementlerning/</link>
     <description>Recent content in ReinforcementLerning on MotoShin Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
+    <language>en</language>
     <lastBuildDate>Sun, 16 Jan 2022 11:16:05 +0900</lastBuildDate>
-    
-	<atom:link href="https://motoshin.github.io/tags/reinforcementlerning/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <atom:link href="https://motoshin.github.io/tags/reinforcementlerning/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Spinning Up 和訳シリーズ Soft Actor-Critic</title>
       <link>https://motoshin.github.io/posts/2022-01-16-blog/</link>
       <pubDate>Sun, 16 Jan 2022 11:16:05 +0900</pubDate>
-      
       <guid>https://motoshin.github.io/posts/2022-01-16-blog/</guid>
-      <description>下記の和訳をしていきます～
-https://spinningup.openai.com/en/latest/algorithms/sac.html
-Background Soft Actor Critic (SAC) は、確率的方策をoff-policyで最適化するアルゴリズムで、確率的な方策最適化とDDPGスタイルのアプローチの橋渡しをしている。 TD3の直接の後継ではないが、（ほぼ同時に発表されている）clipped double-Q トリックが組み込まれており、SACの方策には固有の確率性があるため、target policy smoothing のような恩恵を受けることになる。
-SACの中心的な特徴は、エントロピーの正則化である。方策は、期待収益とエントロピー（方策のランダム性の尺度）の間のトレードオフを最大化するように学習する。 エントロピーを増加させることで、より多くの探索を行い、後の学習を加速させることができる。また、方策が局所最適に早々に収束してしまうことも防ぐことができる。
-Quick Facts  SAC は off-policy のアルゴリズムである 本ページで実装されたSACは、連続した行動空間を持つ環境にのみ使用できる 方策更新ルールをわずかに変更することで、離散的な行動空間を扱うように実装することができる Spinning Up の SAC の実装は、並列化をサポートしていない  Key Equations Soft Actor Critic を説明するためには、まずエントロピー正則化強化学習の設定を理解する必要がある。 エントロピー正則化された強化学習では、価値関数の方程式が少し異なります。
-Entropy-Regularized Reinforcement Learning エントロピーとは、大まかに言えば、確率変数のランダム性を示す量である。 コインの重さを変えて、ほとんどの場合に表が出るようにすればエントロピーは低く、均等に重さを変えてどちらかの結果が半分の確率で出るようにすればエントロピーは高くなる。
-$x$ を確率質量または密度関数 $P$ を持つ確率変数とすると、$x$ のエントロピー $H$ はその分布 $P$ から次のように計算される。 $$ H(P) = \underset{x \sim P}{\rm{E}}[-\log P(x)] $$
-エントロピー正則化強化学習では、エージェントは各タイムステップで、そのタイムステップでの方策のエントロピーに比例したボーナス報酬を得る。 これにより、強化学習問題は次のように変化する。 $$ \pi^{*} = \underset{\pi}{\rm arg~max} \underset{\tau\sim\pi}{\rm{E}}\Bigl[\sum_{t=0}^{\infty}\gamma^t \Bigl(R(s_t,a_t,s_{t+1}) + \alpha H(\pi(\cdot|s_t))\Bigr)\Bigr] $$</description>
+      <description>&lt;p&gt;下記の和訳をしていきます～ &lt;br&gt;&#xA;&lt;a href=&#34;https://spinningup.openai.com/en/latest/algorithms/sac.html&#34;&gt;https://spinningup.openai.com/en/latest/algorithms/sac.html&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;&#xA;&lt;p&gt;Soft Actor Critic (SAC) は、確率的方策をoff-policyで最適化するアルゴリズムで、確率的な方策最適化とDDPGスタイルのアプローチの橋渡しをしている。&#xA;TD3の直接の後継ではないが、（ほぼ同時に発表されている）clipped double-Q トリックが組み込まれており、SACの方策には固有の確率性があるため、target policy smoothing のような恩恵を受けることになる。&lt;/p&gt;&#xA;&lt;p&gt;SACの中心的な特徴は、エントロピーの正則化である。方策は、期待収益とエントロピー（方策のランダム性の尺度）の間のトレードオフを最大化するように学習する。&#xA;エントロピーを増加させることで、より多くの探索を行い、後の学習を加速させることができる。また、方策が局所最適に早々に収束してしまうことも防ぐことができる。&lt;/p&gt;&#xA;&lt;h3 id=&#34;quick-facts&#34;&gt;Quick Facts&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;SAC は off-policy のアルゴリズムである&lt;/li&gt;&#xA;&lt;li&gt;本ページで実装されたSACは、連続した行動空間を持つ環境にのみ使用できる&lt;/li&gt;&#xA;&lt;li&gt;方策更新ルールをわずかに変更することで、離散的な行動空間を扱うように実装することができる&lt;/li&gt;&#xA;&lt;li&gt;Spinning Up の SAC  の実装は、並列化をサポートしていない&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;key-equations&#34;&gt;Key Equations&lt;/h2&gt;&#xA;&lt;p&gt;Soft Actor Critic を説明するためには、まずエントロピー正則化強化学習の設定を理解する必要がある。&#xA;エントロピー正則化された強化学習では、価値関数の方程式が少し異なります。&lt;/p&gt;&#xA;&lt;h3 id=&#34;entropy-regularized-reinforcement-learning&#34;&gt;Entropy-Regularized Reinforcement Learning&lt;/h3&gt;&#xA;&lt;p&gt;エントロピーとは、大まかに言えば、確率変数のランダム性を示す量である。&#xA;コインの重さを変えて、ほとんどの場合に表が出るようにすればエントロピーは低く、均等に重さを変えてどちらかの結果が半分の確率で出るようにすればエントロピーは高くなる。&lt;/p&gt;&#xA;&lt;p&gt;$x$ を確率質量または密度関数 $P$ を持つ確率変数とすると、$x$ のエントロピー $H$ はその分布 $P$ から次のように計算される。&#xA;$$&#xA;H(P) = \underset{x \sim P}{\rm{E}}[-\log P(x)]&#xA;$$&lt;/p&gt;&#xA;&lt;p&gt;エントロピー正則化強化学習では、エージェントは各タイムステップで、そのタイムステップでの方策のエントロピーに比例したボーナス報酬を得る。&#xA;これにより、強化学習問題は次のように変化する。&#xA;$$&#xA;\pi^{*} = \underset{\pi}{\rm arg~max} \underset{\tau\sim\pi}{\rm{E}}\Bigl[\sum_{t=0}^{\infty}\gamma^t \Bigl(R(s_t,a_t,s_{t+1}) + \alpha H(\pi(\cdot|s_t))\Bigr)\Bigr]&#xA;$$&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Spinning Up の和訳を書いていく</title>
       <link>https://motoshin.github.io/posts/2021-07-04-blog/</link>
       <pubDate>Sun, 04 Jul 2021 15:50:29 +0900</pubDate>
-      
       <guid>https://motoshin.github.io/posts/2021-07-04-blog/</guid>
-      <description>最近 Spinning Up というものの輪読会的なものを始めることになりました。 そこでその準備のため Spinning Up の和訳をつらつらと書いていこうと思います。 なお、全文ではなく僕が重要そうだな〜と思った部分を和訳してメモしていく感じです。
-Part1: Key Concepts in RL 該当ページは ここ です。 主に Key Concepts and Terminology を和訳していきます。
-Key Concepts and Terminology Action Space 離散的行動空間 (descrete action space) と連続的行動空間 (continuous action space) があるよ〜的な説明
-Policies 方策 (policy) はエージェント (agent) が行動を決定する際に使用されるルールである。 方策は決定論的 (deterministic) な場合は $\mu$ を用いて下記のように記述する。 $$ a_t = \mu(s_t) $$
-確率論的 (stochastic) の場合は通常 $\pi$ を用いて下記ように記述する。 $$ a_t \sim \pi(\cdot|s_t) $$
-パラメータがある場合は $\theta$ や $\phi$ を用いて下記のように記述する。 $$ a_t = \mu_{\theta}(s_t) $$ $$ a_t \sim \pi_{\theta}(\cdot|s_t) $$</description>
+      <description>&lt;p&gt;最近 &lt;a href=&#34;https://spinningup.openai.com/en/latest/index.html&#34;&gt;Spinning Up&lt;/a&gt; というものの輪読会的なものを始めることになりました。&#xA;そこでその準備のため Spinning Up の和訳をつらつらと書いていこうと思います。&#xA;なお、全文ではなく僕が重要そうだな〜と思った部分を和訳してメモしていく感じです。&lt;/p&gt;&#xA;&lt;h1 id=&#34;part1-key-concepts-in-rl&#34;&gt;Part1: Key Concepts in RL&lt;/h1&gt;&#xA;&lt;p&gt;該当ページは &lt;a href=&#34;https://spinningup.openai.com/en/latest/spinningup/rl_intro.html#key-concepts-and-terminology&#34;&gt;ここ&lt;/a&gt; です。&#xA;主に &lt;a href=&#34;https://spinningup.openai.com/en/latest/spinningup/rl_intro.html#key-concepts-and-terminology&#34;&gt;Key Concepts and Terminology&lt;/a&gt; を和訳していきます。&lt;/p&gt;&#xA;&lt;h2 id=&#34;key-concepts-and-terminology&#34;&gt;Key Concepts and Terminology&lt;/h2&gt;&#xA;&lt;h3 id=&#34;action-space&#34;&gt;Action Space&lt;/h3&gt;&#xA;&lt;p&gt;離散的行動空間 (descrete action space) と連続的行動空間 (continuous action space) があるよ〜的な説明&lt;/p&gt;&#xA;&lt;h3 id=&#34;policies&#34;&gt;Policies&lt;/h3&gt;&#xA;&lt;p&gt;方策 (policy) はエージェント (agent) が行動を決定する際に使用されるルールである。&#xA;方策は決定論的 (deterministic) な場合は $\mu$ を用いて下記のように記述する。&#xA;$$&#xA;a_t = \mu(s_t)&#xA;$$&lt;/p&gt;&#xA;&lt;p&gt;確率論的 (stochastic) の場合は通常 $\pi$ を用いて下記ように記述する。&#xA;$$&#xA;a_t \sim \pi(\cdot|s_t)&#xA;$$&lt;/p&gt;&#xA;&lt;p&gt;パラメータがある場合は $\theta$ や $\phi$ を用いて下記のように記述する。&#xA;$$&#xA;a_t = \mu_{\theta}(s_t)&#xA;$$&#xA;$$&#xA;a_t \sim \pi_{\theta}(\cdot|s_t)&#xA;$$&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>【メモ】DDPG論文の実験詳細の和訳</title>
       <link>https://motoshin.github.io/posts/2021-02-07/</link>
       <pubDate>Sun, 07 Feb 2021 14:07:58 +0900</pubDate>
-      
       <guid>https://motoshin.github.io/posts/2021-02-07/</guid>
-      <description>皆さん、明けましておめでとうございます。 本年もどうぞよろしくお願いします。（年明けて１ヶ月経過…）
-そんなことは置いといて、今回はブログでもなんでもなく生存報告を兼ねたただのメモです。 DDPGという強化学習アルゴリズムの論文の実験詳細の部分の和訳もメモしたかっただけです。 なので気にしなくて結構です。
-論文の和訳 ニューラルネットワークパラメータの学習にはAdam (Kingma &amp;amp; Ba, 2014)を用い、actorとcriticに対してそれぞれ$10^{-4}$と$10^{-3}$の学習率で学習を行った。 Qについては、$10^{-2}$のL2重み減衰を含み、$\gamma = 0.99$の割引係数を使用した。 ソフトターゲットの更新には$\tau = 0.001$を使用した。 ニューラルネットワークは、すべての隠れ層に整流非線形性(Glorot et al., 2011)を使用した。 actorの最終出力層は、アクションを束縛するためにタン層とした。 低次元ネットワークは2つの隠れ層を持ち、それぞれ400と300のユニット(130,000のパラメータ)を持っていた。 ピクセルから学習する際には、各層に32個のフィルターを持つ3つの畳み込み層（プーリングなし）を使用しました。 これに続いて、200ユニット（430,000パラメータ）の完全に接続された2つの層を使用しました。 最終的なレイヤーの重みとバイアスは，低次元の場合は$[-3 \times 10^{-3}, 3 \times 10^{-3}]$，ピクセルの場合は$[3 \times 10^{-4}, 3 \times 10^{-4}]$の一様分布から初期化した。 これは、政策と値の推定値の初期出力がゼロに近いことを保証するためであった。 他のレイヤーは、一様分布$[-\frac{1}{\sqrt{f}}, \frac{1}{\sqrt{f}}]$から初期化されました。 アクションは、完全に接続された層までは含まれなかった。 低次元問題では64、ピクセルでは16のミニバッチサイズで学習した。 リプレイバッファサイズは$10^{6}$を使用した。
-参考  DDPGの論文  </description>
+      <description>&lt;p&gt;皆さん、明けましておめでとうございます。&#xA;本年もどうぞよろしくお願いします。（年明けて１ヶ月経過…）&lt;/p&gt;&#xA;&lt;p&gt;そんなことは置いといて、今回はブログでもなんでもなく生存報告を兼ねたただのメモです。&#xA;DDPGという強化学習アルゴリズムの論文の実験詳細の部分の和訳もメモしたかっただけです。&#xA;なので気にしなくて結構です。&lt;/p&gt;&#xA;&lt;h3 id=&#34;論文の和訳&#34;&gt;論文の和訳&lt;/h3&gt;&#xA;&lt;p&gt;ニューラルネットワークパラメータの学習にはAdam (Kingma &amp;amp; Ba, 2014)を用い、actorとcriticに対してそれぞれ$10^{-4}$と$10^{-3}$の学習率で学習を行った。&#xA;Qについては、$10^{-2}$のL2重み減衰を含み、$\gamma = 0.99$の割引係数を使用した。&#xA;ソフトターゲットの更新には$\tau = 0.001$を使用した。&#xA;ニューラルネットワークは、すべての隠れ層に整流非線形性(Glorot et al., 2011)を使用した。&#xA;actorの最終出力層は、アクションを束縛するためにタン層とした。&#xA;低次元ネットワークは2つの隠れ層を持ち、それぞれ400と300のユニット(130,000のパラメータ)を持っていた。&#xA;ピクセルから学習する際には、各層に32個のフィルターを持つ3つの畳み込み層（プーリングなし）を使用しました。&#xA;これに続いて、200ユニット（430,000パラメータ）の完全に接続された2つの層を使用しました。&#xA;最終的なレイヤーの重みとバイアスは，低次元の場合は$[-3 \times 10^{-3}, 3 \times 10^{-3}]$，ピクセルの場合は$[3 \times 10^{-4}, 3 \times 10^{-4}]$の一様分布から初期化した。&#xA;これは、政策と値の推定値の初期出力がゼロに近いことを保証するためであった。&#xA;他のレイヤーは、一様分布$[-\frac{1}{\sqrt{f}}, \frac{1}{\sqrt{f}}]$から初期化されました。&#xA;アクションは、完全に接続された層までは含まれなかった。&#xA;低次元問題では64、ピクセルでは16のミニバッチサイズで学習した。&#xA;リプレイバッファサイズは$10^{6}$を使用した。&lt;/p&gt;&#xA;&lt;h3 id=&#34;参考&#34;&gt;参考&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://arxiv.org/abs/1509.02971&#34;&gt;DDPGの論文&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
-    
     <item>
       <title>DQNのお勉強中…</title>
       <link>https://motoshin.github.io/posts/2020-11-10-blog/</link>
       <pubDate>Tue, 10 Nov 2020 20:58:37 +0900</pubDate>
-      
       <guid>https://motoshin.github.io/posts/2020-11-10-blog/</guid>
-      <description>学生の頃ニューラルネットワーク(NN)を全力で避けていました。 そのため、もちろんNNを使った強化学習手法であるDQNも真面目にやったことはありませんでした。 「これはいかん！」と思い立ち今回勉強しようと思いました。 今回のブログはDQNはなんぞやという記事ではなく、実装してみて思ったことや気付いたことなどをただ書き殴るだけのメモ帳替りのものです。 なのでどんどん追記していくかもしれません。 また今度ちゃんとした解説記事書くから許せ…
-リポジトリ DQNのチュートリアル
-僕が頑張って実装したものです。 お納めください。 今のところ実装してあるタスクはopen ai gymが提供しているcartpoleという環境についてDQNを実装しました。 PyTorchの強化学習チュートリアルをコピペしたcartpole.pyと、自分なりにチュートリアルの内容をクラスなどに分けてプロジェクト化したcartpoleディレクトリを作りました。
-結果 一応結果の画像を貼っておきます。 プログラム実行するととても時間がかかるので…
-  rewardのグラフ   episode: 500, simulation: 20での結果です。 この結果出すのに2時間くらいかかりました（環境にもよると思いますが）。 ほんとはsimulationを100とか1000とかやりたいけどとんでもなく時間がかかりそう…
-気付き 以下、気付きや思ったことをつらつらと書いていきます。
- NNって出力のargmax取るやつだったな〜  なぜかラベルの数値データ１つが出力するものだと認識してた。 強化学習ではどの行動を取るのかなので行動数分の出力になる   Batch Normalization  NNに画像を入力するときは必須らしい フィルターかけまくって偏ったデータを正規化するものって理解しているけどあっているかは微妙   あんまり成績が伸びない…  rewardは22くらいで伸びが止まっている 軽く調べるとみんな200くらいいっている 画像入力とベクトル入力の差かもしれないな、と考察してる   中間層の数とか入力数と出力数とかどうやって決めてるんや…  ここは職人芸ってよく聞くし数を重ねるしかないのかな〜   画像を入力にしているためウィンドウをレンダリングする必要がる  画面がないAWSとかの環境で回しっぱができない やはりベクトル入力がベストかな〜 なぜPyTorchのチュートリアルは画像入力なんだ…    参考  PyTorch 【GIF】初心者のためのCNNからバッチノーマライゼーションとその仲間たちまでの解説  </description>
+      <description>&lt;p&gt;学生の頃ニューラルネットワーク(NN)を全力で避けていました。&#xA;そのため、もちろんNNを使った強化学習手法であるDQNも真面目にやったことはありませんでした。&#xA;「これはいかん！」と思い立ち今回勉強しようと思いました。&#xA;今回のブログはDQNはなんぞやという記事ではなく、実装してみて思ったことや気付いたことなどをただ書き殴るだけのメモ帳替りのものです。&#xA;なのでどんどん追記していくかもしれません。&#xA;また今度ちゃんとした解説記事書くから許せ…&lt;/p&gt;&#xA;&lt;h3 id=&#34;リポジトリ&#34;&gt;リポジトリ&lt;/h3&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/MotoShin/dqn-tutorial&#34;&gt;DQNのチュートリアル&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;僕が頑張って実装したものです。&#xA;お納めください。&#xA;今のところ実装してあるタスクはopen ai gymが提供しているcartpoleという環境についてDQNを実装しました。&#xA;&lt;a href=&#34;https://pytorch.org/tutorials/intermediate/reinforcement_q_learning.html&#34;&gt;PyTorchの強化学習チュートリアル&lt;/a&gt;をコピペした&lt;code&gt;cartpole.py&lt;/code&gt;と、自分なりにチュートリアルの内容をクラスなどに分けてプロジェクト化した&lt;code&gt;cartpole&lt;/code&gt;ディレクトリを作りました。&lt;/p&gt;&#xA;&lt;h3 id=&#34;結果&#34;&gt;結果&lt;/h3&gt;&#xA;&lt;p&gt;一応結果の画像を貼っておきます。&#xA;プログラム実行するととても時間がかかるので…&lt;/p&gt;&#xA;&lt;figure&gt;&lt;img src=&#34;img.png&#34;&gt;&lt;figcaption&gt;&#xA;      &lt;h4&gt;rewardのグラフ&lt;/h4&gt;&#xA;    &lt;/figcaption&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;p&gt;episode: 500, simulation: 20での結果です。&#xA;この結果出すのに2時間くらいかかりました（環境にもよると思いますが）。&#xA;ほんとはsimulationを100とか1000とかやりたいけどとんでもなく時間がかかりそう…&lt;/p&gt;&#xA;&lt;h3 id=&#34;気付き&#34;&gt;気付き&lt;/h3&gt;&#xA;&lt;p&gt;以下、気付きや思ったことをつらつらと書いていきます。&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;NNって出力のargmax取るやつだったな〜&#xA;&lt;ul&gt;&#xA;&lt;li&gt;なぜかラベルの数値データ１つが出力するものだと認識してた。&lt;/li&gt;&#xA;&lt;li&gt;強化学習ではどの行動を取るのかなので行動数分の出力になる&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;Batch Normalization&#xA;&lt;ul&gt;&#xA;&lt;li&gt;NNに画像を入力するときは必須らしい&lt;/li&gt;&#xA;&lt;li&gt;フィルターかけまくって偏ったデータを正規化するものって理解しているけどあっているかは微妙&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;あんまり成績が伸びない…&#xA;&lt;ul&gt;&#xA;&lt;li&gt;rewardは22くらいで伸びが止まっている&lt;/li&gt;&#xA;&lt;li&gt;軽く調べるとみんな200くらいいっている&lt;/li&gt;&#xA;&lt;li&gt;画像入力とベクトル入力の差かもしれないな、と考察してる&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;中間層の数とか入力数と出力数とかどうやって決めてるんや…&#xA;&lt;ul&gt;&#xA;&lt;li&gt;ここは職人芸ってよく聞くし数を重ねるしかないのかな〜&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;画像を入力にしているためウィンドウをレンダリングする必要がる&#xA;&lt;ul&gt;&#xA;&lt;li&gt;画面がないAWSとかの環境で回しっぱができない&lt;/li&gt;&#xA;&lt;li&gt;やはりベクトル入力がベストかな〜&lt;/li&gt;&#xA;&lt;li&gt;なぜPyTorchのチュートリアルは画像入力なんだ…&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;参考&#34;&gt;参考&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://pytorch.org/&#34;&gt;PyTorch&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://qiita.com/omiita/items/01855ff13cc6d3720ea4&#34;&gt;【GIF】初心者のためのCNNからバッチノーマライゼーションとその仲間たちまでの解説&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
-    
   </channel>
 </rss>

@@ -1,54 +1,59 @@
 <!doctype html>
-<html lang="en-us">
+<html lang="en">
   <head>
     <title>いい感じのグラフ出力アプリ作った // MotoShin Blog</title>
     <meta charset="utf-8" />
-    <meta name="generator" content="Hugo 0.68.3" />
+    <meta name="generator" content="Hugo 0.140.0">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="author" content="MotoShin" />
     <meta name="description" content="" />
-    <link rel="stylesheet" href="https://motoshin.github.io/css/main.min.4a7ec8660f9a44b08c4da97c5f2e31b1192df1d4d0322e65c0dbbc6ecb1b863f.css" />
+    <link rel="stylesheet" href="https://motoshin.github.io/css/main.min.5b1fcc8902588589c4767187402a3c29f8b8d7a6fdef6d9f8f77045bb0d14fee.css" />
 
     
-    <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="いい感じのグラフ出力アプリ作った"/>
-<meta name="twitter:description" content="めっちゃブログ更新さぼってました、大変申し訳ございませんでした…。 でも書くことなかったしちょっと忙しかったし仕方ないと思うんだ、うん。
+    
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="いい感じのグラフ出力アプリ作った">
+  <meta name="twitter:description" content="めっちゃブログ更新さぼってました、大変申し訳ございませんでした…。 でも書くことなかったしちょっと忙しかったし仕方ないと思うんだ、うん。
 てことで今回は少し技術ブログチックなことを書いていこうと思います。 pythonのmatplotlibでいい感じのグラフスタイルになるパッケージ？みたいなのがあるので紹介していきます。
 SciencePlots SciencePlotsというやつです。 なんかmatplotlibのデフォルトの文字フォントって微妙なんですが、これだとちょっとかっこいい感じで文字出力してくれます。 あとはIEEEの論文スタイル用のグラフとかにもパラメータを指定することでできるようになるみたいです。 なのでこれを僕が普段グラフ出力のために使っているプログラムにも使ってみることにしましたのでご紹介します。
 graph-creator なんのひねりもないリポジトリ名ですが、graph-creatorです。 これはcsvファイルをグラフにするアプリケーションです。
 準備 まずは実行するのに必要なライブラリをpipなりなんなりでインストールしてください。 ライブラリは下記の通りです。
- numpy matplotlib pandas SciencePlots  あと一応実行環境を記載しておくと下記の通りです。 たぶん記載した環境でなくとも動くとは思います。
-   os python version     macOS Catalina python 3.8.6   Ubuntu 20.04.1 LTS (Focal Fossa) python 3.8.3    実行 実行方法は下記のコマンドをプロジェクト直下で実行です。
+numpy matplotlib pandas SciencePlots あと一応実行環境を記載しておくと下記の通りです。 たぶん記載した環境でなくとも動くとは思います。
+os python version macOS Catalina python 3.8.6 Ubuntu 20.04.1 LTS (Focal Fossa) python 3.8.3 実行 実行方法は下記のコマンドをプロジェクト直下で実行です。
 $ python main.py そうすると対話モードでアプリケーションが立ち上がるので聞かれたことにこたえていきましょう。 一応書くとこんな感じ。
-# 今はモード1しかないので1を入力 Please select a mode (1: 2-axis graph): 1 # グラフにしたいcsvファイルのプロジェクト直下からの相対パスか絶対パスを入力 Input a csv file path: example/example."/>
+# 今はモード1しかないので1を入力 Please select a mode (1: 2-axis graph): 1 # グラフにしたいcsvファイルのプロジェクト直下からの相対パスか絶対パスを入力 Input a csv file path: example/example.csv # x軸の名前 Input a x axis name: x # y軸の名前 Input a y axis name: y # 画像ファイルのファイル名 Input a output image file name: img.png とりあえず何も打たずにenter押し続けると上記の値がデフォルトで入力されますので出力画像だけみたい人はそれでもいいです。 出力される画像はoutput/に出力されます。 すべてデフォルト値で実行した場合は下記のような画像が出力されます。">
 
-    <meta property="og:title" content="いい感じのグラフ出力アプリ作った" />
-<meta property="og:description" content="めっちゃブログ更新さぼってました、大変申し訳ございませんでした…。 でも書くことなかったしちょっと忙しかったし仕方ないと思うんだ、うん。
+    <meta property="og:url" content="https://motoshin.github.io/posts/2020-10-28-blog/">
+  <meta property="og:site_name" content="MotoShin Blog">
+  <meta property="og:title" content="いい感じのグラフ出力アプリ作った">
+  <meta property="og:description" content="めっちゃブログ更新さぼってました、大変申し訳ございませんでした…。 でも書くことなかったしちょっと忙しかったし仕方ないと思うんだ、うん。
 てことで今回は少し技術ブログチックなことを書いていこうと思います。 pythonのmatplotlibでいい感じのグラフスタイルになるパッケージ？みたいなのがあるので紹介していきます。
 SciencePlots SciencePlotsというやつです。 なんかmatplotlibのデフォルトの文字フォントって微妙なんですが、これだとちょっとかっこいい感じで文字出力してくれます。 あとはIEEEの論文スタイル用のグラフとかにもパラメータを指定することでできるようになるみたいです。 なのでこれを僕が普段グラフ出力のために使っているプログラムにも使ってみることにしましたのでご紹介します。
 graph-creator なんのひねりもないリポジトリ名ですが、graph-creatorです。 これはcsvファイルをグラフにするアプリケーションです。
 準備 まずは実行するのに必要なライブラリをpipなりなんなりでインストールしてください。 ライブラリは下記の通りです。
- numpy matplotlib pandas SciencePlots  あと一応実行環境を記載しておくと下記の通りです。 たぶん記載した環境でなくとも動くとは思います。
-   os python version     macOS Catalina python 3.8.6   Ubuntu 20.04.1 LTS (Focal Fossa) python 3.8.3    実行 実行方法は下記のコマンドをプロジェクト直下で実行です。
+numpy matplotlib pandas SciencePlots あと一応実行環境を記載しておくと下記の通りです。 たぶん記載した環境でなくとも動くとは思います。
+os python version macOS Catalina python 3.8.6 Ubuntu 20.04.1 LTS (Focal Fossa) python 3.8.3 実行 実行方法は下記のコマンドをプロジェクト直下で実行です。
 $ python main.py そうすると対話モードでアプリケーションが立ち上がるので聞かれたことにこたえていきましょう。 一応書くとこんな感じ。
-# 今はモード1しかないので1を入力 Please select a mode (1: 2-axis graph): 1 # グラフにしたいcsvファイルのプロジェクト直下からの相対パスか絶対パスを入力 Input a csv file path: example/example." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://motoshin.github.io/posts/2020-10-28-blog/" />
-<meta property="article:published_time" content="2020-10-28T21:53:17+09:00" />
-<meta property="article:modified_time" content="2020-10-28T21:53:17+09:00" />
+# 今はモード1しかないので1を入力 Please select a mode (1: 2-axis graph): 1 # グラフにしたいcsvファイルのプロジェクト直下からの相対パスか絶対パスを入力 Input a csv file path: example/example.csv # x軸の名前 Input a x axis name: x # y軸の名前 Input a y axis name: y # 画像ファイルのファイル名 Input a output image file name: img.png とりあえず何も打たずにenter押し続けると上記の値がデフォルトで入力されますので出力画像だけみたい人はそれでもいいです。 出力される画像はoutput/に出力されます。 すべてデフォルト値で実行した場合は下記のような画像が出力されます。">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2020-10-28T21:53:17+09:00">
+    <meta property="article:modified_time" content="2020-10-28T21:53:17+09:00">
+    <meta property="article:tag" content="Diary">
 
 
   </head>
   <body>
     <header class="app-header">
-      <a href="https://motoshin.github.io"><img class="app-header-avatar" src="/avatar.jpg" alt="MotoShin" /></a>
+      <a href="https://motoshin.github.io/"><img class="app-header-avatar" src="/avatar.jpg" alt="MotoShin" /></a>
       <h1>MotoShin Blog</h1>
       <p>日々の事をつらつらと書いてゆきます。</p>
       <div class="app-header-social">
         
           <a target="_blank" href="https://github.com/MotoShin" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
   <title>github</title>
-  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+  <svg class="icon icon-github" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>github</title><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
 </svg></a>
         
       </div>
@@ -63,20 +68,20 @@ $ python main.py そうすると対話モードでアプリケーションが立
         <div>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
   <title>calendar</title>
-  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+  <svg class="icon icon-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>calendar</title><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
 </svg>
           Oct 28, 2020
         </div>
         <div>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
   <title>clock</title>
-  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+  <svg class="icon icon-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>clock</title><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
 </svg>
           1 min read
         </div><div>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
   <title>tag</title>
-  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line>
+  <svg class="icon icon-tag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>tag</title><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
 </svg>
           <a class="tag" href="https://motoshin.github.io/tags/diary/">Diary</a></div></div>
     </header>
@@ -105,61 +110,59 @@ pythonのmatplotlibでいい感じのグラフスタイルになるパッケー�
 <p>あと一応実行環境を記載しておくと下記の通りです。
 たぶん記載した環境でなくとも動くとは思います。</p>
 <table>
-<thead>
-<tr>
-<th>os</th>
-<th>python version</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>macOS Catalina</td>
-<td>python 3.8.6</td>
-</tr>
-<tr>
-<td>Ubuntu 20.04.1 LTS (Focal Fossa)</td>
-<td>python 3.8.3</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>os</th>
+          <th>python version</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>macOS Catalina</td>
+          <td>python 3.8.6</td>
+      </tr>
+      <tr>
+          <td>Ubuntu 20.04.1 LTS (Focal Fossa)</td>
+          <td>python 3.8.3</td>
+      </tr>
+  </tbody>
 </table>
 <h4 id="実行">実行</h4>
 <p>実行方法は下記のコマンドをプロジェクト直下で実行です。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ python main.py
-</code></pre></div><p>そうすると対話モードでアプリケーションが立ち上がるので聞かれたことにこたえていきましょう。
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ python main.py
+</span></span></code></pre></div><p>そうすると対話モードでアプリケーションが立ち上がるので聞かれたことにこたえていきましょう。
 一応書くとこんな感じ。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 今はモード1しかないので1を入力</span>
-Please <span style="color:#66d9ef">select</span> a mode <span style="color:#f92672">(</span>1: 2-axis graph<span style="color:#f92672">)</span>: <span style="color:#ae81ff">1</span>
-<span style="color:#75715e"># グラフにしたいcsvファイルのプロジェクト直下からの相対パスか絶対パスを入力</span>
-Input a csv file path: example/example.csv
-<span style="color:#75715e"># x軸の名前</span>
-Input a x axis name: x
-<span style="color:#75715e"># y軸の名前</span>
-Input a y axis name: y
-<span style="color:#75715e"># 画像ファイルのファイル名</span>
-Input a output image file name: img.png
-</code></pre></div><p>とりあえず何も打たずにenter押し続けると上記の値がデフォルトで入力されますので出力画像だけみたい人はそれでもいいです。
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 今はモード1しかないので1を入力</span>
+</span></span><span style="display:flex;"><span>Please <span style="color:#66d9ef">select</span> a mode <span style="color:#f92672">(</span>1: 2-axis graph<span style="color:#f92672">)</span>: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># グラフにしたいcsvファイルのプロジェクト直下からの相対パスか絶対パスを入力</span>
+</span></span><span style="display:flex;"><span>Input a csv file path: example/example.csv
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># x軸の名前</span>
+</span></span><span style="display:flex;"><span>Input a x axis name: x
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># y軸の名前</span>
+</span></span><span style="display:flex;"><span>Input a y axis name: y
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 画像ファイルのファイル名</span>
+</span></span><span style="display:flex;"><span>Input a output image file name: img.png
+</span></span></code></pre></div><p>とりあえず何も打たずにenter押し続けると上記の値がデフォルトで入力されますので出力画像だけみたい人はそれでもいいです。
 出力される画像は<code>output/</code>に出力されます。
 すべてデフォルト値で実行した場合は下記のような画像が出力されます。</p>
-<figure>
-    <img src="img.png"/> <figcaption>
-            <h4>デフォルト値での出力画像</h4>
-        </figcaption>
+<figure><img src="img.png"><figcaption>
+      <h4>デフォルト値での出力画像</h4>
+    </figcaption>
 </figure>
 
 <p>綺麗な図や…</p>
 <p>一応、もう1つcsvデータを用意してあるのでそちらでもやってみます。
 下記のように実行してください。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ python main.py
-Please <span style="color:#66d9ef">select</span> a mode <span style="color:#f92672">(</span>1: 2-axis graph<span style="color:#f92672">)</span>: <span style="color:#ae81ff">1</span>
-Input a csv file path: example/example2.csv
-Input a x axis name: x
-Input a y axis name: y
-Input a output image file name: img2.png
-</code></pre></div><p>すると以下のような画像が出力されます。</p>
-<figure>
-    <img src="img2.png"/> <figcaption>
-            <h4>sin-cosのグラフ</h4>
-        </figcaption>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ python main.py
+</span></span><span style="display:flex;"><span>Please <span style="color:#66d9ef">select</span> a mode <span style="color:#f92672">(</span>1: 2-axis graph<span style="color:#f92672">)</span>: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>Input a csv file path: example/example2.csv
+</span></span><span style="display:flex;"><span>Input a x axis name: x
+</span></span><span style="display:flex;"><span>Input a y axis name: y
+</span></span><span style="display:flex;"><span>Input a output image file name: img2.png
+</span></span></code></pre></div><p>すると以下のような画像が出力されます。</p>
+<figure><img src="img2.png"><figcaption>
+      <h4>sin-cosのグラフ</h4>
+    </figcaption>
 </figure>
 
 <p>いいっすねぇ！</p>

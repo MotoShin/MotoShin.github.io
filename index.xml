@@ -4,214 +4,86 @@
     <title>MotoShin Blog</title>
     <link>https://motoshin.github.io/</link>
     <description>Recent content on MotoShin Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
+    <language>en</language>
     <lastBuildDate>Sun, 16 Jan 2022 11:16:05 +0900</lastBuildDate>
-    
-	<atom:link href="https://motoshin.github.io/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <atom:link href="https://motoshin.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Spinning Up 和訳シリーズ Soft Actor-Critic</title>
       <link>https://motoshin.github.io/posts/2022-01-16-blog/</link>
       <pubDate>Sun, 16 Jan 2022 11:16:05 +0900</pubDate>
-      
       <guid>https://motoshin.github.io/posts/2022-01-16-blog/</guid>
-      <description>下記の和訳をしていきます～
-https://spinningup.openai.com/en/latest/algorithms/sac.html
-Background Soft Actor Critic (SAC) は、確率的方策をoff-policyで最適化するアルゴリズムで、確率的な方策最適化とDDPGスタイルのアプローチの橋渡しをしている。 TD3の直接の後継ではないが、（ほぼ同時に発表されている）clipped double-Q トリックが組み込まれており、SACの方策には固有の確率性があるため、target policy smoothing のような恩恵を受けることになる。
-SACの中心的な特徴は、エントロピーの正則化である。方策は、期待収益とエントロピー（方策のランダム性の尺度）の間のトレードオフを最大化するように学習する。 エントロピーを増加させることで、より多くの探索を行い、後の学習を加速させることができる。また、方策が局所最適に早々に収束してしまうことも防ぐことができる。
-Quick Facts  SAC は off-policy のアルゴリズムである 本ページで実装されたSACは、連続した行動空間を持つ環境にのみ使用できる 方策更新ルールをわずかに変更することで、離散的な行動空間を扱うように実装することができる Spinning Up の SAC の実装は、並列化をサポートしていない  Key Equations Soft Actor Critic を説明するためには、まずエントロピー正則化強化学習の設定を理解する必要がある。 エントロピー正則化された強化学習では、価値関数の方程式が少し異なります。
-Entropy-Regularized Reinforcement Learning エントロピーとは、大まかに言えば、確率変数のランダム性を示す量である。 コインの重さを変えて、ほとんどの場合に表が出るようにすればエントロピーは低く、均等に重さを変えてどちらかの結果が半分の確率で出るようにすればエントロピーは高くなる。
-$x$ を確率質量または密度関数 $P$ を持つ確率変数とすると、$x$ のエントロピー $H$ はその分布 $P$ から次のように計算される。 $$ H(P) = \underset{x \sim P}{\rm{E}}[-\log P(x)] $$
-エントロピー正則化強化学習では、エージェントは各タイムステップで、そのタイムステップでの方策のエントロピーに比例したボーナス報酬を得る。 これにより、強化学習問題は次のように変化する。 $$ \pi^{*} = \underset{\pi}{\rm arg~max} \underset{\tau\sim\pi}{\rm{E}}\Bigl[\sum_{t=0}^{\infty}\gamma^t \Bigl(R(s_t,a_t,s_{t+1}) + \alpha H(\pi(\cdot|s_t))\Bigr)\Bigr] $$</description>
+      <description>&lt;p&gt;下記の和訳をしていきます～ &lt;br&gt;&#xA;&lt;a href=&#34;https://spinningup.openai.com/en/latest/algorithms/sac.html&#34;&gt;https://spinningup.openai.com/en/latest/algorithms/sac.html&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;&#xA;&lt;p&gt;Soft Actor Critic (SAC) は、確率的方策をoff-policyで最適化するアルゴリズムで、確率的な方策最適化とDDPGスタイルのアプローチの橋渡しをしている。&#xA;TD3の直接の後継ではないが、（ほぼ同時に発表されている）clipped double-Q トリックが組み込まれており、SACの方策には固有の確率性があるため、target policy smoothing のような恩恵を受けることになる。&lt;/p&gt;&#xA;&lt;p&gt;SACの中心的な特徴は、エントロピーの正則化である。方策は、期待収益とエントロピー（方策のランダム性の尺度）の間のトレードオフを最大化するように学習する。&#xA;エントロピーを増加させることで、より多くの探索を行い、後の学習を加速させることができる。また、方策が局所最適に早々に収束してしまうことも防ぐことができる。&lt;/p&gt;&#xA;&lt;h3 id=&#34;quick-facts&#34;&gt;Quick Facts&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;SAC は off-policy のアルゴリズムである&lt;/li&gt;&#xA;&lt;li&gt;本ページで実装されたSACは、連続した行動空間を持つ環境にのみ使用できる&lt;/li&gt;&#xA;&lt;li&gt;方策更新ルールをわずかに変更することで、離散的な行動空間を扱うように実装することができる&lt;/li&gt;&#xA;&lt;li&gt;Spinning Up の SAC  の実装は、並列化をサポートしていない&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;key-equations&#34;&gt;Key Equations&lt;/h2&gt;&#xA;&lt;p&gt;Soft Actor Critic を説明するためには、まずエントロピー正則化強化学習の設定を理解する必要がある。&#xA;エントロピー正則化された強化学習では、価値関数の方程式が少し異なります。&lt;/p&gt;&#xA;&lt;h3 id=&#34;entropy-regularized-reinforcement-learning&#34;&gt;Entropy-Regularized Reinforcement Learning&lt;/h3&gt;&#xA;&lt;p&gt;エントロピーとは、大まかに言えば、確率変数のランダム性を示す量である。&#xA;コインの重さを変えて、ほとんどの場合に表が出るようにすればエントロピーは低く、均等に重さを変えてどちらかの結果が半分の確率で出るようにすればエントロピーは高くなる。&lt;/p&gt;&#xA;&lt;p&gt;$x$ を確率質量または密度関数 $P$ を持つ確率変数とすると、$x$ のエントロピー $H$ はその分布 $P$ から次のように計算される。&#xA;$$&#xA;H(P) = \underset{x \sim P}{\rm{E}}[-\log P(x)]&#xA;$$&lt;/p&gt;&#xA;&lt;p&gt;エントロピー正則化強化学習では、エージェントは各タイムステップで、そのタイムステップでの方策のエントロピーに比例したボーナス報酬を得る。&#xA;これにより、強化学習問題は次のように変化する。&#xA;$$&#xA;\pi^{*} = \underset{\pi}{\rm arg~max} \underset{\tau\sim\pi}{\rm{E}}\Bigl[\sum_{t=0}^{\infty}\gamma^t \Bigl(R(s_t,a_t,s_{t+1}) + \alpha H(\pi(\cdot|s_t))\Bigr)\Bigr]&#xA;$$&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Spinning Up の和訳を書いていく</title>
       <link>https://motoshin.github.io/posts/2021-07-04-blog/</link>
       <pubDate>Sun, 04 Jul 2021 15:50:29 +0900</pubDate>
-      
       <guid>https://motoshin.github.io/posts/2021-07-04-blog/</guid>
-      <description>最近 Spinning Up というものの輪読会的なものを始めることになりました。 そこでその準備のため Spinning Up の和訳をつらつらと書いていこうと思います。 なお、全文ではなく僕が重要そうだな〜と思った部分を和訳してメモしていく感じです。
-Part1: Key Concepts in RL 該当ページは ここ です。 主に Key Concepts and Terminology を和訳していきます。
-Key Concepts and Terminology Action Space 離散的行動空間 (descrete action space) と連続的行動空間 (continuous action space) があるよ〜的な説明
-Policies 方策 (policy) はエージェント (agent) が行動を決定する際に使用されるルールである。 方策は決定論的 (deterministic) な場合は $\mu$ を用いて下記のように記述する。 $$ a_t = \mu(s_t) $$
-確率論的 (stochastic) の場合は通常 $\pi$ を用いて下記ように記述する。 $$ a_t \sim \pi(\cdot|s_t) $$
-パラメータがある場合は $\theta$ や $\phi$ を用いて下記のように記述する。 $$ a_t = \mu_{\theta}(s_t) $$ $$ a_t \sim \pi_{\theta}(\cdot|s_t) $$</description>
+      <description>&lt;p&gt;最近 &lt;a href=&#34;https://spinningup.openai.com/en/latest/index.html&#34;&gt;Spinning Up&lt;/a&gt; というものの輪読会的なものを始めることになりました。&#xA;そこでその準備のため Spinning Up の和訳をつらつらと書いていこうと思います。&#xA;なお、全文ではなく僕が重要そうだな〜と思った部分を和訳してメモしていく感じです。&lt;/p&gt;&#xA;&lt;h1 id=&#34;part1-key-concepts-in-rl&#34;&gt;Part1: Key Concepts in RL&lt;/h1&gt;&#xA;&lt;p&gt;該当ページは &lt;a href=&#34;https://spinningup.openai.com/en/latest/spinningup/rl_intro.html#key-concepts-and-terminology&#34;&gt;ここ&lt;/a&gt; です。&#xA;主に &lt;a href=&#34;https://spinningup.openai.com/en/latest/spinningup/rl_intro.html#key-concepts-and-terminology&#34;&gt;Key Concepts and Terminology&lt;/a&gt; を和訳していきます。&lt;/p&gt;&#xA;&lt;h2 id=&#34;key-concepts-and-terminology&#34;&gt;Key Concepts and Terminology&lt;/h2&gt;&#xA;&lt;h3 id=&#34;action-space&#34;&gt;Action Space&lt;/h3&gt;&#xA;&lt;p&gt;離散的行動空間 (descrete action space) と連続的行動空間 (continuous action space) があるよ〜的な説明&lt;/p&gt;&#xA;&lt;h3 id=&#34;policies&#34;&gt;Policies&lt;/h3&gt;&#xA;&lt;p&gt;方策 (policy) はエージェント (agent) が行動を決定する際に使用されるルールである。&#xA;方策は決定論的 (deterministic) な場合は $\mu$ を用いて下記のように記述する。&#xA;$$&#xA;a_t = \mu(s_t)&#xA;$$&lt;/p&gt;&#xA;&lt;p&gt;確率論的 (stochastic) の場合は通常 $\pi$ を用いて下記ように記述する。&#xA;$$&#xA;a_t \sim \pi(\cdot|s_t)&#xA;$$&lt;/p&gt;&#xA;&lt;p&gt;パラメータがある場合は $\theta$ や $\phi$ を用いて下記のように記述する。&#xA;$$&#xA;a_t = \mu_{\theta}(s_t)&#xA;$$&#xA;$$&#xA;a_t \sim \pi_{\theta}(\cdot|s_t)&#xA;$$&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>【メモ】DDPG論文の実験詳細の和訳</title>
       <link>https://motoshin.github.io/posts/2021-02-07/</link>
       <pubDate>Sun, 07 Feb 2021 14:07:58 +0900</pubDate>
-      
       <guid>https://motoshin.github.io/posts/2021-02-07/</guid>
-      <description>皆さん、明けましておめでとうございます。 本年もどうぞよろしくお願いします。（年明けて１ヶ月経過…）
-そんなことは置いといて、今回はブログでもなんでもなく生存報告を兼ねたただのメモです。 DDPGという強化学習アルゴリズムの論文の実験詳細の部分の和訳もメモしたかっただけです。 なので気にしなくて結構です。
-論文の和訳 ニューラルネットワークパラメータの学習にはAdam (Kingma &amp;amp; Ba, 2014)を用い、actorとcriticに対してそれぞれ$10^{-4}$と$10^{-3}$の学習率で学習を行った。 Qについては、$10^{-2}$のL2重み減衰を含み、$\gamma = 0.99$の割引係数を使用した。 ソフトターゲットの更新には$\tau = 0.001$を使用した。 ニューラルネットワークは、すべての隠れ層に整流非線形性(Glorot et al., 2011)を使用した。 actorの最終出力層は、アクションを束縛するためにタン層とした。 低次元ネットワークは2つの隠れ層を持ち、それぞれ400と300のユニット(130,000のパラメータ)を持っていた。 ピクセルから学習する際には、各層に32個のフィルターを持つ3つの畳み込み層（プーリングなし）を使用しました。 これに続いて、200ユニット（430,000パラメータ）の完全に接続された2つの層を使用しました。 最終的なレイヤーの重みとバイアスは，低次元の場合は$[-3 \times 10^{-3}, 3 \times 10^{-3}]$，ピクセルの場合は$[3 \times 10^{-4}, 3 \times 10^{-4}]$の一様分布から初期化した。 これは、政策と値の推定値の初期出力がゼロに近いことを保証するためであった。 他のレイヤーは、一様分布$[-\frac{1}{\sqrt{f}}, \frac{1}{\sqrt{f}}]$から初期化されました。 アクションは、完全に接続された層までは含まれなかった。 低次元問題では64、ピクセルでは16のミニバッチサイズで学習した。 リプレイバッファサイズは$10^{6}$を使用した。
-参考  DDPGの論文  </description>
+      <description>&lt;p&gt;皆さん、明けましておめでとうございます。&#xA;本年もどうぞよろしくお願いします。（年明けて１ヶ月経過…）&lt;/p&gt;&#xA;&lt;p&gt;そんなことは置いといて、今回はブログでもなんでもなく生存報告を兼ねたただのメモです。&#xA;DDPGという強化学習アルゴリズムの論文の実験詳細の部分の和訳もメモしたかっただけです。&#xA;なので気にしなくて結構です。&lt;/p&gt;&#xA;&lt;h3 id=&#34;論文の和訳&#34;&gt;論文の和訳&lt;/h3&gt;&#xA;&lt;p&gt;ニューラルネットワークパラメータの学習にはAdam (Kingma &amp;amp; Ba, 2014)を用い、actorとcriticに対してそれぞれ$10^{-4}$と$10^{-3}$の学習率で学習を行った。&#xA;Qについては、$10^{-2}$のL2重み減衰を含み、$\gamma = 0.99$の割引係数を使用した。&#xA;ソフトターゲットの更新には$\tau = 0.001$を使用した。&#xA;ニューラルネットワークは、すべての隠れ層に整流非線形性(Glorot et al., 2011)を使用した。&#xA;actorの最終出力層は、アクションを束縛するためにタン層とした。&#xA;低次元ネットワークは2つの隠れ層を持ち、それぞれ400と300のユニット(130,000のパラメータ)を持っていた。&#xA;ピクセルから学習する際には、各層に32個のフィルターを持つ3つの畳み込み層（プーリングなし）を使用しました。&#xA;これに続いて、200ユニット（430,000パラメータ）の完全に接続された2つの層を使用しました。&#xA;最終的なレイヤーの重みとバイアスは，低次元の場合は$[-3 \times 10^{-3}, 3 \times 10^{-3}]$，ピクセルの場合は$[3 \times 10^{-4}, 3 \times 10^{-4}]$の一様分布から初期化した。&#xA;これは、政策と値の推定値の初期出力がゼロに近いことを保証するためであった。&#xA;他のレイヤーは、一様分布$[-\frac{1}{\sqrt{f}}, \frac{1}{\sqrt{f}}]$から初期化されました。&#xA;アクションは、完全に接続された層までは含まれなかった。&#xA;低次元問題では64、ピクセルでは16のミニバッチサイズで学習した。&#xA;リプレイバッファサイズは$10^{6}$を使用した。&lt;/p&gt;&#xA;&lt;h3 id=&#34;参考&#34;&gt;参考&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://arxiv.org/abs/1509.02971&#34;&gt;DDPGの論文&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
-    
     <item>
       <title>DQNのお勉強中…</title>
       <link>https://motoshin.github.io/posts/2020-11-10-blog/</link>
       <pubDate>Tue, 10 Nov 2020 20:58:37 +0900</pubDate>
-      
       <guid>https://motoshin.github.io/posts/2020-11-10-blog/</guid>
-      <description>学生の頃ニューラルネットワーク(NN)を全力で避けていました。 そのため、もちろんNNを使った強化学習手法であるDQNも真面目にやったことはありませんでした。 「これはいかん！」と思い立ち今回勉強しようと思いました。 今回のブログはDQNはなんぞやという記事ではなく、実装してみて思ったことや気付いたことなどをただ書き殴るだけのメモ帳替りのものです。 なのでどんどん追記していくかもしれません。 また今度ちゃんとした解説記事書くから許せ…
-リポジトリ DQNのチュートリアル
-僕が頑張って実装したものです。 お納めください。 今のところ実装してあるタスクはopen ai gymが提供しているcartpoleという環境についてDQNを実装しました。 PyTorchの強化学習チュートリアルをコピペしたcartpole.pyと、自分なりにチュートリアルの内容をクラスなどに分けてプロジェクト化したcartpoleディレクトリを作りました。
-結果 一応結果の画像を貼っておきます。 プログラム実行するととても時間がかかるので…
-  rewardのグラフ   episode: 500, simulation: 20での結果です。 この結果出すのに2時間くらいかかりました（環境にもよると思いますが）。 ほんとはsimulationを100とか1000とかやりたいけどとんでもなく時間がかかりそう…
-気付き 以下、気付きや思ったことをつらつらと書いていきます。
- NNって出力のargmax取るやつだったな〜  なぜかラベルの数値データ１つが出力するものだと認識してた。 強化学習ではどの行動を取るのかなので行動数分の出力になる   Batch Normalization  NNに画像を入力するときは必須らしい フィルターかけまくって偏ったデータを正規化するものって理解しているけどあっているかは微妙   あんまり成績が伸びない…  rewardは22くらいで伸びが止まっている 軽く調べるとみんな200くらいいっている 画像入力とベクトル入力の差かもしれないな、と考察してる   中間層の数とか入力数と出力数とかどうやって決めてるんや…  ここは職人芸ってよく聞くし数を重ねるしかないのかな〜   画像を入力にしているためウィンドウをレンダリングする必要がる  画面がないAWSとかの環境で回しっぱができない やはりベクトル入力がベストかな〜 なぜPyTorchのチュートリアルは画像入力なんだ…    参考  PyTorch 【GIF】初心者のためのCNNからバッチノーマライゼーションとその仲間たちまでの解説  </description>
+      <description>&lt;p&gt;学生の頃ニューラルネットワーク(NN)を全力で避けていました。&#xA;そのため、もちろんNNを使った強化学習手法であるDQNも真面目にやったことはありませんでした。&#xA;「これはいかん！」と思い立ち今回勉強しようと思いました。&#xA;今回のブログはDQNはなんぞやという記事ではなく、実装してみて思ったことや気付いたことなどをただ書き殴るだけのメモ帳替りのものです。&#xA;なのでどんどん追記していくかもしれません。&#xA;また今度ちゃんとした解説記事書くから許せ…&lt;/p&gt;&#xA;&lt;h3 id=&#34;リポジトリ&#34;&gt;リポジトリ&lt;/h3&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/MotoShin/dqn-tutorial&#34;&gt;DQNのチュートリアル&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;僕が頑張って実装したものです。&#xA;お納めください。&#xA;今のところ実装してあるタスクはopen ai gymが提供しているcartpoleという環境についてDQNを実装しました。&#xA;&lt;a href=&#34;https://pytorch.org/tutorials/intermediate/reinforcement_q_learning.html&#34;&gt;PyTorchの強化学習チュートリアル&lt;/a&gt;をコピペした&lt;code&gt;cartpole.py&lt;/code&gt;と、自分なりにチュートリアルの内容をクラスなどに分けてプロジェクト化した&lt;code&gt;cartpole&lt;/code&gt;ディレクトリを作りました。&lt;/p&gt;&#xA;&lt;h3 id=&#34;結果&#34;&gt;結果&lt;/h3&gt;&#xA;&lt;p&gt;一応結果の画像を貼っておきます。&#xA;プログラム実行するととても時間がかかるので…&lt;/p&gt;&#xA;&lt;figure&gt;&lt;img src=&#34;img.png&#34;&gt;&lt;figcaption&gt;&#xA;      &lt;h4&gt;rewardのグラフ&lt;/h4&gt;&#xA;    &lt;/figcaption&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;p&gt;episode: 500, simulation: 20での結果です。&#xA;この結果出すのに2時間くらいかかりました（環境にもよると思いますが）。&#xA;ほんとはsimulationを100とか1000とかやりたいけどとんでもなく時間がかかりそう…&lt;/p&gt;&#xA;&lt;h3 id=&#34;気付き&#34;&gt;気付き&lt;/h3&gt;&#xA;&lt;p&gt;以下、気付きや思ったことをつらつらと書いていきます。&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;NNって出力のargmax取るやつだったな〜&#xA;&lt;ul&gt;&#xA;&lt;li&gt;なぜかラベルの数値データ１つが出力するものだと認識してた。&lt;/li&gt;&#xA;&lt;li&gt;強化学習ではどの行動を取るのかなので行動数分の出力になる&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;Batch Normalization&#xA;&lt;ul&gt;&#xA;&lt;li&gt;NNに画像を入力するときは必須らしい&lt;/li&gt;&#xA;&lt;li&gt;フィルターかけまくって偏ったデータを正規化するものって理解しているけどあっているかは微妙&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;あんまり成績が伸びない…&#xA;&lt;ul&gt;&#xA;&lt;li&gt;rewardは22くらいで伸びが止まっている&lt;/li&gt;&#xA;&lt;li&gt;軽く調べるとみんな200くらいいっている&lt;/li&gt;&#xA;&lt;li&gt;画像入力とベクトル入力の差かもしれないな、と考察してる&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;中間層の数とか入力数と出力数とかどうやって決めてるんや…&#xA;&lt;ul&gt;&#xA;&lt;li&gt;ここは職人芸ってよく聞くし数を重ねるしかないのかな〜&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;画像を入力にしているためウィンドウをレンダリングする必要がる&#xA;&lt;ul&gt;&#xA;&lt;li&gt;画面がないAWSとかの環境で回しっぱができない&lt;/li&gt;&#xA;&lt;li&gt;やはりベクトル入力がベストかな〜&lt;/li&gt;&#xA;&lt;li&gt;なぜPyTorchのチュートリアルは画像入力なんだ…&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;参考&#34;&gt;参考&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://pytorch.org/&#34;&gt;PyTorch&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://qiita.com/omiita/items/01855ff13cc6d3720ea4&#34;&gt;【GIF】初心者のためのCNNからバッチノーマライゼーションとその仲間たちまでの解説&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
-    
     <item>
       <title>いい感じのグラフ出力アプリ作った</title>
       <link>https://motoshin.github.io/posts/2020-10-28-blog/</link>
       <pubDate>Wed, 28 Oct 2020 21:53:17 +0900</pubDate>
-      
       <guid>https://motoshin.github.io/posts/2020-10-28-blog/</guid>
-      <description>めっちゃブログ更新さぼってました、大変申し訳ございませんでした…。 でも書くことなかったしちょっと忙しかったし仕方ないと思うんだ、うん。
-てことで今回は少し技術ブログチックなことを書いていこうと思います。 pythonのmatplotlibでいい感じのグラフスタイルになるパッケージ？みたいなのがあるので紹介していきます。
-SciencePlots SciencePlotsというやつです。 なんかmatplotlibのデフォルトの文字フォントって微妙なんですが、これだとちょっとかっこいい感じで文字出力してくれます。 あとはIEEEの論文スタイル用のグラフとかにもパラメータを指定することでできるようになるみたいです。 なのでこれを僕が普段グラフ出力のために使っているプログラムにも使ってみることにしましたのでご紹介します。
-graph-creator なんのひねりもないリポジトリ名ですが、graph-creatorです。 これはcsvファイルをグラフにするアプリケーションです。
-準備 まずは実行するのに必要なライブラリをpipなりなんなりでインストールしてください。 ライブラリは下記の通りです。
- numpy matplotlib pandas SciencePlots  あと一応実行環境を記載しておくと下記の通りです。 たぶん記載した環境でなくとも動くとは思います。
-   os python version     macOS Catalina python 3.8.6   Ubuntu 20.04.1 LTS (Focal Fossa) python 3.8.3    実行 実行方法は下記のコマンドをプロジェクト直下で実行です。
-$ python main.py そうすると対話モードでアプリケーションが立ち上がるので聞かれたことにこたえていきましょう。 一応書くとこんな感じ。
-# 今はモード1しかないので1を入力 Please select a mode (1: 2-axis graph): 1 # グラフにしたいcsvファイルのプロジェクト直下からの相対パスか絶対パスを入力 Input a csv file path: example/example.</description>
+      <description>&lt;p&gt;めっちゃブログ更新さぼってました、大変申し訳ございませんでした…。&#xA;でも書くことなかったしちょっと忙しかったし仕方ないと思うんだ、うん。&lt;/p&gt;&#xA;&lt;p&gt;てことで今回は少し技術ブログチックなことを書いていこうと思います。&#xA;pythonのmatplotlibでいい感じのグラフスタイルになるパッケージ？みたいなのがあるので紹介していきます。&lt;/p&gt;&#xA;&lt;h3 id=&#34;scienceplots&#34;&gt;SciencePlots&lt;/h3&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://pypi.org/project/SciencePlots/&#34;&gt;SciencePlots&lt;/a&gt;というやつです。&#xA;なんかmatplotlibのデフォルトの文字フォントって微妙なんですが、これだとちょっとかっこいい感じで文字出力してくれます。&#xA;あとはIEEEの論文スタイル用のグラフとかにもパラメータを指定することでできるようになるみたいです。&#xA;なのでこれを僕が普段グラフ出力のために使っているプログラムにも使ってみることにしましたのでご紹介します。&lt;/p&gt;&#xA;&lt;h3 id=&#34;graph-creator&#34;&gt;graph-creator&lt;/h3&gt;&#xA;&lt;p&gt;なんのひねりもないリポジトリ名ですが、&lt;a href=&#34;https://github.com/MotoShin/graph-creator&#34;&gt;graph-creator&lt;/a&gt;です。&#xA;これはcsvファイルをグラフにするアプリケーションです。&lt;/p&gt;&#xA;&lt;h4 id=&#34;準備&#34;&gt;準備&lt;/h4&gt;&#xA;&lt;p&gt;まずは実行するのに必要なライブラリをpipなりなんなりでインストールしてください。&#xA;ライブラリは下記の通りです。&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;numpy&lt;/li&gt;&#xA;&lt;li&gt;matplotlib&lt;/li&gt;&#xA;&lt;li&gt;pandas&lt;/li&gt;&#xA;&lt;li&gt;SciencePlots&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;あと一応実行環境を記載しておくと下記の通りです。&#xA;たぶん記載した環境でなくとも動くとは思います。&lt;/p&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;os&lt;/th&gt;&#xA;          &lt;th&gt;python version&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;macOS Catalina&lt;/td&gt;&#xA;          &lt;td&gt;python 3.8.6&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Ubuntu 20.04.1 LTS (Focal Fossa)&lt;/td&gt;&#xA;          &lt;td&gt;python 3.8.3&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;h4 id=&#34;実行&#34;&gt;実行&lt;/h4&gt;&#xA;&lt;p&gt;実行方法は下記のコマンドをプロジェクト直下で実行です。&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ python main.py&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;そうすると対話モードでアプリケーションが立ち上がるので聞かれたことにこたえていきましょう。&#xA;一応書くとこんな感じ。&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 今はモード1しかないので1を入力&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Please &lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; a mode &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;1: 2-axis graph&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# グラフにしたいcsvファイルのプロジェクト直下からの相対パスか絶対パスを入力&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Input a csv file path: example/example.csv&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# x軸の名前&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Input a x axis name: x&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# y軸の名前&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Input a y axis name: y&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 画像ファイルのファイル名&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Input a output image file name: img.png&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;とりあえず何も打たずにenter押し続けると上記の値がデフォルトで入力されますので出力画像だけみたい人はそれでもいいです。&#xA;出力される画像は&lt;code&gt;output/&lt;/code&gt;に出力されます。&#xA;すべてデフォルト値で実行した場合は下記のような画像が出力されます。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>いよいよ話題がなくなってきた</title>
       <link>https://motoshin.github.io/posts/2020-10-10-blog/</link>
       <pubDate>Sat, 10 Oct 2020 17:35:30 +0900</pubDate>
-      
       <guid>https://motoshin.github.io/posts/2020-10-10-blog/</guid>
-      <description>いよいよこのブログのセットアップ関係の話題がなくなってきて困っているMotoShinです。 そして普通に昨日ブログ更新サボってるんだよな〜。
-今後の話題 このブログの方針を書いてなかったので改めて書いていこうと思います。 以下のようなトピックを扱っていていこうかな、と思ってます。
- 強化学習関連 (tag名：ReinforcementLerning) 好きなゲーム関連 (tag名：Game) 参考書紹介 (tag名：Study) プログラミング系 (tag名：Program) 日記 (tag名：Diary)  こんな感じですかね〜、まぁだらだらやっていくのでこれ以外にも出てくるとは思いますが。 それぞれの項目について少し説明していきたいと思います。
-強化学習関連 (tag名：ReinforcementLerning) まず前回のブログでも扱っていた強化学習関連の話題です。 前回のブログではいきなり強化学習の話題を扱ってしまって少し難しくなってしまったので今回は段階を踏みつつこの話題を扱っていきたいと考えています。 具体的には強化学習の前段の簡単な問題を扱っている「バンディット問題」から解説記事を書いていきたいな、と思っております。
-好きなゲーム関連 (tag名：Game) これはただゲームのお話をだらだらしていこうと思います。 おもしろいゲームのおすすめや、ゲームの考察とかしていきたいなと考えています。 多分、ソウルシリーズ系になると思うけど・・・。
-参考書紹介 (tag名：Study) 最近実は勉強しております。 メインは数学ですがこれからは英語とかも勉強していこうかな、と思っています。 学問的な部分以外でも技術的な面の勉強ももちろんしていこうと思います。 それらの中で「お、ええやん」と思った本を紹介していけてらなと思っています。
-プログラミング系 (tag名：Program) そこまで頻繁にできるかはわかりませんが実際にコードを書いて技術的な発信ができればなと考えています。
-日記 (tag名：Diary) 日記は日々の出来事とか愚痴とかつらつらと書いていこうかなと思っています。 まぁ書くことがなにもないときの苦し紛れのものになると思いますが・・・。
-今日の一言 半沢直樹シーズン2一気見しながら書いてると全然筆が進まないな・・・</description>
+      <description>&lt;p&gt;いよいよこのブログのセットアップ関係の話題がなくなってきて困っているMotoShinです。&#xA;そして普通に昨日ブログ更新サボってるんだよな〜。&lt;/p&gt;&#xA;&lt;h2 id=&#34;今後の話題&#34;&gt;今後の話題&lt;/h2&gt;&#xA;&lt;p&gt;このブログの方針を書いてなかったので改めて書いていこうと思います。&#xA;以下のようなトピックを扱っていていこうかな、と思ってます。&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;強化学習関連 (tag名：ReinforcementLerning)&lt;/li&gt;&#xA;&lt;li&gt;好きなゲーム関連 (tag名：Game)&lt;/li&gt;&#xA;&lt;li&gt;参考書紹介 (tag名：Study)&lt;/li&gt;&#xA;&lt;li&gt;プログラミング系 (tag名：Program)&lt;/li&gt;&#xA;&lt;li&gt;日記 (tag名：Diary)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;こんな感じですかね〜、まぁだらだらやっていくのでこれ以外にも出てくるとは思いますが。&#xA;それぞれの項目について少し説明していきたいと思います。&lt;/p&gt;&#xA;&lt;h4 id=&#34;強化学習関連-tag名reinforcementlerning&#34;&gt;強化学習関連 (tag名：ReinforcementLerning)&lt;/h4&gt;&#xA;&lt;p&gt;まず前回のブログでも扱っていた強化学習関連の話題です。&#xA;前回のブログではいきなり強化学習の話題を扱ってしまって少し難しくなってしまったので今回は段階を踏みつつこの話題を扱っていきたいと考えています。&#xA;具体的には強化学習の前段の簡単な問題を扱っている「バンディット問題」から解説記事を書いていきたいな、と思っております。&lt;/p&gt;&#xA;&lt;h4 id=&#34;好きなゲーム関連-tag名game&#34;&gt;好きなゲーム関連 (tag名：Game)&lt;/h4&gt;&#xA;&lt;p&gt;これはただゲームのお話をだらだらしていこうと思います。&#xA;おもしろいゲームのおすすめや、ゲームの考察とかしていきたいなと考えています。&#xA;多分、ソウルシリーズ系になると思うけど・・・。&lt;/p&gt;&#xA;&lt;h4 id=&#34;参考書紹介-tag名study&#34;&gt;参考書紹介 (tag名：Study)&lt;/h4&gt;&#xA;&lt;p&gt;最近実は勉強しております。&#xA;メインは数学ですがこれからは英語とかも勉強していこうかな、と思っています。&#xA;学問的な部分以外でも技術的な面の勉強ももちろんしていこうと思います。&#xA;それらの中で「お、ええやん」と思った本を紹介していけてらなと思っています。&lt;/p&gt;&#xA;&lt;h4 id=&#34;プログラミング系-tag名program&#34;&gt;プログラミング系 (tag名：Program)&lt;/h4&gt;&#xA;&lt;p&gt;そこまで頻繁にできるかはわかりませんが実際にコードを書いて技術的な発信ができればなと考えています。&lt;/p&gt;&#xA;&lt;h4 id=&#34;日記-tag名diary&#34;&gt;日記 (tag名：Diary)&lt;/h4&gt;&#xA;&lt;p&gt;日記は日々の出来事とか愚痴とかつらつらと書いていこうかなと思っています。&#xA;まぁ書くことがなにもないときの苦し紛れのものになると思いますが・・・。&lt;/p&gt;&#xA;&lt;h2 id=&#34;今日の一言&#34;&gt;今日の一言&lt;/h2&gt;&#xA;&lt;p&gt;半沢直樹シーズン2一気見しながら書いてると全然筆が進まないな・・・&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>数式の出力の仕方を解説していく</title>
       <link>https://motoshin.github.io/posts/2020-10-08-bolg/</link>
       <pubDate>Thu, 08 Oct 2020 20:16:46 +0900</pubDate>
-      
       <guid>https://motoshin.github.io/posts/2020-10-08-bolg/</guid>
-      <description>夜勤明けで死にそうなMotoShinです。 頭がくらくらするので今日は簡単に書けそうな話題でいこうと思います。
-数式を出していくぅ！ 数式を出す準備 昨日出てきたblogプロジェクトのtreeコマンド結果です。
-. ├── archetypes ├── config.toml ├── content │ └── posts ├── data ├── deploy.sh ├── layouts │ ├── _default │ │ └── baseof.html │ └── partials │ └── math.html ├── public ├── resources ├── static │ └── avatar.jpg └── themes └── m10c ./layouts/partials/math.htmlというファイルを作成します。 ./layouts/partials/math.htmlの中身は下記のようになります。
-&amp;lt;link rel=&amp;#34;stylesheet&amp;#34; href=&amp;#34;https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css&amp;#34; integrity=&amp;#34;sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X&amp;#34; crossorigin=&amp;#34;anonymous&amp;#34;&amp;gt; &amp;lt;script defer src=&amp;#34;https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js&amp;#34; integrity=&amp;#34;sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4&amp;#34; crossorigin=&amp;#34;anonymous&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script defer src=&amp;#34;https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js&amp;#34; integrity=&amp;#34;sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa&amp;#34; crossorigin=&amp;#34;anonymous&amp;#34; onload=&amp;#34;renderMathInElement(document.body);&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script&amp;gt; document.addEventListener(&amp;#34;DOMContentLoaded&amp;#34;, function() { renderMathInElement(document.body, {delimiters: [ {left: &amp;#34;$$&amp;#34;, right: &amp;#34;$$&amp;#34;, display: true}, {left: &amp;#34;$&amp;#34;, right: &amp;#34;$&amp;#34;, display: false}] }); }); &amp;lt;/script&amp;gt; これはKaTeXのAuto-renderExtensionを参考にして作成しました。 .</description>
+      <description>&lt;p&gt;夜勤明けで死にそうなMotoShinです。&#xA;頭がくらくらするので今日は簡単に書けそうな話題でいこうと思います。&lt;/p&gt;&#xA;&lt;h3 id=&#34;数式を出していくぅ&#34;&gt;数式を出していくぅ！&lt;/h3&gt;&#xA;&lt;h4 id=&#34;数式を出す準備&#34;&gt;数式を出す準備&lt;/h4&gt;&#xA;&lt;p&gt;昨日出てきたblogプロジェクトのtreeコマンド結果です。&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;.&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── archetypes&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── config.toml&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── content&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│   └── posts&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── data&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── deploy.sh&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── layouts&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│   ├── _default&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│   │   └── baseof.html&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│   └── partials&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│       └── math.html&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── public&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── resources&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── static&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│   └── avatar.jpg&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;└── themes&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    └── m10c&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;./layouts/partials/math.html&lt;/code&gt;というファイルを作成します。&#xA;&lt;code&gt;./layouts/partials/math.html&lt;/code&gt;の中身は下記のようになります。&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;link&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;rel&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;stylesheet&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;href&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;integrity&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;crossorigin&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;anonymous&amp;#34;&lt;/span&gt;&amp;gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;defer&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;src&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;integrity&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;crossorigin&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;anonymous&amp;#34;&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&amp;gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;defer&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;src&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;integrity&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;crossorigin&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;anonymous&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;onload&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;renderMathInElement(document.body);&amp;#34;&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&amp;gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&amp;gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    document.&lt;span style=&#34;color:#a6e22e&#34;&gt;addEventListener&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;DOMContentLoaded&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt;() {&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#a6e22e&#34;&gt;renderMathInElement&lt;/span&gt;(document.&lt;span style=&#34;color:#a6e22e&#34;&gt;body&lt;/span&gt;, {&lt;span style=&#34;color:#a6e22e&#34;&gt;delimiters&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; [&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        {&lt;span style=&#34;color:#a6e22e&#34;&gt;left&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;$$&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;right&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;$$&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;display&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;},&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        {&lt;span style=&#34;color:#a6e22e&#34;&gt;left&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;$&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;right&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;$&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;display&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;}]&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        });&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    });&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&amp;gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;これは&lt;a href=&#34;https://katex.org/docs/autorender.html&#34;&gt;KaTeXのAuto-renderExtension&lt;/a&gt;を参考にして作成しました。&#xA;&lt;code&gt;./layouts/partials/math.html&lt;/code&gt;を作成したあとは&lt;code&gt;./layouts/_default/baseof.html&lt;/code&gt;のbodyタグの中のmainタグの中に以下を追記します。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>画像を添付してみる</title>
       <link>https://motoshin.github.io/posts/2020-10-07-blog/</link>
       <pubDate>Wed, 07 Oct 2020 18:24:19 +0900</pubDate>
-      
       <guid>https://motoshin.github.io/posts/2020-10-07-blog/</guid>
-      <description>今回は一昨日のブログで書いていた画像の添付をしてみます。 昨日のブログで数式の挿入して満足したけどやり方とか書いた方が読者の人たち的にはいいのかな、 とか思ったので今日は画像添付のやり方書くとともに画像添付をしようと思います。 あと今日はいちいち改行せずブログ書いてみます。
-画像添付のやり方 ブログのプロジェクト構造 まずは事前知識としてHugoのブログプロジェクトのディレクトリ構造の説明からします。
-. ├── archetypes ├── config.toml ├── content │ └── posts ├── data ├── deploy.sh ├── layouts ├── public ├── resources ├── static │ └── avatar.jpg └── themes └── m10c まぁブログのディレクトリ構造はこんな感じになってるんですね。
-まずブログ記事の作り方ですが下記コマンドを実行すると./content/posts/に新たにtest.mdが作成されます。
-hugo new posts/test.md これに記事を書いて下記コマンドをdeploy.shを実行すると./public/直下に色々展開されます。 これが皆さんの見ているブログの画面を構築する元になっている感じですね。
-画像添付していくぅ！ どうやらPege Bundleっていうのを使うみたい。
-これを下のように書いて使うとこんな感じ。
-![This is a image](test.jpg) 調べてみると他の方法もあったので試してみる。
-Hugo内にはShrotcodeってやつがあるらしくそれを使うことでいけるらしい。 うまくエスケープできなかったから詳しくはここを見てくれ！ Shortcodes
-  This is a image   画像サイズの調整は簡単にはできないらしい・・・。
-今日のまとめ  画像の添付はできた 画像サイズ変更とかはもう少し調べないとダメそう  そんなところです。</description>
+      <description>&lt;p&gt;今回は一昨日のブログで書いていた画像の添付をしてみます。&#xA;昨日のブログで数式の挿入して満足したけどやり方とか書いた方が読者の人たち的にはいいのかな、&#xA;とか思ったので今日は画像添付のやり方書くとともに画像添付をしようと思います。&#xA;あと今日はいちいち改行せずブログ書いてみます。&lt;/p&gt;&#xA;&lt;h3 id=&#34;画像添付のやり方&#34;&gt;画像添付のやり方&lt;/h3&gt;&#xA;&lt;h4 id=&#34;ブログのプロジェクト構造&#34;&gt;ブログのプロジェクト構造&lt;/h4&gt;&#xA;&lt;p&gt;まずは事前知識としてHugoのブログプロジェクトのディレクトリ構造の説明からします。&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;.&#xA;├── archetypes&#xA;├── config.toml&#xA;├── content&#xA;│   └── posts&#xA;├── data&#xA;├── deploy.sh&#xA;├── layouts&#xA;├── public&#xA;├── resources&#xA;├── static&#xA;│   └── avatar.jpg&#xA;└── themes&#xA;    └── m10c&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;まぁブログのディレクトリ構造はこんな感じになってるんですね。&lt;/p&gt;&#xA;&lt;p&gt;まずブログ記事の作り方ですが下記コマンドを実行すると&lt;code&gt;./content/posts/&lt;/code&gt;に新たにtest.mdが作成されます。&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;hugo new posts/test.md&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;これに記事を書いて下記コマンドを&lt;code&gt;deploy.sh&lt;/code&gt;を実行すると&lt;code&gt;./public/&lt;/code&gt;直下に色々展開されます。&#xA;これが皆さんの見ているブログの画面を構築する元になっている感じですね。&lt;/p&gt;&#xA;&lt;h4 id=&#34;画像添付していくぅ&#34;&gt;画像添付していくぅ！&lt;/h4&gt;&#xA;&lt;p&gt;どうやら&lt;a href=&#34;https://gohugo.io/content-management/page-bundles&#34;&gt;Pege Bundle&lt;/a&gt;っていうのを使うみたい。&lt;/p&gt;&#xA;&lt;p&gt;これを下のように書いて使うとこんな感じ。&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;![This is a image](test.jpg)&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img src=&#34;test.jpg&#34; alt=&#34;This is a image&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;調べてみると他の方法もあったので試してみる。&lt;/p&gt;&#xA;&lt;p&gt;Hugo内にはShrotcodeってやつがあるらしくそれを使うことでいけるらしい。&#xA;うまくエスケープできなかったから詳しくはここを見てくれ！&#xA;&lt;a href=&#34;https://gohugo.io/content-management/shortcodes/&#34;&gt;Shortcodes&lt;/a&gt;&lt;/p&gt;&#xA;&lt;figure&gt;&lt;img src=&#34;test.jpg&#34;&gt;&lt;figcaption&gt;&#xA;      &lt;h4&gt;This is a image&lt;/h4&gt;&#xA;    &lt;/figcaption&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;p&gt;画像サイズの調整は簡単にはできないらしい・・・。&lt;/p&gt;&#xA;&lt;h3 id=&#34;今日のまとめ&#34;&gt;今日のまとめ&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;em&gt;&lt;strong&gt;画像の添付はできた&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;em&gt;&lt;strong&gt;画像サイズ変更とかはもう少し調べないとダメそう&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;そんなところです。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>数式の挿入とかの練習</title>
       <link>https://motoshin.github.io/posts/2020-10-06-blog/</link>
       <pubDate>Tue, 06 Oct 2020 20:15:09 +0900</pubDate>
-      
       <guid>https://motoshin.github.io/posts/2020-10-06-blog/</guid>
-      <description>今日は昨日の記事にも書いた通り数式の挿入の練習をしようと思います。
-こんな感じでこのブログに慣れるためにも、しばらくの間はしょうもない話題で毎日投稿していこうと思います。
-数式の書き方 では、いきなり本題です。
-数式書いてみます。
-KaTeXってやつで数式描画してるみたいです。
-これも色々勉強が必要そうだ・・・。
-$$ f(x)= \sum_{k=0}^{\infty} \frac{ f^{(k)}(x_0)}{n!} \left( x-x_0 \right)^k $$
-文中の数式 $y = f(x)$ のテスト。
-お～、なかなかええやん。数式綺麗やん。
-満足してしまったのと、結構時間かかってしまったので今日はここまでにしておこうと思います。
-今日の一言 プロフ画像変えてみました。
-川越で撮った謎のカメレオンです。</description>
+      <description>&lt;p&gt;今日は昨日の記事にも書いた通り数式の挿入の練習をしようと思います。&lt;/p&gt;&#xA;&lt;p&gt;こんな感じでこのブログに慣れるためにも、しばらくの間はしょうもない話題で毎日投稿していこうと思います。&lt;/p&gt;&#xA;&lt;h3 id=&#34;数式の書き方&#34;&gt;数式の書き方&lt;/h3&gt;&#xA;&lt;p&gt;では、いきなり本題です。&lt;br&gt;&#xA;数式書いてみます。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://katex.org/&#34;&gt;KaTeX&lt;/a&gt;ってやつで数式描画してるみたいです。&lt;br&gt;&#xA;これも色々勉強が必要そうだ・・・。&lt;/p&gt;&#xA;&lt;p&gt;$$&#xA;f(x)= \sum_{k=0}^{\infty} \frac{ f^{(k)}(x_0)}{n!} \left( x-x_0 \right)^k&#xA;$$&lt;/p&gt;&#xA;&lt;p&gt;文中の数式 $y = f(x)$ のテスト。&lt;/p&gt;&#xA;&lt;p&gt;お～、なかなかええやん。数式綺麗やん。&lt;/p&gt;&#xA;&lt;p&gt;満足してしまったのと、結構時間かかってしまったので今日はここまでにしておこうと思います。&lt;/p&gt;&#xA;&lt;h3 id=&#34;今日の一言&#34;&gt;今日の一言&lt;/h3&gt;&#xA;&lt;p&gt;プロフ画像変えてみました。&lt;br&gt;&#xA;川越で撮った謎のカメレオンです。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>ブログのテーマ選び難しい問題</title>
       <link>https://motoshin.github.io/posts/2020-10-05-blog/</link>
       <pubDate>Mon, 05 Oct 2020 18:35:59 +0900</pubDate>
-      
       <guid>https://motoshin.github.io/posts/2020-10-05-blog/</guid>
-      <description>ブログのテーマって皆さんどのように決めているんでしょうか？
-難しくないですか、テーマ。
-今の僕はHugoってやつ使ってブログ書いてるんですがそれのテーマ一覧がこれですよ。
-https://themes.gohugo.io/
-いや、ムズいわ
-これ選ぶだけで一日潰れちゃうよ
-てことで今日はブログのテーマについてだらだら書いていこうと思います。
-ブログのテーマ選びの難しさ ブログのテーマって何がムズいって「これだ！」ってやつがあってウキウキで設定してみるとなんか違うな、
-ってなるところだと思うんです。
-なんなんでしょうね、あれ。
-今設定してるテーマも「m10c」ってやつなんですけど、すごいシンプルでええやん！ってなったんですが
-いざ設定してみるとうーんって感じになりました。
-（テーマがイケてないという意味ではないです。全部いいテーマです。製作者さんマジリスペクト）
-自分で作ればええやんって思うけど自分にそんなセンスはないんだよな～
-ブログのテーマに欲しいもの なので僕がブログテーマに対して何を求めているのかを頭の整理もかねて書き出したいと思います。
-欲しい機能は以下のような感じです。
- tag機能 コメント機能 数式をLatex風に書ける機能 いい感じにおしゃれなUI  こんな感じです。
-僕が重視したいのが
- 数式をLatex風に書ける機能
- です。
-なんてったって技術ブログですからね()。
-これが備わっていたのでこの「m10c」も選んでみました。
-なんかいい感じに以下のページみたいに書けるらしいです。
-https://themes.gohugo.io//theme/hugo-theme-m10c/post/math-typesetting/
-（まだどうやるかはわかっていません。）
-これらがいい感じに内蔵されてるテーマあったら教えてください、お願いします。
-結論 今日のブログをまとめるとこんな感じです。
- ブログのテーマ作ってる人はすごい 不満があるなら自分で作れ  そんなところです。
-次回 次回は、このテーマに慣れるために画像とか数式とか書いていこうと思います。</description>
+      <description>&lt;p&gt;ブログのテーマって皆さんどのように決めているんでしょうか？&lt;br&gt;&#xA;難しくないですか、テーマ。&lt;br&gt;&#xA;今の僕はHugoってやつ使ってブログ書いてるんですがそれのテーマ一覧がこれですよ。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://themes.gohugo.io/&#34;&gt;https://themes.gohugo.io/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;いや、ムズいわ&lt;br&gt;&#xA;これ選ぶだけで一日潰れちゃうよ&lt;/p&gt;&#xA;&lt;p&gt;てことで今日はブログのテーマについてだらだら書いていこうと思います。&lt;/p&gt;&#xA;&lt;h2 id=&#34;ブログのテーマ選びの難しさ&#34;&gt;ブログのテーマ選びの難しさ&lt;/h2&gt;&#xA;&lt;p&gt;ブログのテーマって何がムズいって「これだ！」ってやつがあってウキウキで設定してみるとなんか違うな、&lt;br&gt;&#xA;ってなるところだと思うんです。&lt;br&gt;&#xA;なんなんでしょうね、あれ。&lt;br&gt;&#xA;今設定してるテーマも「m10c」ってやつなんですけど、すごいシンプルでええやん！ってなったんですが&lt;br&gt;&#xA;いざ設定してみるとうーんって感じになりました。&lt;br&gt;&#xA;（テーマがイケてないという意味ではないです。全部いいテーマです。製作者さんマジリスペクト）&lt;/p&gt;&#xA;&lt;p&gt;自分で作ればええやんって思うけど自分にそんなセンスはないんだよな～&lt;/p&gt;&#xA;&lt;h2 id=&#34;ブログのテーマに欲しいもの&#34;&gt;ブログのテーマに欲しいもの&lt;/h2&gt;&#xA;&lt;p&gt;なので僕がブログテーマに対して何を求めているのかを頭の整理もかねて書き出したいと思います。&lt;br&gt;&#xA;欲しい機能は以下のような感じです。&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;tag機能&lt;/li&gt;&#xA;&lt;li&gt;コメント機能&lt;/li&gt;&#xA;&lt;li&gt;数式をLatex風に書ける機能&lt;/li&gt;&#xA;&lt;li&gt;いい感じにおしゃれなUI&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;こんな感じです。&lt;br&gt;&#xA;僕が重視したいのが&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;数式をLatex風に書ける機能&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;です。&lt;br&gt;&#xA;なんてったって技術ブログですからね()。&lt;br&gt;&#xA;これが備わっていたのでこの「m10c」も選んでみました。&lt;br&gt;&#xA;なんかいい感じに以下のページみたいに書けるらしいです。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://themes.gohugo.io//theme/hugo-theme-m10c/post/math-typesetting/&#34;&gt;https://themes.gohugo.io//theme/hugo-theme-m10c/post/math-typesetting/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;（まだどうやるかはわかっていません。）&lt;br&gt;&#xA;これらがいい感じに内蔵されてるテーマあったら教えてください、お願いします。&lt;/p&gt;&#xA;&lt;h2 id=&#34;結論&#34;&gt;結論&lt;/h2&gt;&#xA;&lt;p&gt;今日のブログをまとめるとこんな感じです。&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;em&gt;&lt;strong&gt;ブログのテーマ作ってる人はすごい&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;em&gt;&lt;strong&gt;不満があるなら自分で作れ&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;そんなところです。&lt;/p&gt;&#xA;&lt;h2 id=&#34;次回&#34;&gt;次回&lt;/h2&gt;&#xA;&lt;p&gt;次回は、このテーマに慣れるために画像とか数式とか書いていこうと思います。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>ブログをGitHub Pagesに移行しました。</title>
       <link>https://motoshin.github.io/posts/2020-10-04-create-blog-1/</link>
       <pubDate>Sun, 04 Oct 2020 18:11:00 +0900</pubDate>
-      
       <guid>https://motoshin.github.io/posts/2020-10-04-create-blog-1/</guid>
-      <description>GitHub Pagesでブログ！？ 第一印象はこんな感じでした。
-僕のGithub Pagesのイメージはほんとにhtmlのペライチしか表示できないと思っていたので結構驚きました。
-移行した理由 移行した理由としては以下の理由があります。
- AWSの無料トライアル？期間みたいのが終わってた githubでの管理なのでやりやすそう なんかイケてそう  まぁ、こんか感じです。
- AWSの無料トライアル？期間みたいのが終わってた
- これはほんと驚きました。
-今まで1500円とかだった料金が9月いきなり7000円越えとかになっていて急いで全部のインスタンスを消しました。
-確認してほんとによかった・・・。
- githubでの管理なのでやりやすそう
- これは管理もそうですが、ブログの記事自体もmarkdownで記述できるという点もあります。
- なんかイケてそう
- なんかイケてそうだなって思いました（フィーリング）。
-Hugoっていうやつがブログ生成しててgo言語使っててなんかイケてそう（）。
-今後の方向性 とりあえずカスタムドメインとか使えそうなので前のブログのドメインを復活させようかな、とか思ってます。
-あとは前のブログの記事復活できたらやります。（たぶんやらないかも）
-今日はこんなところです。</description>
+      <description>&lt;h2 id=&#34;github-pagesでブログ&#34;&gt;GitHub Pagesでブログ！？&lt;/h2&gt;&#xA;&lt;p&gt;第一印象はこんな感じでした。&lt;br&gt;&#xA;僕のGithub Pagesのイメージはほんとにhtmlのペライチしか表示できないと思っていたので結構驚きました。&lt;/p&gt;&#xA;&lt;h2 id=&#34;移行した理由&#34;&gt;移行した理由&lt;/h2&gt;&#xA;&lt;p&gt;移行した理由としては以下の理由があります。&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;AWSの無料トライアル？期間みたいのが終わってた&lt;/li&gt;&#xA;&lt;li&gt;githubでの管理なのでやりやすそう&lt;/li&gt;&#xA;&lt;li&gt;なんかイケてそう&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;まぁ、こんか感じです。&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;AWSの無料トライアル？期間みたいのが終わってた&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;これはほんと驚きました。&lt;br&gt;&#xA;今まで1500円とかだった料金が9月いきなり7000円越えとかになっていて急いで全部のインスタンスを消しました。&lt;br&gt;&#xA;確認してほんとによかった・・・。&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;githubでの管理なのでやりやすそう&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;これは管理もそうですが、ブログの記事自体もmarkdownで記述できるという点もあります。&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;なんかイケてそう&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;なんかイケてそうだなって思いました（フィーリング）。&lt;br&gt;&#xA;Hugoっていうやつがブログ生成しててgo言語使っててなんかイケてそう（）。&lt;/p&gt;&#xA;&lt;h2 id=&#34;今後の方向性&#34;&gt;今後の方向性&lt;/h2&gt;&#xA;&lt;p&gt;とりあえずカスタムドメインとか使えそうなので前のブログのドメインを復活させようかな、とか思ってます。&lt;br&gt;&#xA;あとは前のブログの記事復活できたらやります。（たぶんやらないかも）&lt;/p&gt;&#xA;&lt;p&gt;今日はこんなところです。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

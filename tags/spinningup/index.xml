@@ -4,41 +4,23 @@
     <title>SpinningUp on MotoShin Blog</title>
     <link>https://motoshin.github.io/tags/spinningup/</link>
     <description>Recent content in SpinningUp on MotoShin Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
+    <language>en</language>
     <lastBuildDate>Sun, 16 Jan 2022 11:16:05 +0900</lastBuildDate>
-    
-	<atom:link href="https://motoshin.github.io/tags/spinningup/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <atom:link href="https://motoshin.github.io/tags/spinningup/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Spinning Up 和訳シリーズ Soft Actor-Critic</title>
       <link>https://motoshin.github.io/posts/2022-01-16-blog/</link>
       <pubDate>Sun, 16 Jan 2022 11:16:05 +0900</pubDate>
-      
       <guid>https://motoshin.github.io/posts/2022-01-16-blog/</guid>
-      <description>下記の和訳をしていきます～
-https://spinningup.openai.com/en/latest/algorithms/sac.html
-Background Soft Actor Critic (SAC) は、確率的方策をoff-policyで最適化するアルゴリズムで、確率的な方策最適化とDDPGスタイルのアプローチの橋渡しをしている。 TD3の直接の後継ではないが、（ほぼ同時に発表されている）clipped double-Q トリックが組み込まれており、SACの方策には固有の確率性があるため、target policy smoothing のような恩恵を受けることになる。
-SACの中心的な特徴は、エントロピーの正則化である。方策は、期待収益とエントロピー（方策のランダム性の尺度）の間のトレードオフを最大化するように学習する。 エントロピーを増加させることで、より多くの探索を行い、後の学習を加速させることができる。また、方策が局所最適に早々に収束してしまうことも防ぐことができる。
-Quick Facts  SAC は off-policy のアルゴリズムである 本ページで実装されたSACは、連続した行動空間を持つ環境にのみ使用できる 方策更新ルールをわずかに変更することで、離散的な行動空間を扱うように実装することができる Spinning Up の SAC の実装は、並列化をサポートしていない  Key Equations Soft Actor Critic を説明するためには、まずエントロピー正則化強化学習の設定を理解する必要がある。 エントロピー正則化された強化学習では、価値関数の方程式が少し異なります。
-Entropy-Regularized Reinforcement Learning エントロピーとは、大まかに言えば、確率変数のランダム性を示す量である。 コインの重さを変えて、ほとんどの場合に表が出るようにすればエントロピーは低く、均等に重さを変えてどちらかの結果が半分の確率で出るようにすればエントロピーは高くなる。
-$x$ を確率質量または密度関数 $P$ を持つ確率変数とすると、$x$ のエントロピー $H$ はその分布 $P$ から次のように計算される。 $$ H(P) = \underset{x \sim P}{\rm{E}}[-\log P(x)] $$
-エントロピー正則化強化学習では、エージェントは各タイムステップで、そのタイムステップでの方策のエントロピーに比例したボーナス報酬を得る。 これにより、強化学習問題は次のように変化する。 $$ \pi^{*} = \underset{\pi}{\rm arg~max} \underset{\tau\sim\pi}{\rm{E}}\Bigl[\sum_{t=0}^{\infty}\gamma^t \Bigl(R(s_t,a_t,s_{t+1}) + \alpha H(\pi(\cdot|s_t))\Bigr)\Bigr] $$</description>
+      <description>&lt;p&gt;下記の和訳をしていきます～ &lt;br&gt;&#xA;&lt;a href=&#34;https://spinningup.openai.com/en/latest/algorithms/sac.html&#34;&gt;https://spinningup.openai.com/en/latest/algorithms/sac.html&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;&#xA;&lt;p&gt;Soft Actor Critic (SAC) は、確率的方策をoff-policyで最適化するアルゴリズムで、確率的な方策最適化とDDPGスタイルのアプローチの橋渡しをしている。&#xA;TD3の直接の後継ではないが、（ほぼ同時に発表されている）clipped double-Q トリックが組み込まれており、SACの方策には固有の確率性があるため、target policy smoothing のような恩恵を受けることになる。&lt;/p&gt;&#xA;&lt;p&gt;SACの中心的な特徴は、エントロピーの正則化である。方策は、期待収益とエントロピー（方策のランダム性の尺度）の間のトレードオフを最大化するように学習する。&#xA;エントロピーを増加させることで、より多くの探索を行い、後の学習を加速させることができる。また、方策が局所最適に早々に収束してしまうことも防ぐことができる。&lt;/p&gt;&#xA;&lt;h3 id=&#34;quick-facts&#34;&gt;Quick Facts&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;SAC は off-policy のアルゴリズムである&lt;/li&gt;&#xA;&lt;li&gt;本ページで実装されたSACは、連続した行動空間を持つ環境にのみ使用できる&lt;/li&gt;&#xA;&lt;li&gt;方策更新ルールをわずかに変更することで、離散的な行動空間を扱うように実装することができる&lt;/li&gt;&#xA;&lt;li&gt;Spinning Up の SAC  の実装は、並列化をサポートしていない&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;key-equations&#34;&gt;Key Equations&lt;/h2&gt;&#xA;&lt;p&gt;Soft Actor Critic を説明するためには、まずエントロピー正則化強化学習の設定を理解する必要がある。&#xA;エントロピー正則化された強化学習では、価値関数の方程式が少し異なります。&lt;/p&gt;&#xA;&lt;h3 id=&#34;entropy-regularized-reinforcement-learning&#34;&gt;Entropy-Regularized Reinforcement Learning&lt;/h3&gt;&#xA;&lt;p&gt;エントロピーとは、大まかに言えば、確率変数のランダム性を示す量である。&#xA;コインの重さを変えて、ほとんどの場合に表が出るようにすればエントロピーは低く、均等に重さを変えてどちらかの結果が半分の確率で出るようにすればエントロピーは高くなる。&lt;/p&gt;&#xA;&lt;p&gt;$x$ を確率質量または密度関数 $P$ を持つ確率変数とすると、$x$ のエントロピー $H$ はその分布 $P$ から次のように計算される。&#xA;$$&#xA;H(P) = \underset{x \sim P}{\rm{E}}[-\log P(x)]&#xA;$$&lt;/p&gt;&#xA;&lt;p&gt;エントロピー正則化強化学習では、エージェントは各タイムステップで、そのタイムステップでの方策のエントロピーに比例したボーナス報酬を得る。&#xA;これにより、強化学習問題は次のように変化する。&#xA;$$&#xA;\pi^{*} = \underset{\pi}{\rm arg~max} \underset{\tau\sim\pi}{\rm{E}}\Bigl[\sum_{t=0}^{\infty}\gamma^t \Bigl(R(s_t,a_t,s_{t+1}) + \alpha H(\pi(\cdot|s_t))\Bigr)\Bigr]&#xA;$$&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Spinning Up の和訳を書いていく</title>
       <link>https://motoshin.github.io/posts/2021-07-04-blog/</link>
       <pubDate>Sun, 04 Jul 2021 15:50:29 +0900</pubDate>
-      
       <guid>https://motoshin.github.io/posts/2021-07-04-blog/</guid>
-      <description>最近 Spinning Up というものの輪読会的なものを始めることになりました。 そこでその準備のため Spinning Up の和訳をつらつらと書いていこうと思います。 なお、全文ではなく僕が重要そうだな〜と思った部分を和訳してメモしていく感じです。
-Part1: Key Concepts in RL 該当ページは ここ です。 主に Key Concepts and Terminology を和訳していきます。
-Key Concepts and Terminology Action Space 離散的行動空間 (descrete action space) と連続的行動空間 (continuous action space) があるよ〜的な説明
-Policies 方策 (policy) はエージェント (agent) が行動を決定する際に使用されるルールである。 方策は決定論的 (deterministic) な場合は $\mu$ を用いて下記のように記述する。 $$ a_t = \mu(s_t) $$
-確率論的 (stochastic) の場合は通常 $\pi$ を用いて下記ように記述する。 $$ a_t \sim \pi(\cdot|s_t) $$
-パラメータがある場合は $\theta$ や $\phi$ を用いて下記のように記述する。 $$ a_t = \mu_{\theta}(s_t) $$ $$ a_t \sim \pi_{\theta}(\cdot|s_t) $$</description>
+      <description>&lt;p&gt;最近 &lt;a href=&#34;https://spinningup.openai.com/en/latest/index.html&#34;&gt;Spinning Up&lt;/a&gt; というものの輪読会的なものを始めることになりました。&#xA;そこでその準備のため Spinning Up の和訳をつらつらと書いていこうと思います。&#xA;なお、全文ではなく僕が重要そうだな〜と思った部分を和訳してメモしていく感じです。&lt;/p&gt;&#xA;&lt;h1 id=&#34;part1-key-concepts-in-rl&#34;&gt;Part1: Key Concepts in RL&lt;/h1&gt;&#xA;&lt;p&gt;該当ページは &lt;a href=&#34;https://spinningup.openai.com/en/latest/spinningup/rl_intro.html#key-concepts-and-terminology&#34;&gt;ここ&lt;/a&gt; です。&#xA;主に &lt;a href=&#34;https://spinningup.openai.com/en/latest/spinningup/rl_intro.html#key-concepts-and-terminology&#34;&gt;Key Concepts and Terminology&lt;/a&gt; を和訳していきます。&lt;/p&gt;&#xA;&lt;h2 id=&#34;key-concepts-and-terminology&#34;&gt;Key Concepts and Terminology&lt;/h2&gt;&#xA;&lt;h3 id=&#34;action-space&#34;&gt;Action Space&lt;/h3&gt;&#xA;&lt;p&gt;離散的行動空間 (descrete action space) と連続的行動空間 (continuous action space) があるよ〜的な説明&lt;/p&gt;&#xA;&lt;h3 id=&#34;policies&#34;&gt;Policies&lt;/h3&gt;&#xA;&lt;p&gt;方策 (policy) はエージェント (agent) が行動を決定する際に使用されるルールである。&#xA;方策は決定論的 (deterministic) な場合は $\mu$ を用いて下記のように記述する。&#xA;$$&#xA;a_t = \mu(s_t)&#xA;$$&lt;/p&gt;&#xA;&lt;p&gt;確率論的 (stochastic) の場合は通常 $\pi$ を用いて下記ように記述する。&#xA;$$&#xA;a_t \sim \pi(\cdot|s_t)&#xA;$$&lt;/p&gt;&#xA;&lt;p&gt;パラメータがある場合は $\theta$ や $\phi$ を用いて下記のように記述する。&#xA;$$&#xA;a_t = \mu_{\theta}(s_t)&#xA;$$&#xA;$$&#xA;a_t \sim \pi_{\theta}(\cdot|s_t)&#xA;$$&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

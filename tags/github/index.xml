@@ -4,35 +4,16 @@
     <title>GitHub on MotoShin Blog</title>
     <link>https://motoshin.github.io/tags/github/</link>
     <description>Recent content in GitHub on MotoShin Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
+    <language>en</language>
     <lastBuildDate>Sun, 04 Oct 2020 18:11:00 +0900</lastBuildDate>
-    
-	<atom:link href="https://motoshin.github.io/tags/github/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <atom:link href="https://motoshin.github.io/tags/github/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ブログをGitHub Pagesに移行しました。</title>
       <link>https://motoshin.github.io/posts/2020-10-04-create-blog-1/</link>
       <pubDate>Sun, 04 Oct 2020 18:11:00 +0900</pubDate>
-      
       <guid>https://motoshin.github.io/posts/2020-10-04-create-blog-1/</guid>
-      <description>GitHub Pagesでブログ！？ 第一印象はこんな感じでした。
-僕のGithub Pagesのイメージはほんとにhtmlのペライチしか表示できないと思っていたので結構驚きました。
-移行した理由 移行した理由としては以下の理由があります。
- AWSの無料トライアル？期間みたいのが終わってた githubでの管理なのでやりやすそう なんかイケてそう  まぁ、こんか感じです。
- AWSの無料トライアル？期間みたいのが終わってた
- これはほんと驚きました。
-今まで1500円とかだった料金が9月いきなり7000円越えとかになっていて急いで全部のインスタンスを消しました。
-確認してほんとによかった・・・。
- githubでの管理なのでやりやすそう
- これは管理もそうですが、ブログの記事自体もmarkdownで記述できるという点もあります。
- なんかイケてそう
- なんかイケてそうだなって思いました（フィーリング）。
-Hugoっていうやつがブログ生成しててgo言語使っててなんかイケてそう（）。
-今後の方向性 とりあえずカスタムドメインとか使えそうなので前のブログのドメインを復活させようかな、とか思ってます。
-あとは前のブログの記事復活できたらやります。（たぶんやらないかも）
-今日はこんなところです。</description>
+      <description>&lt;h2 id=&#34;github-pagesでブログ&#34;&gt;GitHub Pagesでブログ！？&lt;/h2&gt;&#xA;&lt;p&gt;第一印象はこんな感じでした。&lt;br&gt;&#xA;僕のGithub Pagesのイメージはほんとにhtmlのペライチしか表示できないと思っていたので結構驚きました。&lt;/p&gt;&#xA;&lt;h2 id=&#34;移行した理由&#34;&gt;移行した理由&lt;/h2&gt;&#xA;&lt;p&gt;移行した理由としては以下の理由があります。&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;AWSの無料トライアル？期間みたいのが終わってた&lt;/li&gt;&#xA;&lt;li&gt;githubでの管理なのでやりやすそう&lt;/li&gt;&#xA;&lt;li&gt;なんかイケてそう&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;まぁ、こんか感じです。&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;AWSの無料トライアル？期間みたいのが終わってた&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;これはほんと驚きました。&lt;br&gt;&#xA;今まで1500円とかだった料金が9月いきなり7000円越えとかになっていて急いで全部のインスタンスを消しました。&lt;br&gt;&#xA;確認してほんとによかった・・・。&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;githubでの管理なのでやりやすそう&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;これは管理もそうですが、ブログの記事自体もmarkdownで記述できるという点もあります。&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;なんかイケてそう&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;なんかイケてそうだなって思いました（フィーリング）。&lt;br&gt;&#xA;Hugoっていうやつがブログ生成しててgo言語使っててなんかイケてそう（）。&lt;/p&gt;&#xA;&lt;h2 id=&#34;今後の方向性&#34;&gt;今後の方向性&lt;/h2&gt;&#xA;&lt;p&gt;とりあえずカスタムドメインとか使えそうなので前のブログのドメインを復活させようかな、とか思ってます。&lt;br&gt;&#xA;あとは前のブログの記事復活できたらやります。（たぶんやらないかも）&lt;/p&gt;&#xA;&lt;p&gt;今日はこんなところです。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>
