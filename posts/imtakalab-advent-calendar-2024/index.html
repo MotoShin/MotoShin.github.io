@@ -15,8 +15,8 @@
   <meta name="twitter:title" content="GitHub を使い倒したいよなぁ？">
   <meta name="twitter:description" content="これは「imtakalab Advent Calendar 2024」の23日目の記事です。
 https://adventar.org/calendars/10354
-目次 はじめに GitHub を使い倒す Pull Request の活用 Release の活用 まとめ はじめに どうも MotoShin です。 すごい久しぶりのブログ更新になりますが、所属研究室で Advent Calendar をやるとのことなので久しぶりに記事を書いてみようと思います。 私は社会人博士として会社で働きながら研究室に所属しているのですが、博士課程に進む前に決めていたテーマとして研究室の開発手法のモダン化を掲げていました（実は）。 そこで Docker や Git を使用していくための勉強会を開いたり、研究室用の GitHub Organization を作ったりして環境を整備していました。 そのお陰で Git の利用と GitHub の簡単な利用は確かに増えて、一部では Docker を使った環境構築をしている人も出てきました。 個人的にはかなりの手応えを感じていますが、まだまだ足りない部分も多いので、今回は GitHub を使い倒す方法を紹介していきたいと思います。
-GitHub を使い倒す 皆さんはもちろん Git を手足のように使いこなせていると思います。 あんなに勉強会とかしてもらったしね、もちろんね、使いこなせてるよね。 しかし、GitHub を使いこなせているかと言われると🤔となる人も多いのではないでしょうか。 GitHub はリモートリポジトリを管理するためだけのサービスだと思っている人が多いのではないでしょうか？
+目次 はじめに GitHub を使い倒す Pull Request の活用 Release の活用 GitHub Actions の活用 動かしてみる まとめ 参考 はじめに どうも MotoShin です。 すごい久しぶりのブログ更新になりますが、所属研究室で Advent Calendar をやるとのことなので久しぶりに記事を書いてみようと思います。 私は社会人博士として会社で働きながら研究室に所属しているのですが、博士課程に進む前に決めていたテーマとして研究室の開発手法のモダン化を掲げていました（実は）。 そこで Docker や Git を使用していくための勉強会を開いたり、研究室用の GitHub Organization を作ったりして環境を整備していました。 そのお陰で Git の利用と GitHub の簡単な利用は確かに増えて、一部では Docker を使った環境構築をしている人も出てきました。 個人的にはかなりの手応えを感じていますが、まだまだ足りない部分も多いので、今回は GitHub を使い倒す方法を紹介していきたいと思います。
+GitHub を使い倒す 皆さんはもちろん Git を手足のように使いこなせていると思います。 あんなに勉強会とかしてもらったしね、もちろんね、使いこなせてるよね。 しかし、GitHub を使いこなせているかと言われると 🤔 となる人も多いのではないでしょうか。 GitHub はリモートリポジトリを管理するためだけのサービスだと思っている人が多いのではないでしょうか？
 そこで、GitHub でここはできるようになってほしい、というポイントや自分がよく使っている機能などを紹介していきたいと思います。
 なお、ここからは下記のリポジトリで実際に作業していきながら話を進めていきたいと思います。
 https://github.com/MotoShin/imtakalab-advent-calendar-2024-handson
@@ -27,8 +27,8 @@ Pull Request の活用 まず GitHub を使う上で絶対に使ってほしい�
   <meta property="og:title" content="GitHub を使い倒したいよなぁ？">
   <meta property="og:description" content="これは「imtakalab Advent Calendar 2024」の23日目の記事です。
 https://adventar.org/calendars/10354
-目次 はじめに GitHub を使い倒す Pull Request の活用 Release の活用 まとめ はじめに どうも MotoShin です。 すごい久しぶりのブログ更新になりますが、所属研究室で Advent Calendar をやるとのことなので久しぶりに記事を書いてみようと思います。 私は社会人博士として会社で働きながら研究室に所属しているのですが、博士課程に進む前に決めていたテーマとして研究室の開発手法のモダン化を掲げていました（実は）。 そこで Docker や Git を使用していくための勉強会を開いたり、研究室用の GitHub Organization を作ったりして環境を整備していました。 そのお陰で Git の利用と GitHub の簡単な利用は確かに増えて、一部では Docker を使った環境構築をしている人も出てきました。 個人的にはかなりの手応えを感じていますが、まだまだ足りない部分も多いので、今回は GitHub を使い倒す方法を紹介していきたいと思います。
-GitHub を使い倒す 皆さんはもちろん Git を手足のように使いこなせていると思います。 あんなに勉強会とかしてもらったしね、もちろんね、使いこなせてるよね。 しかし、GitHub を使いこなせているかと言われると🤔となる人も多いのではないでしょうか。 GitHub はリモートリポジトリを管理するためだけのサービスだと思っている人が多いのではないでしょうか？
+目次 はじめに GitHub を使い倒す Pull Request の活用 Release の活用 GitHub Actions の活用 動かしてみる まとめ 参考 はじめに どうも MotoShin です。 すごい久しぶりのブログ更新になりますが、所属研究室で Advent Calendar をやるとのことなので久しぶりに記事を書いてみようと思います。 私は社会人博士として会社で働きながら研究室に所属しているのですが、博士課程に進む前に決めていたテーマとして研究室の開発手法のモダン化を掲げていました（実は）。 そこで Docker や Git を使用していくための勉強会を開いたり、研究室用の GitHub Organization を作ったりして環境を整備していました。 そのお陰で Git の利用と GitHub の簡単な利用は確かに増えて、一部では Docker を使った環境構築をしている人も出てきました。 個人的にはかなりの手応えを感じていますが、まだまだ足りない部分も多いので、今回は GitHub を使い倒す方法を紹介していきたいと思います。
+GitHub を使い倒す 皆さんはもちろん Git を手足のように使いこなせていると思います。 あんなに勉強会とかしてもらったしね、もちろんね、使いこなせてるよね。 しかし、GitHub を使いこなせているかと言われると 🤔 となる人も多いのではないでしょうか。 GitHub はリモートリポジトリを管理するためだけのサービスだと思っている人が多いのではないでしょうか？
 そこで、GitHub でここはできるようになってほしい、というポイントや自分がよく使っている機能などを紹介していきたいと思います。
 なお、ここからは下記のリポジトリで実際に作業していきながら話を進めていきたいと思います。
 https://github.com/MotoShin/imtakalab-advent-calendar-2024-handson
@@ -59,6 +59,27 @@ Pull Request の活用 まず GitHub を使う上で絶対に使ってほしい�
     </header>
     <main class="app-container">
       
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css" integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.js" integrity="sha384-VQ8d8WVFw0yHhCk5E8I86oOhv48xLpnDZx5T9GogA/Y84DcCKWXDmSDfn13bzFZY" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+            
+            
+            delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "$", right: "$", display: false},
+                {left: "\\(", right: "\\)", display: false},
+                {left: "\\[", right: "\\]", display: true}
+            ],
+            
+            throwOnError : false
+        });
+    });
+</script>
+
+      
       
   <article class="post">
     <header class="post-header">
@@ -76,7 +97,7 @@ Pull Request の活用 まず GitHub を使う上で絶対に使ってほしい�
   <title>clock</title>
   <svg class="icon icon-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>clock</title><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
 </svg>
-          2 min read
+          5 min read
         </div><div>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
   <title>tag</title>
@@ -94,9 +115,15 @@ Pull Request の活用 まず GitHub を使う上で絶対に使ってほしい�
 <ul>
 <li><a href="#pull-request-%E3%81%AE%E6%B4%BB%E7%94%A8">Pull Request の活用</a></li>
 <li><a href="#release-%E3%81%AE%E6%B4%BB%E7%94%A8">Release の活用</a></li>
+<li><a href="#github-actions-%E3%81%AE%E6%B4%BB%E7%94%A8">GitHub Actions の活用</a>
+<ul>
+<li><a href="#%E5%8B%95%E3%81%8B%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B">動かしてみる</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#%E3%81%BE%E3%81%A8%E3%82%81">まとめ</a></li>
+<li><a href="#%E5%8F%82%E8%80%83">参考</a></li>
 </ul>
 <h2 id="はじめに">はじめに</h2>
 <p>どうも MotoShin です。
@@ -108,7 +135,7 @@ Pull Request の活用 まず GitHub を使う上で絶対に使ってほしい�
 <h2 id="github-を使い倒す">GitHub を使い倒す</h2>
 <p>皆さんは<strong>もちろん</strong> Git を手足のように使いこなせていると思います。
 あんなに勉強会とかしてもらったしね、もちろんね、使いこなせてるよね。
-しかし、GitHub を使いこなせているかと言われると🤔となる人も多いのではないでしょうか。
+しかし、GitHub を使いこなせているかと言われると &#x1f914; となる人も多いのではないでしょうか。
 GitHub はリモートリポジトリを管理するためだけのサービスだと思っている人が多いのではないでしょうか？</p>
 <p>そこで、GitHub でここはできるようになってほしい、というポイントや自分がよく使っている機能などを紹介していきたいと思います。</p>
 <p>なお、ここからは下記のリポジトリで実際に作業していきながら話を進めていきたいと思います。<br>
@@ -219,11 +246,342 @@ Release 画面に遷移するために、上記画像 <code>Releases</code> タ�
 </ol>
 <p>こうすると下記のように Release が作成されます。<br>
 <a href="https://github.com/MotoShin/imtakalab-advent-calendar-2024-handson/releases/tag/v0.0.1">https://github.com/MotoShin/imtakalab-advent-calendar-2024-handson/releases/tag/v0.0.1</a></p>
+<h2 id="github-actions-の活用">GitHub Actions の活用</h2>
+<p>GitHub Actions は CI/CD を行うための機能です。
+CI/CD とは、Continuous Integration / Continuous Deployment の略で、コードの変更を自動的にビルドやテストを行い、リリースまでを自動化するためのプラクティスです。
+まぁ、要は GitHub 上で何かしらのアクションをすれば、連動してなんでもできるすごいやつってことです。</p>
+<style type="text/css">
+     
+    .notice {
+        --title-color: #fff;
+        --title-background-color: #6be;
+        --content-color: #444;
+        --content-background-color: #e7f2fa;
+    }
+
+    .notice.info {
+        --title-background-color: #fb7;
+        --content-background-color: #fec;
+    }
+
+    .notice.tip {
+        --title-background-color: #5a5;
+        --content-background-color: #efe;
+    }
+
+    .notice.warning {
+        --title-background-color: #c33;
+        --content-background-color: #fee;
+    }
+
+     
+    @media (prefers-color-scheme:dark) {
+        .notice {
+            --title-color: #fff;
+            --title-background-color: #069;
+            --content-color: #ddd;
+            --content-background-color: #023;
+        }
+
+        .notice.info {
+            --title-background-color: #a50;
+            --content-background-color: #420;
+        }
+
+        .notice.tip {
+            --title-background-color: #363;
+            --content-background-color: #121;
+        }
+
+        .notice.warning {
+            --title-background-color: #800;
+            --content-background-color: #400;
+        }
+    }
+
+    body.dark .notice {
+        --title-color: #fff;
+        --title-background-color: #069;
+        --content-color: #ddd;
+        --content-background-color: #023;
+    }
+
+    body.dark .notice.info {
+        --title-background-color: #a50;
+        --content-background-color: #420;
+    }
+
+    body.dark .notice.tip {
+        --title-background-color: #363;
+        --content-background-color: #121;
+    }
+
+    body.dark .notice.warning {
+        --title-background-color: #800;
+        --content-background-color: #400;
+    }
+
+     
+    .notice {
+        padding: 18px;
+        line-height: 24px;
+        margin-bottom: 24px;
+        border-radius: 4px;
+        color: var(--content-color);
+        background: var(--content-background-color);
+    }
+
+    .notice p:last-child {
+        margin-bottom: 0
+    }
+
+     
+    .notice-title {
+        margin: -18px -18px 12px;
+        padding: 4px 18px;
+        border-radius: 4px 4px 0 0;
+        font-weight: 700;
+        color: var(--title-color);
+        background: var(--title-background-color);
+    }
+
+     
+    .icon-notice {
+        display: inline-flex;
+        align-self: center;
+        margin-right: 8px;
+    }
+
+    .icon-notice img,
+    .icon-notice svg {
+        height: 1em;
+        width: 1em;
+        fill: currentColor;
+    }
+
+    .icon-notice img,
+    .icon-notice.baseline svg {
+        top: .125em;
+        position: relative;
+    }
+</style><div class="notice tip" >
+    <p class="notice-title">
+        <span class="icon-notice baseline">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="300.5 134 300 300">
+  <path d="M551.281 252.36c0-3.32-1.172-6.641-3.515-8.985l-17.774-17.578c-2.344-2.344-5.469-3.711-8.789-3.711-3.32 0-6.445 1.367-8.789 3.71l-79.687 79.493-44.141-44.14c-2.344-2.344-5.469-3.712-8.79-3.712-3.32 0-6.444 1.368-8.788 3.711l-17.774 17.579c-2.343 2.343-3.515 5.664-3.515 8.984 0 3.32 1.172 6.445 3.515 8.789l70.704 70.703c2.343 2.344 5.664 3.711 8.789 3.711 3.32 0 6.64-1.367 8.984-3.71l106.055-106.056c2.343-2.343 3.515-5.468 3.515-8.789ZM600.5 284c0 82.813-67.188 150-150 150-82.813 0-150-67.188-150-150 0-82.813 67.188-150 150-150 82.813 0 150 67.188 150 150Z"/>
+</svg>
+
+        </span>Tip</p><p>GitHub Actions は いっぱい使うと課金されるので注意してください。<br>
+詳細は <a href="https://docs.github.com/ja/billing/managing-billing-for-your-products/managing-billing-for-github-actions/about-billing-for-github-actions">GitHub Actions の課金について</a> を参照してください。</p></div>
+
+<p>今回は、研究室でよくあるケースとして論文執筆の際に役立つユースケースを想定します。
+$\LaTeX$ ファイルを Git 管理して、差分のレビューなどを GitHub の PR 上で行いたいと考えたとします。
+しかし、$\LaTeX$ ファイルの差分の見たところで pdf 上でどこが変わったのかよくわからん、となりますよね。</p>
+<p>そんなときに GitHub Actions ですね！
+今回の目的は、PR 作成時に latexdiff で差分を pdf 上で表現して、その pdf を PR に添付することです。</p>
+<p>まず、GitHub Actions で実行するためのワークフローファイルを作成します。
+<code>.github/workflows</code> ディレクトリを作成し、その中に <code>latexdiff.yml</code> という名前でファイルを作成します。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ mkdir -p .github/workflows
+</span></span><span style="display:flex;"><span>$ touch .github/workflows/latexdiff.yml
+</span></span></code></pre></div><p>ここから <code>latexdiff.yml</code> の中身を一生懸命調べながら書いていくのですが、今回は僕が検証し切って完成したものを特別に書いておきます。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># PR作成、再オープン、変更時にmainブランチのmain.texとの差分を</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># LaTeXdiffでPDF出力してoutput-pdfブランチにpushするworkflow</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">name</span>: <span style="color:#ae81ff">Output LaTeX difference</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">on</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">pull_request</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">types</span>: [<span style="color:#ae81ff">opened, reopened, synchronize]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">paths</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#39;**.tex&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">jobs</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">build</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">runs-on</span>: <span style="color:#ae81ff">ubuntu-latest</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">steps</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># 全てのリポジトリをfetchする (fetch-depth: 0)</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Set up Git repository</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/checkout@v4</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">fetch-depth</span>: <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># output-pdfブランチに比較するためのLaTeXファイルを準備</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Prepare output-pdf branch</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          echo &#34;HEAD: ${{ github.head_ref }}&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          echo &#34;BASE: ${{ github.base_ref }}&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          git config user.name github-actions[bot]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          git checkout output-pdf
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          git merge origin/${{ github.head_ref }}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          git show origin/${{ github.base_ref }}:main.tex &gt; base.tex</span>          
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># LaTeXdiffで差分を取得し、output-pdfブランチにpush</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Compile LaTeX</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">xu-cheng/texlive-action@v2</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">scheme</span>: <span style="color:#ae81ff">full</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            ls base.tex main.tex
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            latexdiff base.tex main.tex &gt; diff.tex
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            pdflatex diff.tex</span>            
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># 差分PDFファイルをpush</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Push diff PDF file</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          git status
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          git add diff.pdf
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          git commit -m &#34;Add diff PDF file.&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          git push origin output-pdf</span>          
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># PRに差分PDFファイルのリンクをコメント</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Create PR comment</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">env</span>: 
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">PR_NUMBER</span>: <span style="color:#ae81ff">${{ github.event.number }}</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">GITHUB_TOKEN</span>: <span style="color:#ae81ff">${{ secrets.GITHUB_TOKEN }}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          echo &#34;差分をPDFで確認したい場合は下記を参照してください。&lt;br&gt;https://github.com/MotoShin/imtakalab-advent-calendar-2024-handson/blob/output-pdf/diff.pdf&#34; &gt; /tmp/comment.md
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          gh pr comment &#34;${PR_NUMBER}&#34; -F /tmp/comment.md</span>          
+</span></span></code></pre></div><p>コメントにもあるのでよく読んでください、とぶん投げてもいいんですがざっくり説明します。</p>
+<p>まずは、最初の部分。
+ここは GitHub Actions の名前とトリガー (発生条件) を設定しています。
+<code>name:</code> で名前を、<code>on:</code> でトリガーを設定しています。
+この場合は、PR が作成されたとき、再オープンされたとき、PR に新たにコミットが追加されたときに実行されるように設定しています。
+また、<code>paths:</code> でファイルのパスを指定しています。
+ここでは、<code>.tex</code> ファイルが変更されたときに実行されるように設定しています。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">name</span>: <span style="color:#ae81ff">Output LaTeX difference</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">on</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">pull_request</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">types</span>: [<span style="color:#ae81ff">opened, reopened, synchronize]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">paths</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#39;**.tex&#39;</span>
+</span></span></code></pre></div><p>次に、<code>jobs:</code> でジョブを設定しています。
+<code>runs-on:</code> で実行環境を指定しています。
+ここでは、<code>ubuntu-latest</code> を指定しています。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">jobs</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">build</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">runs-on</span>: <span style="color:#ae81ff">ubuntu-latest</span>
+</span></span></code></pre></div><div class="notice note" >
+    <p class="notice-title">
+        <span class="icon-notice baseline">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 128 300 300">
+  <path d="M150 128c82.813 0 150 67.188 150 150 0 82.813-67.188 150-150 150C67.187 428 0 360.812 0 278c0-82.813 67.188-150 150-150Zm25 243.555v-37.11c0-3.515-2.734-6.445-6.055-6.445h-37.5c-3.515 0-6.445 2.93-6.445 6.445v37.11c0 3.515 2.93 6.445 6.445 6.445h37.5c3.32 0 6.055-2.93 6.055-6.445Zm-.39-67.188 3.515-121.289c0-1.367-.586-2.734-1.953-3.516-1.172-.976-2.93-1.562-4.688-1.562h-42.968c-1.758 0-3.516.586-4.688 1.563-1.367.78-1.953 2.148-1.953 3.515l3.32 121.29c0 2.734 2.93 4.882 6.64 4.882h36.134c3.515 0 6.445-2.148 6.64-4.883Z"/>
+</svg>
+
+        </span>Note</p><p>補足ですが、今回は <code>main</code> ブランチとは別に <code>output-pdf</code> ブランチを使用しています。
+<code>output-pdf</code> ブランチの役割は <code>main</code> ブランチに向けて PR が作成された際に、<code>main</code> ブランチとの差分を <code>latexdiff</code> で取得し、その差分を PDF にして <code>output-pdf</code> ブランチに push することで UI 上で PDF で差分を見るという役割です。</p></div>
+
+<p>そして、<code>steps:</code> でジョブ内で実行するステップを設定しています。
+<code>uses:</code> で使用するアクションを指定しています。
+<code>with:</code> でアクションに渡す引数を指定しています。
+<code>run:</code> でターミナルで実行するようなコマンドを記載しています。
+これらのコマンドは仮想環境上で実行されます。</p>
+<p>ざっくりイメージを言うと、<code>uses</code> で指定した公式が準備してくれてるものや、他の人が作ったものを使って、<code>runs-on</code> で指定した環境内で更に仮想環境を起動して、その仮想環境の中で <code>run</code> で指定したコマンドを実行している、という感じです (ものによっては仮想環境を使わないものなどもあります) 。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">steps</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Set up Git repository</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/checkout@v4</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">fetch-depth</span>: <span style="color:#ae81ff">0</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">steps</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Prepare output-pdf branch</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      echo &#34;HEAD: ${{ github.head_ref }}&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      echo &#34;BASE: ${{ github.base_ref }}&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      git config user.name github-actions[bot]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      git checkout output-pdf
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      git merge origin/${{ github.head_ref }}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      git show origin/${{ github.base_ref }}:main.tex &gt; base.tex</span>      
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">steps</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Compile LaTeX</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">xu-cheng/texlive-action@v2</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">scheme</span>: <span style="color:#ae81ff">full</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        ls base.tex main.tex
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        latexdiff base.tex main.tex &gt; diff.tex
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        pdflatex diff.tex</span>        
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">steps</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Push diff PDF file</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      git status
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      git add diff.pdf
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      git commit -m &#34;Add diff PDF file.&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      git push origin output-pdf</span>      
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">steps</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Create PR comment</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">env</span>: 
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">PR_NUMBER</span>: <span style="color:#ae81ff">${{ github.event.number }}</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">GITHUB_TOKEN</span>: <span style="color:#ae81ff">${{ secrets.GITHUB_TOKEN }}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      echo &#34;差分をPDFで確認したい場合は下記を参照してください。&lt;br&gt;https://github.com/MotoShin/imtakalab-advent-calendar-2024-handson/blob/output-pdf/diff.pdf&#34; &gt; /tmp/comment.md
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      gh pr comment &#34;${PR_NUMBER}&#34; -F /tmp/comment.md</span>      
+</span></span></code></pre></div><p>ここまで書いてきて疲れてる感があるのでもしわからんことあれば聞いてくれるなどしてくれればと思いますが、<code>uses</code> で指定しているやつとかでググると該当のリポジトリが出てくるので、そこに使い方とか書いてあります。
+興味があれば読んでみてください。</p>
+<h3 id="動かしてみる">動かしてみる</h3>
+<p>なんと動かすまでに5時間くらい試行錯誤してます。
+もう達成感でいっぱいです。</p>
+<p>はい、では動かしてみましょう。
+まずは <code>main.tex</code> について変更を加えて PR を作成する必要がありますね。
+<code>main.tex</code> の中身は適当に生成 AI に数式とか表とか含んだ $\LaTeX$ ファイルを生成させておきました。
+<a href="https://github.com/MotoShin/imtakalab-advent-calendar-2024-handson/blob/main/main.tex">ファイル</a> はこんな感じです。
+結構真面目な感じですね。</p>
+<p>はい、ここにゴリラの説明を加えて PR を作成しました。
+PR は下記です。</p>
+<p><a href="https://github.com/MotoShin/imtakalab-advent-calendar-2024-handson/pull/4">https://github.com/MotoShin/imtakalab-advent-calendar-2024-handson/pull/4</a></p>
+<p>色々 PR の画面で見慣れないものがあると思います。
+<strong>PR 本文のことではないですよ。</strong></p>
+<p>これとか</p>
+<figure><img src="pr-check-mark.png">
+</figure>
+
+<p>これとか</p>
+<figure><img src="github-action-comment.png">
+</figure>
+
+<p>これです。</p>
+<figure><img src="pr-tail.png">
+</figure>
+
+<p>文字にすると下記のような感じです。</p>
+<ol>
+<li>コミットハッシュの番号にチェックマーク</li>
+<li>github-actions というユーザーがコメントを残している</li>
+<li><code>All checks have passed</code> の欄ができてる</li>
+</ol>
+<p>これらは GitHub Actions が PR 作成時に実行されていることを示しています。
+では、GitHub Actions が実行されてることを確認してみましょう。
+1 のチェックマークをクリックするか、3 の <code>Show all checks</code> をクリックした後に <code>Details</code> をクリックすると、GitHub Actions の実行ログを確認することができます。</p>
+<p><code>Details</code> をクリックすると下記ページに遷移します。</p>
+<p><a href="https://github.com/MotoShin/imtakalab-advent-calendar-2024-handson/actions/runs/12445077589/job/34746028858?pr=4">https://github.com/MotoShin/imtakalab-advent-calendar-2024-handson/actions/runs/12445077589/job/34746028858?pr=4</a></p>
+<p>ここで、GitHub Actions の実行ログを確認することができます。
+細かくは自分で見て欲しいですが、例えば <code>Compile LaTeX</code> のジョブのログを見てみると何だが docker で色々してそうなログとかが見られると思います。</p>
+<p>そんでもって、PR のコメントですね。
+これが今回の成果物です。
+コメントのリンクを押下してみましょう。
+そうすると、追加されている部分の差分が青で強調された PDF が見られるはずです！</p>
+<p><a href="https://github.com/MotoShin/imtakalab-advent-calendar-2024-handson/blob/output-pdf/diff.pdf">https://github.com/MotoShin/imtakalab-advent-calendar-2024-handson/blob/output-pdf/diff.pdf</a></p>
+<p>これで、PDF 上と PR 上の両方で差分を見ながらレビューできる体制が整いましたね！</p>
+<h2 id="おまけ-github-pages-の活用">(おまけ) GitHub Pages の活用</h2>
+<p>GitHub Pages は GitHub が提供している静的サイトホスティングサービスです。
+このブログも GitHub Pages で運用しています。
+もう疲れちゃったので GitHub Pages についての説明は勘弁してください。
+ググって調べてくれ！</p>
+<p>まぁ、静的なページであれば無料で公開することが可能なのでポートフォリオとか作りたい人は使ってみるといいかと思います！</p>
 <h2 id="まとめ">まとめ</h2>
-<p>今回は、GitHub を使い倒すための Pull Request と Release の活用方法を紹介しました。
-本来は、GitHub Actions や GitHub Pages なども紹介したかったのですが、ここまでであまりにも長くなってしまったので、今回はここまでとさせていただきます。
-GitHub はリモートリポジトリを管理するためだけのサービスではなく、様々な機能を持っているので、ぜひ活用してみてください。
-（気が向いたら GitHub Actions や GitHub Pages についても記事を書きたいと思います）</p>
+<p>GitHub を使い倒すために GitHub の機能の一部を紹介しました。
+今回紹介したものは、自分がよく使っている機能で GitHub を使い倒すにはまだまだ足りていません。
+自分もまだまだ勉強不足なので、これからも GitHub を使い倒すために様々な機能を試していきたいと思います。</p>
+<p>Git を必死に覚えたのに今度は GitHub かよ、と思うかもしれませんが Git も GitHub もエンジニアの友達です。
+仲良くしてみると必ず恩恵を受けることができます。
+自分ができることからでいいのでこれらのツールを使っていってみましょう。
+特に GitHub Actions は手動で実行している煩わしさなどを解消してくれる非常に便利な機能です、ぜひ使ってみてください！</p>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a href="https://zenn.dev/toga/articles/latex-github-actions">GitHub ActionsでLaTeX自動コンパイル</a></li>
+<li><a href="https://github.com/xu-cheng/texlive-action">xu-cheng/texlive-action</a></li>
+</ul>
 
     </div>
     <div class="post-footer">

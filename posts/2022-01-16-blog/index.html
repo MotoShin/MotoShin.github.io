@@ -182,12 +182,16 @@ $$</p>
 <p>Q-loss の最終的な形を示す前に、エントロピー正則化による貢献がどのようなものかを説明する。
 まず、先ほどのエントロピー正則化された $Q_{\pi}$ の再帰ベルマン方程式を、エントロピーの定義を使って少し書き換えてみる。
 $$
-\begin{align*}Q^{\pi}(s,a) &amp;= \underset{s^{\prime}\sim P}{\rm{E}}[R(s,a,s^{\prime}) + \gamma(Q^{\pi}(s^{\prime},a^{\prime}) + \alpha H(\pi(\cdot|s^{\prime})))] \\ &amp;= \underset{a^{\prime}\sim\pi}{\underset{s^{\prime}\sim P}{\rm{E}}}[R(s,a,s^{\prime}) + \gamma(Q^{\pi}(s^{\prime},a^{\prime}) - \alpha\log\pi(a^{\prime}|s^{\prime}))]\end{align*}
+\begin{align*}
+Q^{\pi}(s,a) &amp;= \underset{s^{\prime}\sim P}{\rm{E}}[R(s,a,s^{\prime}) + \gamma(Q^{\pi}(s^{\prime},a^{\prime}) + \alpha H(\pi(\cdot|s^{\prime})))] \\ &amp;= \underset{a^{\prime}\sim\pi}{\underset{s^{\prime}\sim P}{\rm{E}}}[R(s,a,s^{\prime}) + \gamma(Q^{\pi}(s^{\prime},a^{\prime}) - \alpha\log\pi(a^{\prime}|s^{\prime}))]
+\end{align*}
 $$</p>
 <p>右辺 (RHS) は、次の状態（replay bufferから得られる）と次の行動（replay bufferではなく、現在の方策から得られる）に対する期待値である。
 これは期待値なので、サンプルで近似することができる。
 $$
-\begin{array}{ll}Q^{\pi}(s,a) \approx r + \gamma(Q^{\pi}(s^{\prime},\tilde{a}^{\prime}) - \alpha\log\pi(\tilde{a}^{\prime}|s^{\prime})), &amp; \tilde{a}^{\prime} \sim \pi(\cdot|s^{\prime}).\end{array}
+\begin{array}{ll}
+Q^{\pi}(s,a) \approx r + \gamma(Q^{\pi}(s^{\prime},\tilde{a}^{\prime}) - \alpha\log\pi(\tilde{a}^{\prime}|s^{\prime})), &amp; \tilde{a}^{\prime} \sim \pi(\cdot|s^{\prime}).
+\end{array}
 $$</p>
 <p><em><strong>Points!</strong></em></p>
 <blockquote>
@@ -208,9 +212,12 @@ $$
 $$</p>
 <p>方策を最適化する方法として、reparameterization trick という手法を用いている。
 これは、状態、方策パラメータ、独立したノイズの決定論的な関数を計算することで、$\pi_{\theta}(\cdot|s)$ からサンプルを抽出するというものである。
-例として、SAC論文の著者に倣って、我々は squashed Gaussian policy を使用する。
-$$
-\begin{array}{ll}\tilde{a}<em>{\theta}(s,\xi) = \tanh(\mu</em>{\theta} + \sigma_{\theta}(s)\odot\xi), &amp; \xi\sim\mathcal{N}(0,I).\end{array}
+例として、SAC論文の著者に倣って、我々は squashed Gaussian policy を使用する。</p>
+<p>$$
+\begin{array}{}
+c = \mu_{\theta} + \sigma_{\theta}(s)\odot\xi \\
+\tilde{a}_{\theta}(s,\xi) = \tanh(c), &amp; \xi\sim\mathcal{N}(0,I).
+\end{array}
 $$</p>
 <p><em><strong>Points!</strong></em></p>
 <blockquote>
@@ -222,16 +229,16 @@ $$</p>
 <blockquote>
 <p>The way standard deviations are parameterized. VPG, TRPO, PPOでは、log std devs をニューラルネットワークからの出力として表現しているが、これは状態に複雑に依存していることを意味する。状態に依存しないlog std devsを持つSACは、私たちの経験上うまくいかなかった。（その理由を考察せよ、あるいは、よりいい方法として実験を検証せよ）</p>
 </blockquote>
-<p>reparameterization trickにより、行動に対する期待値（分布が方策パラメータに依存する難点がある）を、ノイズに対する期待値（難点が解消される、分布がパラメータに依存しなくなる）に書き換えることができる。
-$$
-\underset{a\sim\pi_{\theta}}{\rm{E}}[Q^{\pi_{\theta}}(s,a) - \alpha\log\pi_\theta(a|s)] = \underset{\xi\sim\mathcal{N}}{\rm{E}}[Q^{\pi_\theta}(s,\tilde{a}<em>{\theta}(s,\xi)) - \alpha\log\pi</em>{\theta}(\tilde{a}_{\theta}(a,\xi)|s)]
+<p>reparameterization trickにより、行動に対する期待値（分布が方策パラメータに依存する難点がある）を、ノイズに対する期待値（難点が解消される、分布がパラメータに依存しなくなる）に書き換えることができる。</p>
+<p>$$
+\underset{a\sim\pi_{\theta}}{\rm{E}}[Q^{\pi_{\theta}}(s,a) - \alpha\log\pi_\theta(a|s)] = \underset{\xi\sim\mathcal{N}}{\rm{E}}[Q^{\pi_\theta}(s,\tilde{a}<em>{\theta}(s,\xi)) - \alpha\log\pi</em>\theta(\tilde{a}_{\theta}(a,\xi)|s)]
 $$</p>
 <p>方策のlossを求めるためには、最終的に $Q^{\pi_{\theta}}$ を関数近似器で置き換える必要がある。
-TD3では $Q_{\phi_1}$ （最初のQ値の近似）を使っていたのに対し、SACでは $\underset{j=1,2}{\min}Q_{\phi_{j}}$ を使用する。このようにして方策は次のように最適化される。
-$$
+TD3では $Q_{\phi_1}$ （最初のQ値の近似）を使っていたのに対し、SACでは $\underset{j=1,2}{\min}Q_{\phi_{j}}$ を使用する。このようにして方策は次のように最適化される。</p>
+<p>$$
 \max_{\theta}\underset{\xi\sim\mathcal{N}}{\underset{s\sim\mathcal{D}}{\rm{E}}}\Bigl[\min_{j=1,2}Q_{\phi_{j}}(s,\tilde{a}<em>{\theta}(s,\xi)) - \alpha\log\pi</em>{\theta}(\tilde{a}_{\theta}(s,\xi)|s)\Bigr],
-$$
-となり、min-double-Q trick, 確率, エントロピー項を除いて、DDPGやTD3の方策最適化とほぼ同じになる。</p>
+$$</p>
+<p>となり、min-double-Q trick, 確率, エントロピー項を除いて、DDPGやTD3の方策最適化とほぼ同じになる。</p>
 <h2 id="exploration-vs-exploitation">Exploration vs. Exploitation</h2>
 <p>SACは、エントロピー正則化を用いて確率的方策を学習し、on-policyで探索を行う。
 エントロピー正則化の係数は $\alpha$ は、探索と活用のtrade-offを明示的にコントロールするもので、$\alpha$ が大きいほど探索が多くなり、小さいほど活用が多くなる。
